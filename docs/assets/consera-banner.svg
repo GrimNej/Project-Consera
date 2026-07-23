@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 460" role="img" aria-labelledby="title desc">
+  <title id="title">Consera project intelligence</title>
+  <desc id="desc">A cinematic view of public signals being filtered into one evidence-bound consequence.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#030712"/><stop offset=".58" stop-color="#050B17"/><stop offset="1" stop-color="#081522"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="718" y1="229" x2="1202" y2="229" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00CCF8" stop-opacity=".08"/><stop offset=".48" stop-color="#00CCF8"/><stop offset="1" stop-color="#00FFB7"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="translate(1040 228) rotate(90) scale(220 310)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00CCF8" stop-opacity=".13"/><stop offset="1" stop-color="#00CCF8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0v30" fill="none" stroke="#A7E3ED" stroke-opacity=".04"/>
+    </pattern>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow" x="-30%" y="-40%" width="170%" height="190%">
+      <feDropShadow dx="0" dy="22" stdDeviation="25" flood-color="#000" flood-opacity=".6"/>
+    </filter>
+    <style>
+      .sans{font-family:"DM Sans",Inter,Arial,sans-serif}.serif{font-family:Newsreader,Georgia,serif}.mono{font-family:"Space Mono",Consolas,monospace}
+      .orbit{transform-origin:1038px 228px;animation:spin 34s linear infinite}.dash{stroke-dasharray:7 10;animation:dash 12s linear infinite}
+      .float-a{animation:float 7s ease-in-out infinite}.float-b{animation:float 8.5s -2s ease-in-out infinite}.pulse{animation:pulse 3s ease-out infinite;transform-box:fill-box;transform-origin:center}
+      @keyframes spin{to{transform:rotate(360deg)}}@keyframes dash{to{stroke-dashoffset:-170}}@keyframes float{50%{translate:0 -8px}}@keyframes pulse{0%,30%{opacity:.8;transform:scale(.4)}85%,100%{opacity:0;transform:scale(1.8)}}
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+  </defs>
+  <rect width="1280" height="460" rx="28" fill="url(#bg)"/>
+  <rect x="1" y="1" width="1278" height="458" rx="27" fill="none" stroke="#A7E3ED" stroke-opacity=".18" stroke-width="2"/>
+  <rect x="654" width="626" height="460" fill="url(#grid)"/><rect x="680" width="600" height="460" fill="url(#halo)"/>
+  <path d="M654 0v460" stroke="#A7E3ED" stroke-opacity=".08"/>
+
+  <g transform="translate(65 54)">
+    <rect width="58" height="58" rx="17" fill="#08111D" stroke="#1A3A4E"/>
+    <path d="M39 14a19 19 0 1 0 0 30" fill="none" stroke="url(#beam)" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M34 20a11 11 0 1 0 0 18" fill="none" stroke="#00FFB7" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M29 29h18" stroke="#EAFCFF" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="47" cy="29" r="3.5" fill="#00CCF8" filter="url(#glow)"/>
+  </g>
+  <text x="141" y="91" class="sans" fill="#EAFCFF" font-size="25" font-weight="750" letter-spacing="-1">CONSERA</text>
+  <text x="66" y="151" class="mono" fill="#00FFB7" font-size="10" letter-spacing="2">SILENCE-FIRST PROJECT INTELLIGENCE</text>
+  <text x="66" y="219" class="sans" fill="#EAFCFF" font-size="53" font-weight="680" letter-spacing="-2.8">The market moves.</text>
+  <text x="66" y="274" class="sans" fill="#EAFCFF" font-size="53" font-weight="680" letter-spacing="-2.8">Know what matters</text>
+  <text x="66" y="329" class="serif" fill="#00CCF8" font-size="58" font-style="italic" letter-spacing="-2">before it becomes obvious.</text>
+  <g class="mono" font-size="9" letter-spacing="1">
+    <circle cx="70" cy="386" r="4" fill="#00CCF8"/><text x="83" y="390" fill="#9EB2B9">PUBLIC SIGNALS</text>
+    <circle cx="218" cy="386" r="4" fill="#00FFB7"/><text x="231" y="390" fill="#9EB2B9">PROJECT CONTEXT</text>
+    <circle cx="390" cy="386" r="4" fill="#F4C96C"/><text x="403" y="390" fill="#9EB2B9">HUMAN REVIEW</text>
+  </g>
+
+  <g class="orbit" fill="none" stroke="#A7E3ED" stroke-opacity=".1">
+    <ellipse cx="1038" cy="228" rx="220" ry="166"/><ellipse cx="1038" cy="228" rx="162" ry="120"/><ellipse cx="1038" cy="228" rx="104" ry="76"/>
+  </g>
+  <path id="signalPath" d="M706 228C785 130 839 306 919 215s151-96 288 13" fill="none" stroke="url(#beam)" stroke-width="2.5" class="dash"/>
+  <circle r="5.5" fill="#00CCF8" filter="url(#glow)"><animateMotion dur="5.8s" repeatCount="indefinite"><mpath href="#signalPath"/></animateMotion></circle>
+  <circle r="4" fill="#00FFB7" filter="url(#glow)"><animateMotion dur="5.8s" begin="-2.9s" repeatCount="indefinite"><mpath href="#signalPath"/></animateMotion></circle>
+
+  <g filter="url(#shadow)">
+    <g class="float-a" transform="translate(712 178)">
+      <rect width="160" height="100" rx="16" fill="#0B1723" stroke="#1C455A"/>
+      <text x="18" y="24" class="mono" fill="#71858D" font-size="7" letter-spacing="1">PUBLIC SIGNAL</text>
+      <text x="18" y="50" class="sans" fill="#EAFCFF" font-size="14" font-weight="700">Provider shift</text>
+      <rect x="18" y="67" width="91" height="5" rx="2.5" fill="#173348"/><rect x="18" y="67" width="58" height="5" rx="2.5" fill="#00CCF8"/>
+      <text x="118" y="73" class="mono" fill="#00CCF8" font-size="8">67%</text>
+    </g>
+    <g transform="translate(891 119)">
+      <rect width="202" height="218" rx="22" fill="#08111D" stroke="#00CCF8" stroke-opacity=".52"/>
+      <text x="22" y="31" class="mono" fill="#00CCF8" font-size="8" letter-spacing="1.2">MATERIAL CONSEQUENCE</text>
+      <text x="22" y="69" class="sans" fill="#EAFCFF" font-size="26" font-weight="720">1 signal</text>
+      <text x="22" y="93" class="sans" fill="#9EB2B9" font-size="11">survived 84 dismissals</text>
+      <path d="M22 113h158" stroke="#A7E3ED" stroke-opacity=".13"/>
+      <circle cx="32" cy="143" r="7" fill="#12394A" stroke="#00CCF8"/><text x="50" y="147" class="sans" fill="#D4EEF2" font-size="11">Evidence bound</text>
+      <circle cx="32" cy="171" r="7" fill="#10392D" stroke="#00FFB7"/><text x="50" y="175" class="sans" fill="#D4EEF2" font-size="11">Project specific</text>
+      <circle cx="32" cy="199" r="7" fill="#3C3219" stroke="#F4C96C"/><text x="50" y="203" class="sans" fill="#D4EEF2" font-size="11">Action justified</text>
+    </g>
+    <g class="float-b" transform="translate(1114 181)">
+      <rect width="132" height="96" rx="16" fill="#0B1723" stroke="#00FFB7" stroke-opacity=".42"/>
+      <circle cx="26" cy="28" r="10" fill="#10392D" stroke="#00FFB7"/>
+      <path d="m21 28 4 4 7-9" fill="none" stroke="#00FFB7" stroke-width="2" stroke-linecap="round"/>
+      <text x="45" y="26" class="mono" fill="#71858D" font-size="7">ALERT</text>
+      <text x="45" y="40" class="sans" fill="#EAFCFF" font-size="11" font-weight="700">Warranted</text>
+      <text x="18" y="70" class="mono" fill="#00FFB7" font-size="8">CITED + SCORED</text>
+      <text x="18" y="84" class="mono" fill="#71858D" font-size="6">EMAIL DELIVERED</text>
+      <circle class="pulse" cx="26" cy="28" r="18" fill="none" stroke="#00FFB7" stroke-opacity=".5"/>
+    </g>
+  </g>
+</svg>
