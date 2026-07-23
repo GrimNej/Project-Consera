@@ -25,22 +25,33 @@ jobs:
   ingest:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      CONSERA_SNOWFLAKE_READY: ${{ secrets.SNOWFLAKE_ACCOUNT != '' && secrets.SNOWFLAKE_PRIVATE_KEY_B64 != '' }}
     steps:
       - name: Check out the exact revision
+        if: env.CONSERA_SNOWFLAKE_READY == 'true'
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Install uv
+        if: env.CONSERA_SNOWFLAKE_READY == 'true'
         uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
         with:
           enable-cache: true
 
       - name: Select Python
+        if: env.CONSERA_SNOWFLAKE_READY == 'true'
         run: uv python install 3.11
 
       - name: Install locked runtime
+        if: env.CONSERA_SNOWFLAKE_READY == 'true'
         run: uv sync --frozen --no-dev
 
+      - name: Report pending platform connection
+        if: env.CONSERA_SNOWFLAKE_READY != 'true'
+        run: echo "Consera ingestion is paused until its isolated Snowflake identity is connected."
+
       - name: Fetch and ingest bounded signals
+        if: env.CONSERA_SNOWFLAKE_READY == 'true'
         env:
           GITHUB_RUN_ID: ${{ github.run_id }}
           PYTHONPATH: bridges:snowflake/procedures
