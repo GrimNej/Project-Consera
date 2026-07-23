@@ -26,7 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
-      CONSERA_SNOWFLAKE_READY: ${{ secrets.SNOWFLAKE_ACCOUNT != '' && secrets.SNOWFLAKE_PRIVATE_KEY_B64 != '' }}
+      CONSERA_SNOWFLAKE_READY:
+        ${{ secrets.SNOWFLAKE_ACCOUNT != '' && secrets.SNOWFLAKE_PRIVATE_KEY_B64 != '' }}
     steps:
       - name: Check out the exact revision
         if: env.CONSERA_SNOWFLAKE_READY == 'true'
