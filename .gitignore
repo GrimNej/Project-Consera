@@ -1,0 +1,48 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+worker-dist/
+.turbo/
+coverage/
+playwright-report/
+test-results/
+.playwright-cli/
+output/
+*.tsbuildinfo
+*.cpuprofile
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.py[cod]
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!*.example
+*.pem
+*.key
+*.p8
+*.p12
+connections.toml
+config.toml
+
+# Local Snowflake and operational artifacts
+.snowflake/
+.cortex/
+artifacts/private/
+CONSERA_PRIVATE_IMPLEMENTATION_HANDOFF.md
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

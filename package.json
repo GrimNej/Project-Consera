@@ -1,0 +1,29 @@
+{
+  "name": "consera",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": "24.14.0",
+    "pnpm": "11.7.0"
+  },
+  "scripts": {
+    "build": "pnpm --filter @consera/web build && pnpm --filter @consera/api build",
+    "dev": "pnpm --parallel --filter @consera/web --filter @consera/api dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --max-warnings 0",
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r --if-present typecheck"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@next/eslint-plugin-next": "16.2.11",
+    "@types/node": "26.1.1",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.2.11",
+    "prettier": "3.9.5",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.64.0"
+  }
+}
