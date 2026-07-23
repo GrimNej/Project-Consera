@@ -1,8 +1,6 @@
 name: Ingest Hacker News
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       fetch_mode:
