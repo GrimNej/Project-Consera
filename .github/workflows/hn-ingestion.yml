@@ -1,0 +1,56 @@
+name: Ingest Hacker News
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      fetch_mode:
+        description: Ingestion reason
+        required: false
+        default: manual
+        type: choice
+        options:
+          - manual
+          - scheduled
+
+concurrency:
+  group: consera-hn-ingest
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
+        with:
+          enable-cache: true
+
+      - name: Select Python
+        run: uv python install 3.11
+
+      - name: Install locked runtime
+        run: uv sync --frozen --no-dev
+
+      - name: Fetch and ingest bounded signals
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          PYTHONPATH: bridges:snowflake/procedures
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_DATABASE: CONSERA
+          SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_PRIVATE_KEY_B64 }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE }}
+          SNOWFLAKE_ROLE: CONSERA_INGEST_ROLE
+          SNOWFLAKE_USER: CONSERA_INGEST_SERVICE
+          SNOWFLAKE_WAREHOUSE: CONSERA_INGEST_WH
+        run: >-
+          uv run python -m hn_bridge.main --mode "${{ inputs.fetch_mode || 'scheduled' }}"
+          --max-stories 30 --max-comments 100

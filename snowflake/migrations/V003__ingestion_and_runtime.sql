@@ -1,0 +1,231 @@
+USE ROLE CONSERA_ADMIN_ROLE;
+USE WAREHOUSE CONSERA_PIPELINE_WH;
+USE DATABASE CONSERA;
+
+CREATE OR REPLACE PROCEDURE LANDING.INGEST_HN_BATCH(
+    PAYLOAD VARIANT,
+    CLAIMED_PAYLOAD_SHA256 VARCHAR,
+    GITHUB_RUN_ID VARCHAR
+)
+RETURNS VARIANT
+LANGUAGE SQL
+EXECUTE AS OWNER
+AS
+$$
+DECLARE
+    INGEST_BATCH_CONTRACT_INVALID EXCEPTION (-20011, 'INGEST_BATCH_CONTRACT_INVALID');
+    INGEST_BATCH_HASH_MISMATCH EXCEPTION (-20012, 'INGEST_BATCH_HASH_MISMATCH');
+    INGEST_BATCH_ID_COLLISION EXCEPTION (-20013, 'INGEST_BATCH_ID_COLLISION');
+    INGEST_ITEM_VALIDATION_FAILED EXCEPTION (-20014, 'INGEST_ITEM_VALIDATION_FAILED');
+    BATCH_ID VARCHAR DEFAULT :PAYLOAD:batch_id::VARCHAR;
+    FETCHED_AT TIMESTAMP_TZ DEFAULT :PAYLOAD:fetched_at::TIMESTAMP_TZ;
+    STORY_COUNT NUMBER DEFAULT ARRAY_SIZE(:PAYLOAD:stories);
+    COMMENT_COUNT NUMBER DEFAULT ARRAY_SIZE(:PAYLOAD:comments);
+    ENRICHMENT_COUNT NUMBER DEFAULT ARRAY_SIZE(:PAYLOAD:enrichments);
+    ITEM_COUNT NUMBER DEFAULT :STORY_COUNT + :COMMENT_COUNT;
+    STORED_COUNT NUMBER DEFAULT 0;
+    EXPECTED_HASH VARCHAR;
+    EXPECTED_BATCH_ID VARCHAR;
+BEGIN
+    IF (
+        :PAYLOAD:schema_version::NUMBER <> 1
+        OR :PAYLOAD:source::VARCHAR <> 'hacker-news'
+        OR :STORY_COUNT > 30
+        OR :COMMENT_COUNT > 100
+        OR :ENRICHMENT_COUNT > 3
+        OR LENGTH(TO_JSON(:PAYLOAD)) > 3000000
+    ) THEN
+        RAISE INGEST_BATCH_CONTRACT_INVALID;
+    END IF;
+
+    EXPECTED_HASH := SHA2_HEX(
+        TO_JSON(
+            OBJECT_DELETE(
+                :PAYLOAD::OBJECT,
+                'batch_id',
+                'payload_sha256'
+            )
+        ),
+        256
+    );
+    EXPECTED_BATCH_ID := SHA2_HEX(
+        'consera-hn-batch-v1|' || :EXPECTED_HASH,
+        256
+    );
+
+    IF (
+        :EXPECTED_HASH <> :CLAIMED_PAYLOAD_SHA256
+        OR :EXPECTED_HASH <> :PAYLOAD:payload_sha256::VARCHAR
+        OR :EXPECTED_BATCH_ID <> :BATCH_ID
+    ) THEN
+        RAISE INGEST_BATCH_HASH_MISMATCH;
+    END IF;
+
+    IF (
+        EXISTS(
+            SELECT 1
+            FROM LANDING.INGEST_BATCHES
+            WHERE BATCH_ID = :BATCH_ID
+                AND PAYLOAD_SHA256 <> :EXPECTED_HASH
+        )
+    ) THEN
+        RAISE INGEST_BATCH_ID_COLLISION;
+    END IF;
+
+    IF (
+        EXISTS(
+            SELECT 1
+            FROM LANDING.INGEST_BATCHES
+            WHERE BATCH_ID = :BATCH_ID
+                AND PAYLOAD_SHA256 = :EXPECTED_HASH
+        )
+    ) THEN
+        SELECT COUNT(*)
+        INTO :STORED_COUNT
+        FROM LANDING.HN_ITEMS_RAW
+        WHERE BATCH_ID = :BATCH_ID;
+
+        RETURN OBJECT_CONSTRUCT(
+            'batchId', :BATCH_ID,
+            'itemsAccepted', :STORED_COUNT,
+            'replayed', TRUE,
+            'state', 'ACCEPTED'
+        );
+    END IF;
+
+    BEGIN TRANSACTION;
+
+    INSERT INTO LANDING.INGEST_BATCHES (
+        BATCH_ID,
+        SOURCE,
+        FETCH_MODE,
+        FETCH_STARTED_AT,
+        FETCH_COMPLETED_AT,
+        ITEM_COUNT,
+        PAYLOAD_SHA256,
+        BRIDGE_VERSION,
+        GITHUB_RUN_ID,
+        INGESTED_AT,
+        VALIDATION_STATUS
+    )
+    VALUES (
+        :BATCH_ID,
+        'hacker-news',
+        :PAYLOAD:fetch_mode::VARCHAR,
+        :FETCHED_AT,
+        :FETCHED_AT,
+        :ITEM_COUNT,
+        :EXPECTED_HASH,
+        :PAYLOAD:bridge_version::VARCHAR,
+        NULLIF(:GITHUB_RUN_ID, ''),
+        CURRENT_TIMESTAMP(),
+        'ACCEPTED'
+    );
+
+    INSERT INTO LANDING.HN_ITEMS_RAW (
+        BATCH_ID,
+        HN_ITEM_ID,
+        ITEM_TYPE,
+        PAYLOAD,
+        PAYLOAD_SHA256,
+        FETCHED_AT,
+        BRIDGE_VERSION
+    )
+    SELECT
+        :BATCH_ID,
+        item.VALUE:id::NUMBER,
+        item.VALUE:type::VARCHAR,
+        item.VALUE,
+        SHA2_HEX(TO_JSON(item.VALUE), 256),
+        :FETCHED_AT,
+        :PAYLOAD:bridge_version::VARCHAR
+    FROM (
+        SELECT VALUE
+        FROM TABLE(FLATTEN(INPUT => :PAYLOAD:stories))
+
+        UNION ALL
+
+        SELECT VALUE
+        FROM TABLE(FLATTEN(INPUT => :PAYLOAD:comments))
+    ) AS item
+    WHERE item.VALUE:id::NUMBER > 0
+        AND item.VALUE:type::VARCHAR IN ('story', 'comment', 'job', 'poll', 'pollopt');
+
+    SELECT COUNT(*)
+    INTO :STORED_COUNT
+    FROM LANDING.HN_ITEMS_RAW
+    WHERE BATCH_ID = :BATCH_ID;
+
+    IF (:STORED_COUNT <> :ITEM_COUNT) THEN
+        ROLLBACK;
+        RAISE INGEST_ITEM_VALIDATION_FAILED;
+    END IF;
+
+    UPDATE OPS.MANUAL_INGESTION_REQUESTS
+    SET STATE = 'SUCCEEDED',
+        CLAIMED_AT = COALESCE(CLAIMED_AT, CURRENT_TIMESTAMP()),
+        COMPLETED_AT = CURRENT_TIMESTAMP(),
+        BATCH_ID = :BATCH_ID
+    WHERE STATE = 'QUEUED';
+
+    INSERT INTO OPS.ACTIVITY_LOG (
+        ACTIVITY_ID,
+        TITLE,
+        DETAIL,
+        STATE,
+        OCCURRED_AT,
+        ENTITY_TYPE,
+        ENTITY_ID
+    )
+    VALUES (
+        UUID_STRING(),
+        'Signals received',
+        :STORED_COUNT || ' bounded Hacker News items entered the intelligence pipeline.',
+        'SUCCESS',
+        CURRENT_TIMESTAMP(),
+        'INGEST_BATCH',
+        :BATCH_ID
+    );
+
+    COMMIT;
+
+    RETURN OBJECT_CONSTRUCT(
+        'batchId', :BATCH_ID,
+        'itemsAccepted', :STORED_COUNT,
+        'replayed', FALSE,
+        'state', 'ACCEPTED'
+    );
+END;
+$$;
+
+CREATE OR REPLACE PROCEDURE APP.PROCESS_PROFILE_QUEUE()
+RETURNS VARIANT
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.11'
+PACKAGES = ('snowflake-snowpark-python', 'pydantic')
+IMPORTS = ('@APP.CODE_STAGE/consera_runtime.zip')
+HANDLER = 'project_profile.process_profile_queue'
+EXECUTE AS OWNER;
+
+CREATE OR REPLACE PROCEDURE APP.PROCESS_LANDING_QUEUE()
+RETURNS VARIANT
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.11'
+PACKAGES = ('snowflake-snowpark-python', 'pydantic')
+IMPORTS = ('@APP.CODE_STAGE/consera_runtime.zip')
+HANDLER = 'ingestion.process_landing_queue'
+EXECUTE AS OWNER;
+
+CREATE STREAM IF NOT EXISTS CORE.PROJECT_DOCUMENT_STREAM
+    ON TABLE CORE.PROJECT_DOCUMENTS
+    APPEND_ONLY = TRUE;
+
+CREATE STREAM IF NOT EXISTS LANDING.INGEST_BATCH_STREAM
+    ON TABLE LANDING.INGEST_BATCHES
+    APPEND_ONLY = TRUE;
+
+GRANT USAGE ON PROCEDURE LANDING.INGEST_HN_BATCH(
+    VARIANT,
+    VARCHAR,
+    VARCHAR
+) TO ROLE CONSERA_INGEST_ROLE;
