@@ -12,6 +12,7 @@ runtime configuration.
 - Access-code verification through an HMAC-derived value
 - CSRF tokens on mutations
 - Exact origin enforcement
+- Stateless signed sessions with no Workers KV session store
 - Zod validation on every Worker request and response boundary
 - Pydantic validation on public-source and model boundaries
 - Fixed Snowflake statements and bindings
@@ -21,7 +22,7 @@ runtime configuration.
 ## Snowflake controls
 
 - Consera-only roles, users, warehouses, database, schemas, stage, tasks, integration, and monitor
-- Independent key pairs for application and ingestion identities
+- Independent key pairs for release administration, application queries, and ingestion
 - Owner-executed procedures behind narrow `USAGE` grants
 - Secure views for product read models
 - Fenced leases and compare-and-set state transitions

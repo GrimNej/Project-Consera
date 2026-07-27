@@ -2,12 +2,19 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "consera",
   "main": "src/index.ts",
-  "compatibility_date": "2026-07-21",
-  "workers_dev": true,
+  "compatibility_date": "2026-07-27",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "consera.grimnej.com",
+      "custom_domain": true,
+    },
+  ],
   "secrets": {
     "required": [
       "ACCESS_CODE_HMAC",
       "APP_ORIGIN",
+      "GITHUB_DISPATCH_TOKEN",
       "LOGIN_PEPPER",
       "SESSION_SIGNING_SECRET",
       "SNOWFLAKE_ACCOUNT_LOCATOR",

@@ -79,8 +79,8 @@ The result is not another summary feed. It is a consequence dossier:
    extracts a structured profile, and pauses for human review.
 2. **Activate:** Edit, remove, or add facts. Approval creates a new immutable profile version. Raw
    extraction never controls monitoring.
-3. **Watch:** A bounded bridge reads the official Hacker News API every five minutes and writes one
-   canonical, hashed batch into Snowflake.
+3. **Watch:** A bounded bridge reads the official Hacker News API once daily, or when an operator
+   requests a check, and writes one canonical, hashed batch into Snowflake.
 4. **Filter:** Deterministic normalization and lexical relevance remove the majority of noise
    without spending an AI call.
 5. **Explain:** A fenced Snowflake task runs exact-schema `AI_COMPLETE`, validates every referenced
@@ -90,8 +90,8 @@ The result is not another summary feed. It is a consequence dossier:
 7. **Act:** The product shows the full dossier, Snowflake sends qualifying email, and Ask Consera
    answers only from current published dossiers and their citations.
 
-The operator can request a new signal check from the Intelligence surface. Scheduled checks remain
-active, so the product works both as a live walkthrough and as a continuing monitoring system.
+The operator can request a new signal check from the Intelligence surface. A daily scheduled check
+keeps monitoring current while the manual path makes time-sensitive verification immediate.
 
 ## System at a glance
 
@@ -144,6 +144,8 @@ state transitions make the product tactile without turning animation into decora
   roles, warehouses, or procedure names.
 - **Cost is protected twice.** A resource monitor protects Consera warehouses and an application
   ledger reserves estimated AI credits before every call.
+- **Cloudflare state stays at zero.** Static assets bypass Worker code and the API uses no Workers
+  KV, Durable Objects, Queues, or scheduled triggers.
 - **No payment method is required.** The implementation uses the existing Snowflake trial, free
   GitHub Actions capacity, and Cloudflare's free offering.
 

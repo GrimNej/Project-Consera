@@ -433,10 +433,10 @@ USING (
         ('formula_version', '"impact-formula-v1"'),
         ('alert_policy_version', '"alert-policy-v1"'),
         ('pipeline_version', '"consera-pipeline-v1"'),
-        ('daily_ai_credit_limit', '2'),
-        ('account_credit_envelope', '320'),
-        ('account_credit_reserve', '80'),
-        ('max_deep_analyses_per_batch', '12'),
+        ('daily_ai_credit_limit', '0.3'),
+        ('account_credit_envelope', '0.3'),
+        ('account_credit_reserve', '0.1'),
+        ('max_deep_analyses_per_batch', '2'),
         ('max_email_alerts_per_project_day', '3'),
         ('max_email_alerts_per_account_day', '5'),
         ('model_schema_reliability', '0.95'),
@@ -447,3 +447,21 @@ USING (
 WHEN NOT MATCHED THEN
     INSERT (CONFIG_KEY, CONFIG_VALUE, UPDATED_AT, UPDATED_BY)
     VALUES (source.CONFIG_KEY, source.CONFIG_VALUE, CURRENT_TIMESTAMP(), CURRENT_USER());
+
+UPDATE OPS.PIPELINE_CONFIG
+SET CONFIG_VALUE = PARSE_JSON(
+    CASE CONFIG_KEY
+        WHEN 'daily_ai_credit_limit' THEN '0.3'
+        WHEN 'account_credit_envelope' THEN '0.3'
+        WHEN 'account_credit_reserve' THEN '0.1'
+        WHEN 'max_deep_analyses_per_batch' THEN '2'
+    END
+),
+UPDATED_AT = CURRENT_TIMESTAMP(),
+UPDATED_BY = CURRENT_USER()
+WHERE CONFIG_KEY IN (
+    'daily_ai_credit_limit',
+    'account_credit_envelope',
+    'account_credit_reserve',
+    'max_deep_analyses_per_batch'
+);

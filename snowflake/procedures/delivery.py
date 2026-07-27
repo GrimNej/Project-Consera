@@ -90,10 +90,15 @@ def deliver_alert_queue(session: Session) -> dict[str, Any]:
     """Consume the alert stream and deliver bounded verified-user emails."""
     session.sql(
         """
-        CREATE OR REPLACE TEMPORARY TABLE CONSERA_ALERT_STREAM_SLICE AS
-        SELECT ALERT_ID
-        FROM CONSERA.ALERTING.ALERT_DECISION_STREAM
-        WHERE METADATA$ACTION = 'INSERT'
+        MERGE INTO CONSERA.ALERTING.ALERT_DECISIONS AS target
+        USING (
+            SELECT ALERT_ID
+            FROM CONSERA.ALERTING.ALERT_DECISION_STREAM
+            WHERE METADATA$ACTION = 'INSERT'
+        ) AS source
+            ON target.ALERT_ID = source.ALERT_ID
+        WHEN MATCHED THEN
+            UPDATE SET target.STATE = target.STATE
         """
     ).collect()
     sent = 0

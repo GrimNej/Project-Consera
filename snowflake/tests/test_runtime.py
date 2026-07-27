@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 import pytest
-from consera_core.runtime import PipelineError, structured_output
+from consera_core.runtime import (
+    PipelineError,
+    snowflake_response_format,
+    structured_output,
+)
 
 
 def test_current_structured_output_envelope() -> None:
@@ -19,6 +23,56 @@ def test_wrapped_structured_output_envelope() -> None:
             ]
         }
     ) == {"answer": "bounded"}
+
+
+def test_json_string_structured_output_envelope() -> None:
+    assert structured_output({"structured_output": '{"answer":"bounded"}'}) == {"answer": "bounded"}
+    assert structured_output({"structured_output": [{"raw_message": '{"answer":"bounded"}'}]}) == {
+        "answer": "bounded"
+    }
+
+
+def test_response_format_removes_unsupported_constraints_and_nullable_wrapper() -> None:
+    result = snowflake_response_format(
+        {
+            "type": "json",
+            "schema": {
+                "title": "Profile",
+                "type": "object",
+                "properties": {
+                    "confidence": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                    },
+                    "business_model": {
+                        "anyOf": [
+                            {"type": "string", "maxLength": 500},
+                            {"type": "null"},
+                        ],
+                        "default": None,
+                    },
+                    "topics": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "minItems": 1,
+                        "maxItems": 20,
+                    },
+                },
+            },
+        }
+    )
+    assert result == {
+        "type": "json",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "confidence": {"type": "number"},
+                "business_model": {"type": "string"},
+                "topics": {"type": "array", "items": {"type": "string"}},
+            },
+        },
+    }
 
 
 def test_invalid_structured_output_is_rejected() -> None:

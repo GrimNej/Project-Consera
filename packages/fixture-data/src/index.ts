@@ -125,9 +125,9 @@ export const fixtureDashboard: Dashboard = dashboardSchema.parse({
   alertsSent: 1,
   analyzedDeeply: 8,
   credits: {
-    consumed: 18.4,
-    reserve: 80,
-    totalEnvelope: 320,
+    consumed: 0.1,
+    reserve: 0.1,
+    totalEnvelope: 0.3,
   },
   health: "HEALTHY",
   latestIngestionAt: "2026-07-23T05:02:00.000Z",

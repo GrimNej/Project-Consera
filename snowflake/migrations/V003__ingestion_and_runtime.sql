@@ -26,6 +26,10 @@ DECLARE
     STORED_COUNT NUMBER DEFAULT 0;
     EXPECTED_HASH VARCHAR;
     EXPECTED_BATCH_ID VARCHAR;
+    FETCH_MODE VARCHAR DEFAULT :PAYLOAD:fetch_mode::VARCHAR;
+    BRIDGE_VERSION VARCHAR DEFAULT :PAYLOAD:bridge_version::VARCHAR;
+    NORMALIZED_GITHUB_RUN_ID VARCHAR DEFAULT NULLIF(:GITHUB_RUN_ID, '');
+    ACTIVITY_ID VARCHAR DEFAULT UUID_STRING();
 BEGIN
     IF (
         :PAYLOAD:schema_version::NUMBER <> 1
@@ -93,9 +97,10 @@ BEGIN
         );
     END IF;
 
-    BEGIN TRANSACTION;
+    BEGIN
+        BEGIN TRANSACTION;
 
-    INSERT INTO LANDING.INGEST_BATCHES (
+        INSERT INTO LANDING.INGEST_BATCHES (
         BATCH_ID,
         SOURCE,
         FETCH_MODE,
@@ -111,18 +116,18 @@ BEGIN
     VALUES (
         :BATCH_ID,
         'hacker-news',
-        :PAYLOAD:fetch_mode::VARCHAR,
+        :FETCH_MODE,
         :FETCHED_AT,
         :FETCHED_AT,
         :ITEM_COUNT,
         :EXPECTED_HASH,
-        :PAYLOAD:bridge_version::VARCHAR,
-        NULLIF(:GITHUB_RUN_ID, ''),
+        :BRIDGE_VERSION,
+        :NORMALIZED_GITHUB_RUN_ID,
         CURRENT_TIMESTAMP(),
         'ACCEPTED'
     );
 
-    INSERT INTO LANDING.HN_ITEMS_RAW (
+        INSERT INTO LANDING.HN_ITEMS_RAW (
         BATCH_ID,
         HN_ITEM_ID,
         ITEM_TYPE,
@@ -138,7 +143,7 @@ BEGIN
         item.VALUE,
         SHA2_HEX(TO_JSON(item.VALUE), 256),
         :FETCHED_AT,
-        :PAYLOAD:bridge_version::VARCHAR
+        :BRIDGE_VERSION
     FROM (
         SELECT VALUE
         FROM TABLE(FLATTEN(INPUT => :PAYLOAD:stories))
@@ -151,43 +156,47 @@ BEGIN
     WHERE item.VALUE:id::NUMBER > 0
         AND item.VALUE:type::VARCHAR IN ('story', 'comment', 'job', 'poll', 'pollopt');
 
-    SELECT COUNT(*)
-    INTO :STORED_COUNT
-    FROM LANDING.HN_ITEMS_RAW
-    WHERE BATCH_ID = :BATCH_ID;
+        SELECT COUNT(*)
+        INTO :STORED_COUNT
+        FROM LANDING.HN_ITEMS_RAW
+        WHERE BATCH_ID = :BATCH_ID;
 
-    IF (:STORED_COUNT <> :ITEM_COUNT) THEN
-        ROLLBACK;
-        RAISE INGEST_ITEM_VALIDATION_FAILED;
-    END IF;
+        IF (:STORED_COUNT <> :ITEM_COUNT) THEN
+            RAISE INGEST_ITEM_VALIDATION_FAILED;
+        END IF;
 
-    UPDATE OPS.MANUAL_INGESTION_REQUESTS
-    SET STATE = 'SUCCEEDED',
-        CLAIMED_AT = COALESCE(CLAIMED_AT, CURRENT_TIMESTAMP()),
-        COMPLETED_AT = CURRENT_TIMESTAMP(),
-        BATCH_ID = :BATCH_ID
-    WHERE STATE = 'QUEUED';
+        UPDATE OPS.MANUAL_INGESTION_REQUESTS
+        SET STATE = 'SUCCEEDED',
+            CLAIMED_AT = COALESCE(CLAIMED_AT, CURRENT_TIMESTAMP()),
+            COMPLETED_AT = CURRENT_TIMESTAMP(),
+            BATCH_ID = :BATCH_ID
+        WHERE STATE = 'QUEUED';
 
-    INSERT INTO OPS.ACTIVITY_LOG (
-        ACTIVITY_ID,
-        TITLE,
-        DETAIL,
-        STATE,
-        OCCURRED_AT,
-        ENTITY_TYPE,
-        ENTITY_ID
-    )
-    VALUES (
-        UUID_STRING(),
-        'Signals received',
-        :STORED_COUNT || ' bounded Hacker News items entered the intelligence pipeline.',
-        'SUCCESS',
-        CURRENT_TIMESTAMP(),
-        'INGEST_BATCH',
-        :BATCH_ID
-    );
+        INSERT INTO OPS.ACTIVITY_LOG (
+            ACTIVITY_ID,
+            TITLE,
+            DETAIL,
+            STATE,
+            OCCURRED_AT,
+            ENTITY_TYPE,
+            ENTITY_ID
+        )
+        VALUES (
+            :ACTIVITY_ID,
+            'Signals received',
+            :STORED_COUNT || ' bounded Hacker News items entered the intelligence pipeline.',
+            'SUCCESS',
+            CURRENT_TIMESTAMP(),
+            'INGEST_BATCH',
+            :BATCH_ID
+        );
 
-    COMMIT;
+        COMMIT;
+    EXCEPTION
+        WHEN OTHER THEN
+            ROLLBACK;
+            RAISE;
+    END;
 
     RETURN OBJECT_CONSTRUCT(
         'batchId', :BATCH_ID,

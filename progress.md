@@ -56,10 +56,10 @@
 ## Platform and release
 
 - [ ] Cortex Code planning and review artifacts
-- [ ] Isolated Snowflake `CONSERA_*` resources
+- [x] Isolated Snowflake `CONSERA_*` resources
 - [ ] Cloudflare Worker and static asset deployment
 - [ ] Email recipient verification and delivery test
-- [ ] Full replay demonstration
+- [x] Full Snowflake profile, ingestion idempotency, evaluation, and suppression replay
 - [x] README and architecture assets
 - [ ] Submission artifacts
 - [ ] Final GitHub push

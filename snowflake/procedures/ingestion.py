@@ -15,7 +15,8 @@ from pydantic import BaseModel, ConfigDict, Field
 from snowflake.snowpark import Row, Session
 
 PIPELINE_VERSION = "consera-pipeline-v1"
-CANDIDATE_POLICY_VERSION = "candidate-policy-v1"
+CANDIDATE_POLICY_VERSION = "candidate-policy-v2"
+CANDIDATE_MIN_RELEVANCE = 0.15
 MAX_BATCHES_PER_RUN = 5
 
 _TOKEN = re.compile(r"[a-z0-9][a-z0-9.+#-]{1,63}")
@@ -456,7 +457,7 @@ def _create_candidate_jobs(
         )
         terms = [term for field in fields for term in _as_list(row_value(project, field))]
         score = lexical_relevance(terms, normalized_text)
-        if score < 0.18:
+        if score < CANDIDATE_MIN_RELEVANCE:
             continue
         input_hash = sha256_text(
             canonical_json(
@@ -602,20 +603,16 @@ def process_landing_queue(session: Session) -> dict[str, Any]:
     """Consume the landing stream and process a bounded set of new batches."""
     session.sql(
         """
-        CREATE OR REPLACE TEMPORARY TABLE CONSERA_BATCH_STREAM_SLICE AS
-        SELECT BATCH_ID
-        FROM CONSERA.LANDING.INGEST_BATCH_STREAM
-        WHERE METADATA$ACTION = 'INSERT'
-        QUALIFY ROW_NUMBER() OVER (
-            PARTITION BY BATCH_ID
-            ORDER BY INGESTED_AT DESC
-        ) = 1
-        """
-    ).collect()
-    session.sql(
-        """
         MERGE INTO CONSERA.OPS.BATCH_WORK_QUEUE AS target
-        USING CONSERA_BATCH_STREAM_SLICE AS source
+        USING (
+            SELECT BATCH_ID
+            FROM CONSERA.LANDING.INGEST_BATCH_STREAM
+            WHERE METADATA$ACTION = 'INSERT'
+            QUALIFY ROW_NUMBER() OVER (
+                PARTITION BY BATCH_ID
+                ORDER BY INGESTED_AT DESC
+            ) = 1
+        ) AS source
             ON target.BATCH_ID = source.BATCH_ID
         WHEN NOT MATCHED THEN
             INSERT (BATCH_ID, STATE, ENQUEUED_AT)

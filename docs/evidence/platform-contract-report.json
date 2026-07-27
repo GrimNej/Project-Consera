@@ -1,0 +1,16 @@
+{
+  "ai_complete": {
+    "candidates": [
+      {
+        "elapsed_ms": 23374,
+        "model": "mistral-large2",
+        "state": "PASSED"
+      }
+    ],
+    "cross_region_inference_enabled_by_consera": false,
+    "selected_model": "mistral-large2",
+    "structured_output_schema": "exact-object-v1"
+  },
+  "generated_at": "2026-07-23T07:48:15.921011Z",
+  "status": "PASSED"
+}

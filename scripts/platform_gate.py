@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 import time
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
@@ -11,10 +12,15 @@ from pathlib import Path
 from typing import Any
 
 import snowflake.connector
-from consera_core.runtime import structured_output, variant_dict
 from snowflake.connector import SnowflakeConnection
 
 from scripts.build_snowpark_bundle import REPO_ROOT
+
+PROCEDURE_ROOT = REPO_ROOT / "snowflake" / "procedures"
+if str(PROCEDURE_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROCEDURE_ROOT))
+
+from consera_core.runtime import structured_output, variant_dict  # noqa: E402
 
 MODEL_CANDIDATES = ("mistral-large2", "llama3.1-70b", "llama3.1-8b")
 REPORT_PATH = REPO_ROOT / "docs" / "evidence" / "platform-contract-report.json"

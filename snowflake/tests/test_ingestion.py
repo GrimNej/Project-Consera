@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ingestion import lexical_relevance, topic_labels
+from ingestion import CANDIDATE_MIN_RELEVANCE, lexical_relevance, topic_labels
 
 
 def test_exact_provider_match_enters_candidate_band() -> None:
@@ -8,7 +8,22 @@ def test_exact_provider_match_enters_candidate_band() -> None:
         ["Snowflake Cortex", "evidence-bound product intelligence"],
         "Snowflake Cortex introduces a lower latency complete function",
     )
-    assert score >= 0.18
+    assert score >= CANDIDATE_MIN_RELEVANCE
+
+
+def test_two_specific_shared_terms_enter_candidate_band() -> None:
+    score = lexical_relevance(
+        [
+            "Cloudflare Workers",
+            "Snowflake Cortex",
+            "project consequence intelligence",
+            "evidence-backed alerts",
+            "Hacker News",
+            "static Next.js frontend",
+        ],
+        "A Snowflake project ships evidence-backed monitoring",
+    )
+    assert score >= CANDIDATE_MIN_RELEVANCE
 
 
 def test_unrelated_story_is_silent() -> None:

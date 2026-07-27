@@ -6,6 +6,7 @@ CREATE OR REPLACE SECURE VIEW APP_API.PROFILE_OBJECT_V AS
 SELECT
     profile.PROJECT_ID,
     profile.PROFILE_VERSION_ID,
+    profile.CREATED_AT,
     profile.STATE,
     OBJECT_CONSTRUCT_KEEP_NULL(
         'capabilities', profile.CORE_CAPABILITIES,
@@ -334,7 +335,14 @@ metric_data AS (
             (
                 SELECT SUM(ESTIMATED_CREDITS)
                 FROM OPS.AI_USAGE_LEDGER
-                WHERE STATE IN ('RECONCILED', 'RECONCILED_PESSIMISTIC')
+                WHERE USAGE_DATE = CURRENT_DATE()
+                    AND STATE IN (
+                        'RESERVED',
+                        'IN_FLIGHT',
+                        'RECONCILED',
+                        'RECONCILED_PESSIMISTIC',
+                        'FAILED_TERMINAL'
+                    )
             ),
             0
         ) AS CREDITS_CONSUMED,
@@ -352,8 +360,8 @@ SELECT OBJECT_CONSTRUCT_KEEP_NULL(
     'analyzedDeeply', metric_data.ANALYZED_DEEPLY,
     'credits', OBJECT_CONSTRUCT(
         'consumed', metric_data.CREDITS_CONSUMED,
-        'reserve', 80,
-        'totalEnvelope', 320
+        'reserve', 0.1,
+        'totalEnvelope', 0.3
     ),
     'health',
     CASE
@@ -419,9 +427,14 @@ DECLARE
         :DISPLAY_NAME || '|' || :README_TEXT || '|' || :ALERTS_ENABLED::VARCHAR,
         256
     );
+    NORMALIZED_NAME VARCHAR DEFAULT TRIM(:DISPLAY_NAME);
+    README_HASH VARCHAR DEFAULT SHA2_HEX(:README_TEXT, 256);
+    README_BYTES NUMBER DEFAULT OCTET_LENGTH(:README_TEXT);
+    ACTIVITY_ID VARCHAR DEFAULT UUID_STRING();
     SLUG VARCHAR;
     RESPONSE VARIANT;
     EXISTING_HASH VARCHAR;
+    ALERT_EMAIL VARCHAR;
 BEGIN
     IF (
         LENGTH(TRIM(:DISPLAY_NAME)) < 2
@@ -464,99 +477,106 @@ BEGIN
             '-'
         ) || '-' || LEFT(REPLACE(:PROJECT_ID, '-', ''), 8);
 
-        BEGIN TRANSACTION;
+        SELECT NULLIF(CONFIG_VALUE::VARCHAR, 'null')
+        INTO :ALERT_EMAIL
+        FROM OPS.PIPELINE_CONFIG
+        WHERE CONFIG_KEY = 'alert_email';
 
-        INSERT INTO OPS.IDEMPOTENCY_KEYS (
-            OPERATION,
-            IDEMPOTENCY_KEY,
-            REQUEST_HASH,
-            STATE,
-            CREATED_AT
-        )
-        VALUES (
-            'CREATE_PROJECT',
-            :IDEMPOTENCY_KEY,
-            :REQUEST_HASH,
-            'IN_PROGRESS',
-            CURRENT_TIMESTAMP()
-        );
+        BEGIN
+            BEGIN TRANSACTION;
 
-        INSERT INTO CORE.PROJECTS (
-            PROJECT_ID,
-            OWNER_USER_NAME,
-            DISPLAY_NAME,
-            SLUG,
-            STATE,
-            ALERT_EMAIL,
-            ALERTS_ENABLED,
-            ROW_VERSION,
-            CREATED_AT,
-            UPDATED_AT
-        )
-        VALUES (
-            :PROJECT_ID,
-            CURRENT_USER(),
-            TRIM(:DISPLAY_NAME),
-            :SLUG,
-            'DRAFT',
-            (
-                SELECT NULLIF(CONFIG_VALUE::VARCHAR, 'null')
-                FROM OPS.PIPELINE_CONFIG
-                WHERE CONFIG_KEY = 'alert_email'
-            ),
-            :ALERTS_ENABLED,
-            1,
-            CURRENT_TIMESTAMP(),
-            CURRENT_TIMESTAMP()
-        );
+            INSERT INTO OPS.IDEMPOTENCY_KEYS (
+                OPERATION,
+                IDEMPOTENCY_KEY,
+                REQUEST_HASH,
+                STATE,
+                CREATED_AT
+            )
+            VALUES (
+                'CREATE_PROJECT',
+                :IDEMPOTENCY_KEY,
+                :REQUEST_HASH,
+                'IN_PROGRESS',
+                CURRENT_TIMESTAMP()
+            );
 
-        INSERT INTO CORE.PROJECT_DOCUMENTS (
-            DOCUMENT_ID,
-            PROJECT_ID,
-            DOCUMENT_TYPE,
-            SOURCE_NAME,
-            CONTENT_SHA256,
-            SANITIZED_CONTENT,
-            BYTE_LENGTH,
-            SECRET_SCAN_STATUS,
-            INGESTED_AT,
-            RETAIN_UNTIL,
-            IS_ACTIVE
-        )
-        VALUES (
-            :DOCUMENT_ID,
-            :PROJECT_ID,
-            'README',
-            'README.md',
-            SHA2_HEX(:README_TEXT, 256),
-            :README_TEXT,
-            OCTET_LENGTH(:README_TEXT),
-            'PASSED',
-            CURRENT_TIMESTAMP(),
-            DATEADD('day', 30, CURRENT_TIMESTAMP()),
-            TRUE
-        );
+            INSERT INTO CORE.PROJECTS (
+                PROJECT_ID,
+                OWNER_USER_NAME,
+                DISPLAY_NAME,
+                SLUG,
+                STATE,
+                ALERT_EMAIL,
+                ALERTS_ENABLED,
+                ROW_VERSION,
+                CREATED_AT,
+                UPDATED_AT
+            )
+            VALUES (
+                :PROJECT_ID,
+                CURRENT_USER(),
+                :NORMALIZED_NAME,
+                :SLUG,
+                'DRAFT',
+                :ALERT_EMAIL,
+                :ALERTS_ENABLED,
+                1,
+                CURRENT_TIMESTAMP(),
+                CURRENT_TIMESTAMP()
+            );
 
-        INSERT INTO OPS.ACTIVITY_LOG (
-            ACTIVITY_ID,
-            TITLE,
-            DETAIL,
-            STATE,
-            OCCURRED_AT,
-            ENTITY_TYPE,
-            ENTITY_ID
-        )
-        VALUES (
-            UUID_STRING(),
-            'Project admitted',
-            'README accepted and profile extraction queued.',
-            'RUNNING',
-            CURRENT_TIMESTAMP(),
-            'PROJECT',
-            :PROJECT_ID
-        );
+            INSERT INTO CORE.PROJECT_DOCUMENTS (
+                DOCUMENT_ID,
+                PROJECT_ID,
+                DOCUMENT_TYPE,
+                SOURCE_NAME,
+                CONTENT_SHA256,
+                SANITIZED_CONTENT,
+                BYTE_LENGTH,
+                SECRET_SCAN_STATUS,
+                INGESTED_AT,
+                RETAIN_UNTIL,
+                IS_ACTIVE
+            )
+            VALUES (
+                :DOCUMENT_ID,
+                :PROJECT_ID,
+                'README',
+                'README.md',
+                :README_HASH,
+                :README_TEXT,
+                :README_BYTES,
+                'PASSED',
+                CURRENT_TIMESTAMP(),
+                DATEADD('day', 30, CURRENT_TIMESTAMP()),
+                TRUE
+            );
 
-        COMMIT;
+            INSERT INTO OPS.ACTIVITY_LOG (
+                ACTIVITY_ID,
+                TITLE,
+                DETAIL,
+                STATE,
+                OCCURRED_AT,
+                ENTITY_TYPE,
+                ENTITY_ID
+            )
+            VALUES (
+                :ACTIVITY_ID,
+                'Project admitted',
+                'README accepted and profile extraction queued.',
+                'RUNNING',
+                CURRENT_TIMESTAMP(),
+                'PROJECT',
+                :PROJECT_ID
+            );
+
+            COMMIT;
+        EXCEPTION
+            WHEN OTHER THEN
+                ROLLBACK;
+                RAISE;
+        END;
     END IF;
 
     SELECT PROJECT
@@ -616,6 +636,7 @@ DECLARE
     );
     EXISTING_REQUEST_HASH VARCHAR;
     RESPONSE VARIANT;
+    ACTIVITY_ID VARCHAR DEFAULT UUID_STRING();
 BEGIN
     SELECT
         MAX(REQUEST_HASH),
@@ -732,16 +753,17 @@ BEGIN
         RAISE PROFILE_CONTRACT_INVALID;
     END IF;
 
-    BEGIN TRANSACTION;
+    BEGIN
+        BEGIN TRANSACTION;
 
-    INSERT INTO OPS.IDEMPOTENCY_KEYS (
+        INSERT INTO OPS.IDEMPOTENCY_KEYS (
         OPERATION,
         IDEMPOTENCY_KEY,
         REQUEST_HASH,
         STATE,
         CREATED_AT
     )
-    SELECT
+        SELECT
         'ACTIVATE_PROFILE',
         :IDEMPOTENCY_KEY,
         :REQUEST_HASH,
@@ -754,7 +776,7 @@ BEGIN
             AND IDEMPOTENCY_KEY = :IDEMPOTENCY_KEY
     );
 
-    INSERT INTO CORE.PROJECT_PROFILE_CORRECTIONS (
+        INSERT INTO CORE.PROJECT_PROFILE_CORRECTIONS (
         CORRECTION_ID,
         PROFILE_VERSION_ID,
         FIELD_PATH,
@@ -764,7 +786,7 @@ BEGIN
         ACTOR_USER_NAME,
         CREATED_AT
     )
-    SELECT
+        SELECT
         UUID_STRING(
             'f03bd056-7ca7-4619-8751-67066985f804',
             'profile-correction|' || :NEW_PROFILE_ID
@@ -789,7 +811,7 @@ BEGIN
     WHERE draft.PROFILE_VERSION_ID = :DRAFT_PROFILE_ID
         AND draft.PROFILE_HASH <> :NEW_PROFILE_HASH;
 
-    INSERT INTO CORE.PROJECT_PROFILE_VERSIONS (
+        INSERT INTO CORE.PROJECT_PROFILE_VERSIONS (
         PROFILE_VERSION_ID,
         PROJECT_ID,
         SOURCE_DOCUMENT_ID,
@@ -820,7 +842,7 @@ BEGIN
         ACTIVATED_AT,
         REVIEWED_BY
     )
-    SELECT
+        SELECT
         :NEW_PROFILE_ID,
         :PROJECT_ID,
         :SOURCE_DOCUMENT_ID,
@@ -853,7 +875,7 @@ BEGIN
     FROM CORE.PROJECT_PROFILE_VERSIONS AS draft
     WHERE draft.PROFILE_VERSION_ID = :DRAFT_PROFILE_ID;
 
-    UPDATE CORE.PROJECTS
+        UPDATE CORE.PROJECTS
     SET ACTIVE_PROFILE_VERSION_ID = :NEW_PROFILE_ID,
         STATE = 'ACTIVE',
         ROW_VERSION = ROW_VERSION + 1,
@@ -861,12 +883,11 @@ BEGIN
     WHERE PROJECT_ID = :PROJECT_ID
         AND ROW_VERSION = :EXPECTED_PROJECT_VERSION;
 
-    IF (SQLROWCOUNT <> 1) THEN
-        ROLLBACK;
-        RAISE PROJECT_VERSION_CONFLICT;
-    END IF;
+        IF (SQLROWCOUNT <> 1) THEN
+            RAISE PROJECT_VERSION_CONFLICT;
+        END IF;
 
-    UPDATE INTELLIGENCE.VERDICTS
+        UPDATE INTELLIGENCE.VERDICTS
     SET STALE_AT = CURRENT_TIMESTAMP(),
         STALE_REASON = 'The active reviewed project profile changed.'
     WHERE PROJECT_ID = :PROJECT_ID
@@ -876,7 +897,7 @@ BEGIN
             OR :ACTIVE_PROFILE_HASH <> :NEW_PROFILE_HASH
         );
 
-    INSERT INTO OPS.ACTIVITY_LOG (
+        INSERT INTO OPS.ACTIVITY_LOG (
         ACTIVITY_ID,
         TITLE,
         DETAIL,
@@ -885,8 +906,8 @@ BEGIN
         ENTITY_TYPE,
         ENTITY_ID
     )
-    VALUES (
-        UUID_STRING(),
+        VALUES (
+        :ACTIVITY_ID,
         'Profile activated',
         'A human-reviewed profile now controls consequence analysis.',
         'SUCCESS',
@@ -895,12 +916,12 @@ BEGIN
         :PROJECT_ID
     );
 
-    SELECT PROJECT
+        SELECT PROJECT
     INTO :RESPONSE
     FROM APP_API.PROJECT_V
     WHERE PROJECT_ID = :PROJECT_ID;
 
-    UPDATE OPS.IDEMPOTENCY_KEYS
+        UPDATE OPS.IDEMPOTENCY_KEYS
     SET RESPONSE = :RESPONSE,
         STATE = 'COMPLETED',
         COMPLETED_AT = CURRENT_TIMESTAMP()
@@ -908,7 +929,12 @@ BEGIN
         AND IDEMPOTENCY_KEY = :IDEMPOTENCY_KEY
         AND REQUEST_HASH = :REQUEST_HASH;
 
-    COMMIT;
+        COMMIT;
+    EXCEPTION
+        WHEN OTHER THEN
+            ROLLBACK;
+            RAISE;
+    END;
 
     RETURN RESPONSE;
 END;
@@ -928,6 +954,8 @@ DECLARE
         'manual-ingestion|' || :IDEMPOTENCY_KEY
     );
     CURRENT_STATE VARCHAR;
+    ACTIVITY_ID VARCHAR DEFAULT UUID_STRING();
+    DISPATCH_REQUIRED BOOLEAN DEFAULT FALSE;
 BEGIN
     SELECT MAX(STATE)
     INTO :CURRENT_STATE
@@ -958,7 +986,7 @@ BEGIN
             ENTITY_ID
         )
         VALUES (
-            UUID_STRING(),
+            :ACTIVITY_ID,
             'Signal check requested',
             'The official Hacker News bridge will claim this request.',
             'RUNNING',
@@ -967,9 +995,11 @@ BEGIN
             :RUN_ID
         );
         CURRENT_STATE := 'QUEUED';
+        DISPATCH_REQUIRED := TRUE;
     END IF;
 
     RETURN OBJECT_CONSTRUCT(
+        'dispatchRequired', :DISPATCH_REQUIRED,
         'runId', :RUN_ID,
         'state',
         CASE :CURRENT_STATE

@@ -1,0 +1,23 @@
+{
+  "ai": {
+    "calls_today": 1,
+    "daily_credit_limit": 0.3,
+    "estimated_credits_today": 0.1
+  },
+  "cost_controls": {
+    "cloudflare_kv_bindings": 0,
+    "cloudflare_scheduled_triggers": 0,
+    "resource_monitor_credits_used": 0,
+    "resource_monitor_monthly_quota": 5
+  },
+  "generated_at": "2026-07-27T06:18:56.784Z",
+  "pipeline": {
+    "alert_decision": "SUPPRESSED_LOW_RELEVANCE",
+    "evaluation_state": "SUCCEEDED",
+    "evidence_links": 2,
+    "protective_factors": 1,
+    "recommendations": 1,
+    "verdict_state": "PUBLISHED"
+  },
+  "status": "PASSED"
+}

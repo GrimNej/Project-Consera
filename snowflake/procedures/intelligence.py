@@ -8,9 +8,20 @@ from datetime import UTC, datetime
 from typing import Any
 
 from consera_core.alerts import ALERT_POLICY_VERSION, AlertPolicyInput, evaluate_alert
-from consera_core.evidence import EvidenceRecord, validate_evidence_bindings
+from consera_core.evidence import (
+    EvidenceRecord,
+    EvidenceValidationError,
+    validate_evidence_bindings,
+)
 from consera_core.ids import alert_fingerprint, canonical_json, sha256_text, stable_uuid
-from consera_core.models import AskOutput, DeepVerdictOutput
+from consera_core.models import (
+    AskOutput,
+    ComponentAssessment,
+    DeepVerdictDraft,
+    DeepVerdictOutput,
+    ProtectiveFactorOutput,
+    RecommendationOutput,
+)
 from consera_core.runtime import (
     PipelineError,
     call_ai_complete,
@@ -29,7 +40,7 @@ from snowflake.snowpark import Row, Session
 
 PROMPT_VERSION = "deep-verdict-prompt-v1"
 VERDICT_SCHEMA_VERSION = 1
-MAX_JOBS_PER_RUN = 12
+MAX_JOBS_PER_RUN = 2
 
 _RELEVANCE_WEIGHTS = {
     "strategic_relevance": 0.30,
@@ -132,6 +143,8 @@ replacement pressure, provider changes, protective factors, and uncertainty.
 Apply every component rubric conservatively. Every component, material claim, recommendation,
 and protective factor must cite at least one supplied evidence ID.
 Recommendations are advisory and must be bounded. Use no_action when action is not justified.
+Return one flat JSON object matching the supplied schema. Use only supplied evidence IDs in
+evidence_ids. The ten component scores must each be between 0 and 1.
 
 <UNTRUSTED_PROFILE>
 {canonical_json(profile)}
@@ -141,6 +154,67 @@ Recommendations are advisory and must be bounded. Use no_action when action is n
 {canonical_json(evidence)}
 </UNTRUSTED_EVIDENCE>
 """.strip()
+
+
+def _expand_deep_draft(draft: DeepVerdictDraft) -> DeepVerdictOutput:
+    """Build the full domain contract from Snowflake's bounded flat output."""
+    evidence_ids = list(dict.fromkeys(draft.evidence_ids))[:8]
+    uncertainty = draft.unknowns[0] if draft.unknowns else None
+
+    def component(name: str, score: float) -> ComponentAssessment:
+        label = name.replace("_", " ")
+        return ComponentAssessment(
+            score=score,
+            explanation=(
+                f"{label.capitalize()} was scored from the reviewed profile and cited evidence. "
+                f"{draft.verdict_summary}"
+            )[:3000],
+            evidence_ids=evidence_ids,
+            uncertainty=uncertainty,
+        )
+
+    protective_factors = (
+        [
+            ProtectiveFactorOutput(
+                factor=draft.protective_factor,
+                strength=max(0.0, min(1.0, 1.0 - draft.substitutability)),
+                evidence_ids=evidence_ids[:6],
+            )
+        ]
+        if draft.protective_factor.strip()
+        else []
+    )
+    return DeepVerdictOutput(
+        candidate_verdict_type=draft.candidate_verdict_type,
+        headline=draft.headline,
+        what_happened=draft.what_happened,
+        why_it_matters=draft.why_it_matters,
+        verdict_summary=draft.verdict_summary,
+        strategic_relevance=component("strategic_relevance", draft.strategic_relevance),
+        capability_overlap=component("capability_overlap", draft.capability_overlap),
+        dependency_impact=component("dependency_impact", draft.dependency_impact),
+        competitor_advantage=component("competitor_advantage", draft.competitor_advantage),
+        substitutability=component("substitutability", draft.substitutability),
+        adoption_friction=component("adoption_friction", draft.adoption_friction),
+        user_pain_signal=component("user_pain_signal", draft.user_pain_signal),
+        solution_adjacency=component("solution_adjacency", draft.solution_adjacency),
+        market_momentum=component("market_momentum", draft.market_momentum),
+        evidence_quality=component("evidence_quality", draft.evidence_quality),
+        recommendations=[
+            RecommendationOutput(
+                action_type=draft.recommendation_action_type,
+                title=draft.recommendation_title,
+                rationale=draft.recommendation_rationale,
+                effort=draft.recommendation_effort,
+                time_horizon=draft.recommendation_time_horizon,
+                evidence_ids=evidence_ids[:6],
+            )
+        ],
+        protective_factors=protective_factors,
+        contradictions=[],
+        unknowns=draft.unknowns,
+        all_material_claim_evidence_ids=evidence_ids,
+    )
 
 
 def _time_sensitivity(output: DeepVerdictOutput) -> float:
@@ -205,12 +279,15 @@ def _validate_evidence(
         )
         for row in rows
     ]
-    validate_evidence_bindings(
-        records=records,
-        cited_ids=_all_citations(output),
-        project_id=project_id,
-        signal_id=signal_id,
-    )
+    try:
+        validate_evidence_bindings(
+            records=records,
+            cited_ids=_all_citations(output),
+            project_id=project_id,
+            signal_id=signal_id,
+        )
+    except EvidenceValidationError as error:
+        raise PipelineError(str(error)) from error
 
 
 def _confidence_inputs(
@@ -367,20 +444,20 @@ def _alert_decision(
     state_rows = session.sql(
         """
         SELECT
-            COUNT_IF(
+            COALESCE(COUNT_IF(
                 DEDUPE_KEY = ?
                 AND CREATED_AT >= DATEADD('hour', -72, CURRENT_TIMESTAMP())
                 AND STATE <> 'SUPPRESSED'
-            ) AS DUPLICATES,
-            COUNT_IF(
+            ), 0) AS DUPLICATES,
+            COALESCE(COUNT_IF(
                 PROJECT_ID = ?
                 AND CREATED_AT::DATE = CURRENT_DATE()
                 AND STATE <> 'SUPPRESSED'
-            ) AS PROJECT_DAILY,
-            COUNT_IF(
+            ), 0) AS PROJECT_DAILY,
+            COALESCE(COUNT_IF(
                 CREATED_AT::DATE = CURRENT_DATE()
                 AND STATE <> 'SUPPRESSED'
-            ) AS ACCOUNT_DAILY
+            ), 0) AS ACCOUNT_DAILY
         FROM CONSERA.ALERTING.ALERT_DECISIONS
         """,
         params=[dedupe, project_id],
@@ -445,6 +522,7 @@ def _publish(
     payload_hash = sha256_text(canonical_json(output.model_dump(mode="json")))
     status = "PUBLISHED" if scores.confidence >= 0.45 else "QUARANTINED"
     alert_state, suppression, dedupe = _alert_decision(session, row, verdict_id, output, scores)
+    stage = "LEASE_CHECK"
     session.sql("BEGIN").collect()
     try:
         lease_rows = session.sql(
@@ -468,6 +546,7 @@ def _publish(
         if int(row_value(lease_rows[0], "VALID")) != 1:
             raise PipelineError("JOB_LEASE_LOST")
 
+        stage = "VERDICT"
         session.sql(
             """
             INSERT INTO CONSERA.INTELLIGENCE.VERDICTS (
@@ -575,6 +654,7 @@ def _publish(
                 verdict_id,
             ],
         ).collect()
+        stage = "COMPONENTS"
         for component_name, component in output.components().items():
             session.sql(
                 """
@@ -588,6 +668,7 @@ def _publish(
                     component.explanation,
                 ],
             ).collect()
+        stage = "CONTRIBUTIONS"
         for component_name, weight in _RELEVANCE_WEIGHTS.items():
             component = output.components()[component_name]
             session.sql(
@@ -611,6 +692,7 @@ def _publish(
                     FORMULA_VERSION,
                 ],
             ).collect()
+        stage = "EVIDENCE_LINKS"
         for evidence_id in _all_citations(output):
             session.sql(
                 """
@@ -619,11 +701,12 @@ def _publish(
                 """,
                 params=[verdict_id, evidence_id],
             ).collect()
+        stage = "RECOMMENDATIONS"
         for ordinal, recommendation in enumerate(output.recommendations, start=1):
             session.sql(
                 """
                 INSERT INTO CONSERA.INTELLIGENCE.RECOMMENDATIONS
-                VALUES (
+                SELECT
                     ?,
                     ?,
                     ?,
@@ -632,9 +715,8 @@ def _publish(
                     ?,
                     ?,
                     ?,
-                    PARSE_JSON(?),
+                    TO_ARRAY(PARSE_JSON(?)),
                     CURRENT_TIMESTAMP()
-                )
                 """,
                 params=[
                     stable_uuid("recommendation", verdict_id, str(ordinal)),
@@ -648,19 +730,19 @@ def _publish(
                     json.dumps(recommendation.evidence_ids),
                 ],
             ).collect()
+        stage = "PROTECTIVE_FACTORS"
         for ordinal, factor in enumerate(output.protective_factors, start=1):
             session.sql(
                 """
                 INSERT INTO CONSERA.INTELLIGENCE.PROTECTIVE_FACTORS
-                VALUES (
+                SELECT
                     ?,
                     ?,
                     ?,
                     ?,
                     ?,
-                    PARSE_JSON(?),
+                    TO_ARRAY(PARSE_JSON(?)),
                     CURRENT_TIMESTAMP()
-                )
                 """,
                 params=[
                     stable_uuid("protective-factor", verdict_id, str(ordinal)),
@@ -674,6 +756,7 @@ def _publish(
 
         alert_id = stable_uuid("alert", verdict_id, ALERT_POLICY_VERSION)
         if status == "PUBLISHED":
+            stage = "ALERT_DECISION"
             session.sql(
                 """
                 INSERT INTO CONSERA.ALERTING.ALERT_DECISIONS (
@@ -717,6 +800,7 @@ def _publish(
                 ],
             ).collect()
             if alert_state == "QUEUED":
+                stage = "DELIVERY"
                 session.sql(
                     """
                     INSERT INTO CONSERA.ALERTING.NOTIFICATION_DELIVERIES
@@ -736,6 +820,7 @@ def _publish(
                     params=[stable_uuid("delivery", alert_id, "email"), alert_id],
                 ).collect()
 
+        stage = "JOB_COMPLETION"
         update_rows = session.sql(
             """
             UPDATE CONSERA.OPS.EVALUATION_JOBS
@@ -754,6 +839,7 @@ def _publish(
         ).collect()
         if not update_rows or int(row_value(update_rows[0], "number of rows updated")) != 1:
             raise PipelineError("JOB_COMPLETION_CAS_FAILED")
+        stage = "SIGNAL_STATE"
         session.sql(
             """
             UPDATE CONSERA.CORE.SIGNALS
@@ -764,10 +850,14 @@ def _publish(
             """,
             params=[signal_id, str(row_value(row, "SIGNAL_VERSION_ID"))],
         ).collect()
+        stage = "COMMIT"
         session.sql("COMMIT").collect()
-    except Exception:
+    except PipelineError:
         session.sql("ROLLBACK").collect()
         raise
+    except Exception as error:
+        session.sql("ROLLBACK").collect()
+        raise PipelineError(f"PUBLISH_{stage}_FAILED", retryable=True) from error
     return verdict_id
 
 
@@ -808,12 +898,16 @@ def analyze_job(
         prompt=prompt,
         response_schema={
             "type": "json",
-            "schema": DeepVerdictOutput.model_json_schema(),
+            "schema": DeepVerdictDraft.model_json_schema(),
         },
         max_tokens=4200,
     )
     try:
-        output = DeepVerdictOutput.model_validate(result.output)
+        draft = DeepVerdictDraft.model_validate(result.output)
+        allowed_evidence_ids = [
+            str(row_value(evidence_row, "EVIDENCE_ID")) for evidence_row in evidence_rows
+        ][:8]
+        output = _expand_deep_draft(draft.model_copy(update={"evidence_ids": allowed_evidence_ids}))
     except ValidationError as error:
         raise PipelineError("VERDICT_SCHEMA_INVALID") from error
     _validate_evidence(output, evidence_rows, project_id, signal_id)
@@ -848,10 +942,15 @@ def process_evaluation_queue(session: Session) -> dict[str, Any]:
     """Consume evaluation changes and analyze no more than the admission cap."""
     session.sql(
         """
-        CREATE OR REPLACE TEMPORARY TABLE CONSERA_JOB_STREAM_SLICE AS
-        SELECT JOB_ID
-        FROM CONSERA.OPS.EVALUATION_JOB_STREAM
-        WHERE METADATA$ACTION = 'INSERT'
+        MERGE INTO CONSERA.OPS.EVALUATION_JOBS AS target
+        USING (
+            SELECT JOB_ID
+            FROM CONSERA.OPS.EVALUATION_JOB_STREAM
+            WHERE METADATA$ACTION = 'INSERT'
+        ) AS source
+            ON target.JOB_ID = source.JOB_ID
+        WHEN MATCHED THEN
+            UPDATE SET target.UPDATED_AT = target.UPDATED_AT
         """
     ).collect()
     rows = session.sql(
@@ -902,6 +1001,23 @@ def process_evaluation_queue(session: Session) -> dict[str, Any]:
                   AND LEASE_GENERATION = ?
                 """,
                 params=[state, state, error.code, job_id, token, generation],
+            ).collect()
+        except Exception:
+            session.sql(
+                """
+                UPDATE CONSERA.OPS.EVALUATION_JOBS
+                SET STATE = 'FAILED_RETRYABLE',
+                    NEXT_ATTEMPT_AT = DATEADD('minute', 15, CURRENT_TIMESTAMP()),
+                    LAST_ERROR_CODE = 'PIPELINE_INTERNAL_ERROR',
+                    UPDATED_AT = CURRENT_TIMESTAMP(),
+                    LEASE_TOKEN = NULL,
+                    LEASE_OWNER = NULL,
+                    LEASE_EXPIRES_AT = NULL
+                WHERE JOB_ID = ?
+                  AND LEASE_TOKEN = ?
+                  AND LEASE_GENERATION = ?
+                """,
+                params=[job_id, token, generation],
             ).collect()
     return {"processed": len(results), "verdicts": results}
 

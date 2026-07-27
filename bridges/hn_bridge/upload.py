@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import json
 import os
 from dataclasses import dataclass
 from typing import Any
@@ -15,6 +16,20 @@ from hn_bridge.models import IngestBatch
 
 class ConfigurationError(RuntimeError):
     """Missing or malformed bridge configuration."""
+
+
+def _variant_object(value: object) -> dict[str, Any]:
+    """Normalize connector VARIANT representations without exposing payload data."""
+    if isinstance(value, dict):
+        return value
+    if isinstance(value, str):
+        try:
+            decoded = json.loads(value)
+        except json.JSONDecodeError as error:
+            raise RuntimeError("INGEST_RESULT_INVALID") from error
+        if isinstance(decoded, dict):
+            return decoded
+    raise RuntimeError("INGEST_RESULT_INVALID")
 
 
 @dataclass(frozen=True)
@@ -98,9 +113,9 @@ def upload_batch(batch: IngestBatch, settings: SnowflakeSettings) -> dict[str, A
                 ),
             )
             row = cursor.fetchone()
-            if not row or not isinstance(row[0], dict):
+            if not row:
                 raise RuntimeError("INGEST_RESULT_INVALID")
-            return dict(row[0])
+            return _variant_object(row[0])
         finally:
             cursor.close()
     finally:

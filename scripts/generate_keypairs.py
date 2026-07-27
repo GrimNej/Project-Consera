@@ -66,14 +66,29 @@ def generate_pair(name: str, directory: Path, *, overwrite: bool = False) -> Key
 def _arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate isolated Consera service key pairs")
     parser.add_argument("--directory", type=Path, default=DEFAULT_DIRECTORY)
+    parser.add_argument(
+        "--name",
+        action="append",
+        choices=(
+            "consera_admin_service",
+            "consera_app_service",
+            "consera_ingest_service",
+        ),
+        help="Generate only the selected identity. May be repeated.",
+    )
     parser.add_argument("--overwrite", action="store_true")
     return parser.parse_args()
 
 
 def main() -> int:
-    """Generate independent app and ingestion identities."""
+    """Generate independent Consera service identities."""
     args = _arguments()
-    for name in ("consera_app_service", "consera_ingest_service"):
+    names = args.name or (
+        "consera_admin_service",
+        "consera_app_service",
+        "consera_ingest_service",
+    )
+    for name in names:
         artifacts = generate_pair(name, args.directory, overwrite=args.overwrite)
         print(
             f"{name}: {artifacts.private_key.relative_to(REPO_ROOT)} "

@@ -169,7 +169,7 @@ export function OverviewSurface({
           <header className="panel-header">
             <div>
               <span>Responsible intelligence</span>
-              <h2>Cost envelope</h2>
+              <h2>Daily AI budget</h2>
             </div>
             <Gauge aria-hidden="true" size={21} />
           </header>
@@ -187,13 +187,13 @@ export function OverviewSurface({
             </svg>
             <div>
               <b>{availableCredits.toFixed(1)}</b>
-              <span>credits available</span>
+              <span>AI credits available today</span>
             </div>
           </div>
           <dl className="compact-data">
             <div>
-              <dt>Protected reserve</dt>
-              <dd>{dashboard.credits.reserve.toFixed(0)} credits</dd>
+              <dt>Protected daily reserve</dt>
+              <dd>{dashboard.credits.reserve.toFixed(1)} credits</dd>
             </div>
             <div>
               <dt>AI calls avoided</dt>

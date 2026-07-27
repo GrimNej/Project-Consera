@@ -40,12 +40,13 @@ provider boundary, and runtime dependency without a demonstrated need.
 
 ## D-005: Combine scheduled monitoring with an explicit manual trigger
 
-**Decision:** Keep the bounded five-minute GitHub Actions ingestion schedule and expose a
-client-visible "Check for new signals" action that creates an idempotent queued request.
+**Decision:** Run one bounded GitHub Actions ingestion at 03:17 UTC daily and expose a
+client-visible "Check for new signals" action that creates an idempotent request and dispatches the
+same workflow.
 
 **Why:** Scheduled monitoring supports unattended use. The manual trigger makes the system easy to
-verify and demonstrate without pretending a long-held HTTP connection can replace polling for the
-official Hacker News source.
+verify and demonstrate. The daily schedule keeps Snowflake asleep most of the time and avoids
+pretending a long-held HTTP connection can replace polling for the official Hacker News source.
 
 ## D-006: Use motion to communicate state and affordance
 
@@ -55,3 +56,12 @@ system requests reduced motion.
 
 **Why:** Motion should make interaction and system state easier to read. It must not compete with
 the consequence itself or create layout movement.
+
+## D-007: Keep Cloudflare runtime state-free
+
+**Decision:** Serve the exported product through Cloudflare static assets and invoke the Worker only
+for `/api/*`. Do not bind Workers KV, Durable Objects, Queues, or Cron Triggers.
+
+**Why:** Consera already keeps authoritative state in Snowflake and uses signed browser sessions.
+Another state layer would add cost, synchronization risk, and no product value. The release test
+fails if a metered Cloudflare state binding or scheduled trigger is introduced.

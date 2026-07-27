@@ -10,8 +10,30 @@ from snowflake.snowpark import Row, Session
 
 from consera_core.ids import canonical_json, sha256_text, stable_uuid
 
-DAILY_AI_CREDIT_LIMIT = 2.0
+DAILY_AI_CREDIT_LIMIT = 0.3
 ASSUMED_MAX_CREDITS_PER_CALL = 0.10
+_UNSUPPORTED_SCHEMA_KEYWORDS = frozenset(
+    {
+        "exclusiveMaximum",
+        "exclusiveMinimum",
+        "format",
+        "maxContains",
+        "maxItems",
+        "maxLength",
+        "maxProperties",
+        "maximum",
+        "minContains",
+        "minItems",
+        "minLength",
+        "minProperties",
+        "minimum",
+        "multipleOf",
+        "patternProperties",
+        "propertyNames",
+        "uniqueItems",
+    }
+)
+_SCHEMA_ANNOTATIONS = frozenset({"default", "description", "examples", "title"})
 
 
 class PipelineError(RuntimeError):
@@ -51,14 +73,55 @@ def variant_dict(value: object) -> dict[str, Any]:
 def structured_output(envelope: dict[str, Any]) -> dict[str, Any]:
     """Normalize current and earlier AI_COMPLETE structured-output envelopes."""
     output = envelope.get("structured_output")
+    if isinstance(output, str):
+        try:
+            output = json.loads(output)
+        except json.JSONDecodeError as error:
+            raise PipelineError("AI_RESPONSE_ENVELOPE_INVALID") from error
     if isinstance(output, dict):
         return output
     if isinstance(output, list) and len(output) == 1 and isinstance(output[0], dict):
         raw_message = output[0].get("raw_message")
+        if isinstance(raw_message, str):
+            try:
+                raw_message = json.loads(raw_message)
+            except json.JSONDecodeError as error:
+                raise PipelineError("AI_RESPONSE_ENVELOPE_INVALID") from error
         if isinstance(raw_message, dict):
             return raw_message
         return output[0]
     raise PipelineError("AI_RESPONSE_ENVELOPE_INVALID")
+
+
+def snowflake_response_format(response_format: dict[str, Any]) -> dict[str, Any]:
+    """Remove JSON Schema features that Snowflake structured output rejects."""
+
+    def normalize(node: object) -> object:
+        if isinstance(node, list):
+            return [normalize(item) for item in node]
+        if not isinstance(node, dict):
+            return node
+
+        any_of = node.get("anyOf")
+        if isinstance(any_of, list):
+            non_null = [
+                option
+                for option in any_of
+                if not (isinstance(option, dict) and option.get("type") == "null")
+            ]
+            if len(non_null) == 1 and len(non_null) < len(any_of):
+                return normalize(non_null[0])
+
+        return {
+            key: normalize(value)
+            for key, value in node.items()
+            if key not in _UNSUPPORTED_SCHEMA_KEYWORDS and key not in _SCHEMA_ANNOTATIONS
+        }
+
+    normalized = normalize(response_format)
+    if not isinstance(normalized, dict):
+        raise PipelineError("AI_RESPONSE_SCHEMA_INVALID")
+    return normalized
 
 
 def selected_model(session: Session) -> str:
@@ -87,7 +150,6 @@ def reserve_ai_usage(
 ) -> str:
     """Reserve a bounded daily AI call before it can reach Cortex."""
     request_hash = sha256_text(canonical_json(request_material))
-    usage_id = stable_uuid("ai-usage", operation_type, request_hash)
     spent_rows = session.sql(
         """
         SELECT COALESCE(SUM(ESTIMATED_CREDITS), 0) AS SPENT
@@ -97,13 +159,46 @@ def reserve_ai_usage(
               'RESERVED',
               'IN_FLIGHT',
               'RECONCILED',
-              'RECONCILED_PESSIMISTIC'
+              'RECONCILED_PESSIMISTIC',
+              'FAILED_TERMINAL'
           )
         """
     ).collect()
     spent = float(row_value(spent_rows[0], "SPENT"))
     if spent + ASSUMED_MAX_CREDITS_PER_CALL > DAILY_AI_CREDIT_LIMIT:
         raise PipelineError("AI_DAILY_BUDGET_EXHAUSTED")
+
+    prior_rows = session.sql(
+        """
+        SELECT COUNT(*) AS ATTEMPT_COUNT
+        FROM CONSERA.OPS.AI_USAGE_LEDGER
+        WHERE OPERATION_TYPE = ?
+          AND REQUEST_HASH = ?
+          AND (
+              PROJECT_ID = ?
+              OR (PROJECT_ID IS NULL AND ? IS NULL)
+          )
+          AND (
+              JOB_ID = ?
+              OR (JOB_ID IS NULL AND ? IS NULL)
+          )
+        """,
+        params=[
+            operation_type,
+            request_hash,
+            project_id,
+            project_id,
+            job_id,
+            job_id,
+        ],
+    ).collect()
+    attempt_number = int(row_value(prior_rows[0], "ATTEMPT_COUNT")) + 1
+    usage_id = stable_uuid(
+        "ai-usage",
+        operation_type,
+        request_hash,
+        str(attempt_number),
+    )
 
     session.sql(
         """
@@ -201,7 +296,12 @@ def call_ai_complete(
                 TRUE
             ) AS RESULT
             """,
-            params=[model, prompt, max_tokens, json.dumps(response_schema)],
+            params=[
+                model,
+                prompt,
+                max_tokens,
+                json.dumps(snowflake_response_format(response_schema)),
+            ],
         ).collect()
         envelope = variant_dict(row_value(rows[0], "RESULT"))
         output = structured_output(envelope)

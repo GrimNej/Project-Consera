@@ -362,6 +362,7 @@ export const snowflakeApi = {
   manualIngestion: async (env: CloudflareBindings, idempotencyKey: string, requestId: string) =>
     z
       .object({
+        dispatchRequired: z.boolean(),
         runId: z.string().uuid(),
         state: z.enum(["QUEUED", "RUNNING", "COMPLETED"]),
       })

@@ -109,6 +109,54 @@ class ContradictionOutput(StrictModel):
     severity: Literal["low", "medium", "high"]
 
 
+class DeepVerdictDraft(StrictModel):
+    """Flat provider contract expanded into the richer deterministic domain shape."""
+
+    candidate_verdict_type: Literal[
+        "OPPORTUNITY",
+        "COMPETITIVE_THREAT",
+        "REPLACEMENT_PRESSURE",
+        "PROVIDER_OPPORTUNITY",
+        "DEPENDENCY_RISK",
+        "MARKET_VALIDATION",
+        "STRATEGIC_WATCH",
+        "IRRELEVANT",
+    ]
+    headline: str = Field(min_length=1, max_length=500)
+    what_happened: str = Field(min_length=1, max_length=5000)
+    why_it_matters: str = Field(min_length=1, max_length=7000)
+    verdict_summary: str = Field(min_length=1, max_length=5000)
+    strategic_relevance: float = Field(ge=0, le=1)
+    capability_overlap: float = Field(ge=0, le=1)
+    dependency_impact: float = Field(ge=0, le=1)
+    competitor_advantage: float = Field(ge=0, le=1)
+    substitutability: float = Field(ge=0, le=1)
+    adoption_friction: float = Field(ge=0, le=1)
+    user_pain_signal: float = Field(ge=0, le=1)
+    solution_adjacency: float = Field(ge=0, le=1)
+    market_momentum: float = Field(ge=0, le=1)
+    evidence_quality: float = Field(ge=0, le=1)
+    recommendation_action_type: Literal[
+        "investigate",
+        "benchmark",
+        "compare_provider",
+        "monitor",
+        "strengthen_differentiation",
+        "review_dependency",
+        "review_license",
+        "validate_market",
+        "update_roadmap",
+        "no_action",
+    ]
+    recommendation_title: str = Field(min_length=1, max_length=500)
+    recommendation_rationale: str = Field(min_length=1, max_length=3000)
+    recommendation_effort: Literal["low", "medium", "high"]
+    recommendation_time_horizon: Literal["today", "this_week", "this_month", "watch"]
+    protective_factor: str = Field(max_length=1000)
+    unknowns: list[str] = Field(max_length=10)
+    evidence_ids: list[str] = Field(min_length=1, max_length=8)
+
+
 class DeepVerdictOutput(StrictModel):
     """Exact evidence-bound deep-analysis result from AI_COMPLETE."""
 

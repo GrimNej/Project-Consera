@@ -78,6 +78,7 @@ Extract only facts supported by the README. Do not invent competitors, providers
 Use concise plain English. monitored_topics must be concrete technologies, providers, product
 categories, user pains, or market shifts worth monitoring for this specific project.
 Place ambiguity in unresolved_questions. A human must review this result before activation.
+Return only the JSON object described by the supplied response schema.
 
 Project label: {project_name}
 
@@ -333,22 +334,18 @@ def process_profile_queue(session: Session) -> dict[str, Any]:
     """Consume admitted document changes and extract a bounded profile set."""
     session.sql(
         """
-        CREATE OR REPLACE TEMPORARY TABLE CONSERA_PROFILE_STREAM_SLICE AS
-        SELECT PROJECT_ID, DOCUMENT_ID
-        FROM CONSERA.CORE.PROJECT_DOCUMENT_STREAM
-        WHERE METADATA$ACTION = 'INSERT'
-          AND DOCUMENT_TYPE = 'README'
-          AND IS_ACTIVE
-        QUALIFY ROW_NUMBER() OVER (
-            PARTITION BY PROJECT_ID
-            ORDER BY INGESTED_AT DESC
-        ) = 1
-        """
-    ).collect()
-    session.sql(
-        """
         MERGE INTO CONSERA.OPS.PROFILE_WORK_QUEUE AS target
-        USING CONSERA_PROFILE_STREAM_SLICE AS source
+        USING (
+            SELECT PROJECT_ID, DOCUMENT_ID
+            FROM CONSERA.CORE.PROJECT_DOCUMENT_STREAM
+            WHERE METADATA$ACTION = 'INSERT'
+              AND DOCUMENT_TYPE = 'README'
+              AND IS_ACTIVE
+            QUALIFY ROW_NUMBER() OVER (
+                PARTITION BY PROJECT_ID
+                ORDER BY INGESTED_AT DESC
+            ) = 1
+        ) AS source
             ON target.DOCUMENT_ID = source.DOCUMENT_ID
         WHEN NOT MATCHED THEN
             INSERT (PROJECT_ID, DOCUMENT_ID, STATE, ENQUEUED_AT)

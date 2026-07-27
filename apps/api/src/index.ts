@@ -8,6 +8,7 @@ import { deleteCookie, setCookie } from "hono/cookie";
 import { Hono } from "hono";
 import { z } from "zod";
 
+import { dispatchIngestion, GitHubDispatchError } from "./github/dispatch";
 import { ApiError, parseBody, requestId, requireOrigin } from "./http";
 import {
   createSession,
@@ -253,7 +254,13 @@ app.post("/api/v1/ingestion/run", async (context) => {
     body.idempotencyKey,
     context.get("requestId"),
   );
-  return context.json(success(run, context.get("requestId")), 202);
+  if (run.dispatchRequired) {
+    await dispatchIngestion(context.env.GITHUB_DISPATCH_TOKEN);
+  }
+  return context.json(
+    success({ runId: run.runId, state: run.state }, context.get("requestId")),
+    202,
+  );
 });
 
 app.post("/api/v1/ask", async (context) => {
@@ -276,7 +283,9 @@ app.onError((error, context) => {
             error.httpStatus,
             error.retryable,
           )
-        : new ApiError("INTERNAL_ERROR", "The request could not be completed.", 500);
+        : error instanceof GitHubDispatchError
+          ? new ApiError(error.code, error.message, error.httpStatus, error.retryable)
+          : new ApiError("INTERNAL_ERROR", "The request could not be completed.", 500);
   console.error(
     JSON.stringify({
       code: apiError.code,

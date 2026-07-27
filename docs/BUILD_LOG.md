@@ -71,3 +71,23 @@
   runtime. Next.js is patched to 16.2.11 and `sharp` is resolved to 0.35.3.
 - **Related commit:** `7cc19bf`
 - **Rollback point:** Revert the platform-contract refresh. No Cloudflare resource was deployed.
+
+## 2026-07-27: Cost-safe always-available release model
+
+- **Goal:** Keep the public product continuously available without continuously waking Snowflake or
+  consuming Workers KV operations.
+- **Files:** `.github/workflows/hn-ingestion.yml`, `apps/api/`, `snowflake/bootstrap/`,
+  `snowflake/migrations/`, `snowflake/procedures/`, `scripts/cloudflare_cost_guard.py`,
+  `docs/cost-ledger.md`, `decision-log.md`.
+- **Commands:** `wrangler types`, API unit and type checks, focused Snowpark tests, SQLFluff, and
+  the Cloudflare cost guard.
+- **Evidence:** The Worker has no KV, Durable Object, Queue, or Cron binding. Static requests bypass
+  Worker code, ingestion is daily plus manual, warehouses auto-suspend after 60 seconds, the shared
+  warehouse monitor is capped at 5 credits monthly, and AI reservations stop at 0.3 credits daily.
+- **Live evidence:** `docs/evidence/live-pipeline-verification.json` records one 0.1-credit
+  evaluation that published a cited verdict, recommendation, protective factor, and deterministic
+  low-relevance suppression. The monitor reported 0 of 5 credits used when installed.
+- **Decision/issue:** The former minute-level polling pattern was removed. A manual run now queues
+  one idempotent Snowflake request and dispatches one fixed GitHub Actions workflow.
+- **Related commit:** Pending.
+- **Rollback point:** Revert the cost-safe release slice before production deployment.
