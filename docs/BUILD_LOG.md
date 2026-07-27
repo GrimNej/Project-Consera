@@ -130,3 +130,26 @@
 - **Related commit:** `d4902c3`
 - **Rollback point:** Revert `d4902c3`, restore the retired secret values through Wrangler, and
   deploy the preceding Worker release.
+
+## 2026-07-27: Submission-readiness audit and cost-monitor hardening
+
+- **Goal:** Audit Consera against the controlling contest rules, provide a complete acceptance and
+  demonstration route, and prevent optional warehouse acceleration or bootstrap reruns from
+  weakening the five-credit cost boundary.
+- **Files:** `README.md`, `snowflake/bootstrap/00_account_resources.sql`,
+  `docs/ACCEPTANCE_TEST_GUIDE.md`, `docs/HACKATHON_COMPLIANCE.md`, `docs/DEMO_VIDEO_SCRIPT.md`,
+  `docs/cost-ledger.md`, `docs/data-license.md`, and `docs/source-register.md`.
+- **Commands:** All TypeScript and Python format, lint, type, test, build, SQLFluff, local
+  Playwright Chromium, axe, visual-regression, and Cloudflare cost gates; Snowflake service
+  connection checks; a live production browser preflight.
+- **Evidence:** 22 TypeScript tests, 45 Python tests, four local Chromium journeys, the static
+  Next.js and Worker builds, SQLFluff, and the zero-binding cost guard pass. The official Terms and
+  event rubric are mapped to repository and human submission evidence.
+- **Decision/issue:** AI-Native Data Application is the primary track. Query acceleration is
+  explicitly disabled, monitor restarts are no longer embedded in repeat bootstrap alteration, and
+  future bootstrap runs grant only scoped monitor management to the Consera admin role. The live
+  preflight found the existing five-credit allowance exhausted, so the workspace and the required
+  successful Cortex Code artifact remain release blockers. Neither was reported as passing.
+- **Related commits:** `abffff5`, `0b0fa83`
+- **Rollback point:** Revert `0b0fa83` to remove the submission kit. Revert `abffff5` only if the
+  prior Snowflake bootstrap behavior is intentionally restored.
