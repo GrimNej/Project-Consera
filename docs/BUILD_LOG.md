@@ -110,3 +110,23 @@
   contributions.
 - **Related commit:** `3efb3f0`
 - **Rollback point:** Roll back the latest Cloudflare Worker version and revert this release slice.
+
+## 2026-07-27: Public judge workspace
+
+- **Goal:** Remove the access-code prompt so judges can enter the live workspace directly while
+  retaining signed browser sessions, exact-origin checks, and CSRF protection for mutations.
+- **Files:** `apps/api/`, `apps/web/`, `README.md`, `docs/architecture.md`, `docs/security.md`,
+  `docs/limitations.md`, `docs/evidence/public-judge-access-verification.json`.
+- **Commands:** `pnpm format:check`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`,
+  `wrangler types --check`, the Cloudflare cost guard, local Playwright Chromium, Wrangler deploy,
+  and production Playwright Chromium.
+- **Evidence:** `docs/evidence/public-judge-access-verification.json` records a direct public
+  workspace load, the absent access-code prompt, a passing live Snowflake workspace, a passing
+  manual dispatch, zero Cloudflare KV or scheduled bindings, and retained origin and CSRF checks.
+  The production browser gate passed in 12.4 seconds.
+- **Decision/issue:** The signed session now protects request integrity rather than identity. The
+  retired access-code verifier, UI, local artifact, and two obsolete Cloudflare secrets were
+  removed.
+- **Related commit:** `d4902c3`
+- **Rollback point:** Revert `d4902c3`, restore the retired secret values through Wrangler, and
+  deploy the preceding Worker release.

@@ -7,12 +7,13 @@ content, prompts containing source content, and credentials are excluded.
 
 - **Goal:** Ask Cortex Code to review the Snowflake warehouse, triggered-task, AI-budget, and
   Cloudflare state boundaries in read-only mode.
-- **Result:** Rejected as evidence. Cortex Code did not reach the review because its interactive
-  browser authentication timed out, even when the active CLI profile used the working isolated
-  key-pair connection.
+- **Result:** Rejected as evidence. One connected attempt returned without reviewing because the
+  repository read tool was blocked. Two further bounded attempts, including a self-contained
+  sanitized evidence packet that required no tools or SQL, timed out without a model response.
 - **Accepted:** Nothing. No model response or Snowflake review was produced.
 - **Edited:** Nothing.
-- **Rejected:** All timed-out sessions. No transcript, screenshot, session identifier, or empty
-  artifact is published.
-- **Follow-up:** Capture one successful owner-authenticated read-only review before freezing
-  submission artifacts.
+- **Rejected:** The blocked-tool response and all timed-out sessions. No transcript, screenshot,
+  session identifier, raw prompt, or empty artifact is published.
+- **Follow-up:** The independently verified product release remains valid. Capture one successful
+  owner-authenticated read-only review before freezing submission artifacts, without using bypass
+  permissions.
