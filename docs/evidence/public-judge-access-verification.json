@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-07-27T07:25:10.645Z",
+  "production": {
+    "access_code_prompt": "ABSENT",
+    "accessibility": "PASSED",
+    "domain": "https://consera.grimnej.com",
+    "legacy_login_route": "NOT_FOUND",
+    "live_snowflake_workspace": "PASSED",
+    "manual_ingestion_dispatch": "PASSED",
+    "public_browser_session": "PASSED"
+  },
+  "request_integrity": {
+    "csrf_required_for_mutations": "PASSED",
+    "exact_origin_required_for_mutations": "PASSED",
+    "http_only_signed_cookie": "PASSED"
+  },
+  "runtime": {
+    "cloudflare_kv_bindings": 0,
+    "cloudflare_scheduled_triggers": 0,
+    "obsolete_access_secrets_removed": 2
+  },
+  "status": "PASSED"
+}

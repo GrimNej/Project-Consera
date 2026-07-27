@@ -12,10 +12,8 @@
   ],
   "secrets": {
     "required": [
-      "ACCESS_CODE_HMAC",
       "APP_ORIGIN",
       "GITHUB_DISPATCH_TOKEN",
-      "LOGIN_PEPPER",
       "SESSION_SIGNING_SECRET",
       "SNOWFLAKE_ACCOUNT_LOCATOR",
       "SNOWFLAKE_HOST",

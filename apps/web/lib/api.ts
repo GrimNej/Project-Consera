@@ -248,23 +248,6 @@ export const conseraApi = {
     ]);
     return { alerts, dashboard, signals, verdicts };
   },
-  login: async (accessCode: string): Promise<void> => {
-    if (fixtureMode) return;
-    const result = await request("/api/v1/auth/login", sessionDataSchema, {
-      body: { accessCode },
-      method: "POST",
-    });
-    if (!result.authenticated || !result.csrfToken) {
-      throw new ConseraApiError("AUTHENTICATION_FAILED", "The access code is invalid.");
-    }
-    sessionStorage.setItem(csrfKey, result.csrfToken);
-  },
-  logout: async (): Promise<void> => {
-    if (!fixtureMode) {
-      await request("/api/v1/auth/logout", sessionDataSchema, { method: "POST" });
-    }
-    sessionStorage.removeItem(csrfKey);
-  },
   runIngestion: async (): Promise<z.infer<typeof ingestionRunSchema>> => {
     if (fixtureMode) {
       await Promise.resolve();

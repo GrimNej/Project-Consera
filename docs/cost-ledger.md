@@ -16,7 +16,7 @@ time bounded. Cortex is separately capped at three reserved calls per day becaus
 managed AI accounting are different cost surfaces.
 
 The public site has no Cloudflare Cron trigger. Its static assets stay available while Snowflake
-sleeps. GitHub Actions starts one bounded ingestion at 03:17 UTC each day. An authenticated operator
-can dispatch the same bounded workflow from the Intelligence screen for a live demonstration.
+sleeps. GitHub Actions starts one bounded ingestion at 03:17 UTC each day. A judge can dispatch the
+same bounded workflow from the Intelligence screen for a live evaluation.
 
 No payment method or paid fallback is part of the release.

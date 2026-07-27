@@ -10,7 +10,7 @@ const sessionSchema = z.object({
   exp: z.number().int().positive(),
   iat: z.number().int().positive(),
   nonce: z.string().min(20).max(64),
-  sub: z.literal("operator"),
+  sub: z.literal("browser"),
 });
 
 export type SessionPayload = z.infer<typeof sessionSchema>;
@@ -31,14 +31,6 @@ function decodeText(value: string): string {
   );
 }
 
-export async function verifyAccessCode(
-  bindings: Pick<CloudflareBindings, "ACCESS_CODE_HMAC" | "LOGIN_PEPPER">,
-  candidate: string,
-): Promise<boolean> {
-  const candidateHmac = await hmacSha256(bindings.LOGIN_PEPPER, candidate);
-  return constantTimeEqual(candidateHmac, bindings.ACCESS_CODE_HMAC);
-}
-
 export async function createSession(
   bindings: Pick<CloudflareBindings, "SESSION_SIGNING_SECRET">,
   nowMilliseconds = Date.now(),
@@ -50,7 +42,7 @@ export async function createSession(
     exp: issuedAt + SESSION_MAX_AGE_SECONDS,
     iat: issuedAt,
     nonce: randomToken(24),
-    sub: "operator",
+    sub: "browser",
   };
   const encodedPayload = encodeText(JSON.stringify(payload));
   const signature = await hmacSha256(bindings.SESSION_SIGNING_SECRET, encodedPayload);

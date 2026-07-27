@@ -1,6 +1,4 @@
-ACCESS_CODE_HMAC=replace-with-base64url-hmac
 APP_ORIGIN=http://localhost:8787
-LOGIN_PEPPER=replace-with-at-least-32-characters
 SESSION_SIGNING_SECRET=replace-with-at-least-32-characters
 SNOWFLAKE_ACCOUNT_LOCATOR=replace-with-account-locator
 SNOWFLAKE_HOST=replace-with-account-host.snowflakecomputing.com

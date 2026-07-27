@@ -1027,8 +1027,7 @@ textarea:focus-visible {
   margin-top: 55px;
 }
 
-.sidebar nav button,
-.sidebar-logout {
+.sidebar nav button {
   position: relative;
   display: flex;
   width: 100%;
@@ -1049,23 +1048,20 @@ textarea:focus-visible {
     transform 200ms var(--ease);
 }
 
-.sidebar nav button:hover,
-.sidebar-logout:hover {
+.sidebar nav button:hover {
   background: rgba(255, 255, 255, 0.025);
   color: var(--ink);
   transform: translateX(3px);
 }
 
-.sidebar nav button svg,
-.sidebar-logout svg {
+.sidebar nav button svg {
   transition:
     color 180ms ease,
     filter 180ms ease,
     transform 260ms var(--ease);
 }
 
-.sidebar nav button:hover svg,
-.sidebar-logout:hover svg {
+.sidebar nav button:hover svg {
   color: var(--cyan);
   filter: drop-shadow(0 0 8px rgba(0, 204, 248, 0.24));
   transform: scale(1.08);
@@ -1139,10 +1135,6 @@ textarea:focus-visible {
   font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.sidebar-logout {
-  margin-top: 10px;
 }
 
 .console-shell {
@@ -2428,8 +2420,7 @@ textarea:focus-visible {
 .ask-composer select,
 .ask-composer textarea,
 .project-modal input,
-.project-modal textarea,
-.access-card input {
+.project-modal textarea {
   width: 100%;
   border: 1px solid var(--line-bright);
   border-radius: 9px;
@@ -2443,8 +2434,7 @@ textarea:focus-visible {
 }
 
 .ask-composer select,
-.project-modal input,
-.access-card input {
+.project-modal input {
   min-height: 49px;
   padding: 0 13px;
 }
@@ -2459,8 +2449,7 @@ textarea:focus-visible {
 .ask-composer select:focus,
 .ask-composer textarea:focus,
 .project-modal input:focus,
-.project-modal textarea:focus,
-.access-card input:focus {
+.project-modal textarea:focus {
   border-color: var(--cyan);
   box-shadow: 0 0 0 3px rgba(0, 204, 248, 0.08);
 }
@@ -2742,10 +2731,9 @@ textarea:focus-visible {
   color: var(--mint);
 }
 
-/* Access, system states, and modals */
+/* System states and modals */
 
-.system-screen,
-.access-screen {
+.system-screen {
   position: relative;
   display: grid;
   min-height: 100svh;
@@ -2820,103 +2808,6 @@ textarea:focus-visible {
   font-family: var(--font-sans), sans-serif;
   font-size: var(--text-body);
   line-height: 1.65;
-}
-
-.access-screen {
-  padding: 80px 24px 45px;
-}
-
-.access-brand {
-  position: absolute;
-  z-index: 3;
-  top: 25px;
-  left: 31px;
-}
-
-.access-field {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-}
-
-.access-field span {
-  position: absolute;
-  width: min(90vw, 960px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(0, 204, 248, 0.07);
-  border-radius: 50%;
-}
-
-.access-field span:nth-child(2) {
-  width: min(70vw, 730px);
-}
-
-.access-field span:nth-child(3) {
-  width: min(50vw, 510px);
-}
-
-.access-field span:nth-child(4) {
-  width: min(30vw, 300px);
-  background: radial-gradient(circle, rgba(0, 255, 183, 0.06), transparent 65%);
-}
-
-.access-card {
-  position: relative;
-  z-index: 2;
-  width: min(500px, 100%);
-  padding: 40px;
-  border: 1px solid var(--line-bright);
-  border-radius: 18px;
-  background: rgba(8, 17, 29, 0.94);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
-}
-
-.access-icon {
-  display: grid;
-  width: 52px;
-  height: 52px;
-  margin-bottom: 25px;
-  border: 1px solid rgba(0, 255, 183, 0.26);
-  border-radius: 13px;
-  background: rgba(0, 255, 183, 0.06);
-  color: var(--mint);
-  place-items: center;
-}
-
-.access-card h1 {
-  margin: 18px 0 12px;
-  font-size: 39px;
-  letter-spacing: -0.055em;
-}
-
-.access-card > p:not(.eyebrow) {
-  margin: 0 0 25px;
-  color: var(--muted);
-  font-size: var(--text-body);
-  line-height: 1.6;
-}
-
-.access-card label {
-  display: grid;
-  gap: 9px;
-  color: var(--muted);
-  font-size: var(--text-caption);
-  font-weight: 650;
-}
-
-.access-card .button {
-  width: 100%;
-  margin-top: 18px;
-}
-
-.access-card > small {
-  display: block;
-  margin-top: 16px;
-  color: var(--quiet);
-  font-size: var(--text-micro);
-  text-align: center;
 }
 
 .form-error {
@@ -4105,8 +3996,7 @@ textarea:focus-visible {
     margin-top: 45px;
   }
 
-  .sidebar nav button,
-  .sidebar-logout {
+  .sidebar nav button {
     min-height: 53px;
   }
 
@@ -4401,15 +4291,6 @@ textarea:focus-visible {
   .answer-empty > div:last-child {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .access-card {
-    padding: 30px 22px;
-  }
-
-  .access-brand {
-    top: 18px;
-    left: 18px;
   }
 
   .modal-steps {

@@ -15,19 +15,17 @@ import {
   CircleAlert,
   FolderKanban,
   LayoutDashboard,
-  LogOut,
   Menu,
   Plus,
   Radar,
   RefreshCw,
   ShieldCheck,
-  Sparkles,
   X,
 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { conseraApi, ConseraApiError, type WorkspaceData } from "../../lib/api";
+import { conseraApi, type WorkspaceData } from "../../lib/api";
 import { formatDateTime, formatImpactType, formatPercent } from "../../lib/format";
 import { Brand, ConseraMark } from "../brand";
 import {
@@ -58,9 +56,7 @@ export function ConseraConsole() {
   const reducedMotion = useReducedMotion();
   const [answer, setAnswer] = useState<AskResponse | null>(null);
   const [asking, setAsking] = useState(false);
-  const [authState, setAuthState] = useState<"checking" | "signed-out" | "ready" | "error">(
-    "checking",
-  );
+  const [authState, setAuthState] = useState<"checking" | "ready" | "error">("checking");
   const [createOpen, setCreateOpen] = useState(false);
   const [error, setError] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -76,19 +72,20 @@ export function ConseraConsole() {
     setWorkspace(data);
   }, []);
 
+  const startWorkspace = useCallback(async () => {
+    const session = await conseraApi.getSession();
+    if (!session.authenticated) throw new Error("Consera could not start a browser session.");
+    await loadWorkspace();
+  }, [loadWorkspace]);
+
   useEffect(() => {
     let active = true;
     setView(readView());
 
     async function initialize() {
       try {
-        const session = await conseraApi.getSession();
+        await startWorkspace();
         if (!active) return;
-        if (!session.authenticated) {
-          setAuthState("signed-out");
-          return;
-        }
-        await loadWorkspace();
         setAuthState("ready");
       } catch (caught) {
         if (!active) return;
@@ -107,33 +104,12 @@ export function ConseraConsole() {
       active = false;
       window.removeEventListener("hashchange", handleHashChange);
     };
-  }, [loadWorkspace]);
+  }, [startWorkspace]);
 
   function changeView(next: View) {
     window.history.pushState(null, "", `#${next}`);
     setView(next);
     setMenuOpen(false);
-  }
-
-  async function handleLogin(accessCode: string) {
-    setError("");
-    try {
-      await conseraApi.login(accessCode);
-      await loadWorkspace();
-      setAuthState("ready");
-    } catch (caught) {
-      setError(
-        caught instanceof ConseraApiError
-          ? caught.message
-          : "The access code could not be verified.",
-      );
-    }
-  }
-
-  async function handleLogout() {
-    await conseraApi.logout();
-    setWorkspace(null);
-    setAuthState("signed-out");
   }
 
   async function handleRun() {
@@ -204,16 +180,13 @@ export function ConseraConsole() {
   }
 
   if (authState === "checking") return <LoadingScreen />;
-  if (authState === "signed-out") {
-    return <AccessScreen error={error} onLogin={handleLogin} />;
-  }
   if (authState === "error" || !workspace) {
     return (
       <FailureScreen
         message={error || "Consera could not load the intelligence workspace."}
         onRetry={() => {
           setAuthState("checking");
-          void loadWorkspace()
+          void startWorkspace()
             .then(() => setAuthState("ready"))
             .catch((caught: unknown) => {
               setError(caught instanceof Error ? caught.message : "Consera could not be loaded.");
@@ -264,10 +237,6 @@ export function ConseraConsole() {
           <small>Last signal batch</small>
           <b>{formatDateTime(workspace.dashboard.latestIngestionAt)}</b>
         </div>
-        <button className="sidebar-logout" onClick={() => void handleLogout()} type="button">
-          <LogOut aria-hidden="true" size={18} />
-          <span>Lock workspace</span>
-        </button>
       </aside>
 
       <div className="console-shell">
@@ -374,76 +343,6 @@ function LoadingScreen() {
         <i />
       </div>
       <p>Preparing consequence intelligence</p>
-    </main>
-  );
-}
-
-function AccessScreen({
-  error,
-  onLogin,
-}: Readonly<{ error: string; onLogin: (accessCode: string) => Promise<void> }>) {
-  const [accessCode, setAccessCode] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-
-  async function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitting(true);
-    try {
-      await onLogin(accessCode);
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
-  return (
-    <main className="access-screen" id="main-content">
-      <div aria-hidden="true" className="access-field">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-      <a className="access-brand" href="/">
-        <Brand />
-      </a>
-      <form className="access-card" onSubmit={(event) => void submit(event)}>
-        <span className="access-icon">
-          <ShieldCheck aria-hidden="true" size={23} />
-        </span>
-        <p className="eyebrow">Private intelligence workspace</p>
-        <h1>Enter your access code</h1>
-        <p>Consera contains reviewed project context, consequence verdicts, and alert decisions.</p>
-        <label>
-          Operational access code
-          <input
-            autoComplete="current-password"
-            autoFocus
-            onChange={(event) => setAccessCode(event.target.value)}
-            placeholder="Enter code"
-            type="password"
-            value={accessCode}
-          />
-        </label>
-        {error && (
-          <span className="form-error" role="alert">
-            <CircleAlert aria-hidden="true" size={16} />
-            {error}
-          </span>
-        )}
-        <button className="button" disabled={submitting || accessCode.length === 0} type="submit">
-          {submitting ? (
-            <>
-              <RefreshCw aria-hidden="true" className="is-spinning" size={18} />
-              Verifying access
-            </>
-          ) : (
-            <>
-              Open workspace <Sparkles aria-hidden="true" size={17} />
-            </>
-          )}
-        </button>
-        <small>Sessions expire automatically after 30 minutes.</small>
-      </form>
     </main>
   );
 }

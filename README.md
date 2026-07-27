@@ -80,7 +80,7 @@ The result is not another summary feed. It is a consequence dossier:
    extracts a structured profile, and pauses for human review.
 2. **Activate:** Edit, remove, or add facts. Approval creates a new immutable profile version. Raw
    extraction never controls monitoring.
-3. **Watch:** A bounded bridge reads the official Hacker News API once daily, or when an operator
+3. **Watch:** A bounded bridge reads the official Hacker News API once daily, or when a reviewer
    requests a check, and writes one canonical, hashed batch into Snowflake.
 4. **Filter:** Deterministic normalization and lexical relevance remove the majority of noise
    without spending an AI call.
@@ -91,7 +91,7 @@ The result is not another summary feed. It is a consequence dossier:
 7. **Act:** The product shows the full dossier, Snowflake sends qualifying email, and Ask Consera
    answers only from current published dossiers and their citations.
 
-The operator can request a new signal check from the Intelligence surface. A daily scheduled check
+Any reviewer can request a new signal check from the Intelligence surface. A daily scheduled check
 keeps monitoring current while the manual path makes time-sensitive verification immediate.
 
 ## System at a glance
@@ -102,8 +102,8 @@ keeps monitoring current while the manual path makes time-sensitive verification
 
 The frontend is a statically exported Next.js application served as Cloudflare Worker assets. A
 small Hono Worker is the only runtime API. It accepts strict product operations, validates them with
-Zod, authenticates with signed short-lived sessions, and executes fixed Snowflake SQL API statements
-using a dedicated key-pair service identity.
+Zod, issues signed short-lived browser sessions without a login gate, and executes fixed Snowflake
+SQL API statements using a dedicated key-pair service identity.
 
 Snowflake owns authoritative state, profile versions, evidence, work queues, model usage, verdicts,
 alert decisions, delivery state, and health. Snowpark Python performs bounded transformation and
@@ -222,9 +222,9 @@ uv run pytest
 uv run sqlfluff lint snowflake/
 ```
 
-Secrets, access codes, account identifiers, private keys, source bodies, and prompts containing
-source text must never enter commits, screenshots, build logs, or documentation. The runtime
-configuration contract is documented in [`apps/api/.dev.vars.example`](apps/api/.dev.vars.example).
+Secrets, account identifiers, private keys, source bodies, and prompts containing source text must
+never enter commits, screenshots, build logs, or documentation. The runtime configuration contract
+is documented in [`apps/api/.dev.vars.example`](apps/api/.dev.vars.example).
 
 ## Delivery status
 

@@ -9,7 +9,7 @@ runtime configuration.
 ## Application controls
 
 - Signed, short-lived, HTTP-only sessions
-- Access-code verification through an HMAC-derived value
+- Automatic browser-session issuance with no judge login gate
 - CSRF tokens on mutations
 - Exact origin enforcement
 - Stateless signed sessions with no Workers KV session store
@@ -18,6 +18,9 @@ runtime configuration.
 - Fixed Snowflake statements and bindings
 - Bounded upstream and downstream response sizes
 - Sanitized error envelopes and query tags
+
+The signed session protects request integrity and does not claim user identity. The judging release
+is intentionally accessible to anyone who has its URL.
 
 ## Snowflake controls
 
@@ -31,6 +34,6 @@ runtime configuration.
 
 ## Secret handling
 
-Private keys, access codes, account identifiers, verified recipient addresses, and signing keys stay
-in ignored local artifacts, GitHub Secrets, Cloudflare secrets, or Snowflake metadata. They are
-never committed or written to product logs.
+Private keys, account identifiers, verified recipient addresses, and signing keys stay in ignored
+local artifacts, GitHub Secrets, Cloudflare secrets, or Snowflake metadata. They are never committed
+or written to product logs.

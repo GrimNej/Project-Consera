@@ -4,9 +4,8 @@ import {
   manualIngestionRequestSchema,
   reviewProfileRequestSchema,
 } from "@consera/contracts";
-import { deleteCookie, setCookie } from "hono/cookie";
+import { setCookie } from "hono/cookie";
 import { Hono } from "hono";
-import { z } from "zod";
 
 import { dispatchIngestion, GitHubDispatchError } from "./github/dispatch";
 import { ApiError, parseBody, requestId, requireOrigin } from "./http";
@@ -15,7 +14,6 @@ import {
   SESSION_COOKIE,
   SESSION_MAX_AGE_SECONDS,
   type SessionPayload,
-  verifyAccessCode,
   verifyCsrf,
   verifySession,
 } from "./security/session";
@@ -31,7 +29,6 @@ type ConseraEnv = {
 };
 
 const app = new Hono<ConseraEnv>();
-const loginSchema = z.object({ accessCode: z.string().min(1).max(256) });
 const safeId = /^[A-Za-z0-9_-]{8,120}$/u;
 
 function success(data: unknown, id: string): Record<string, unknown> {
@@ -86,13 +83,15 @@ app.use("*", async (context, next) => {
 });
 
 app.use("/api/v1/*", async (context, next) => {
-  if (["/api/v1/auth/login", "/api/v1/session"].includes(context.req.path)) {
+  if (context.req.path === "/api/v1/session") {
     await next();
     return;
   }
   const token = cookieValue(context.req.header("cookie"), SESSION_COOKIE);
   const session = token ? await verifySession(context.env, token) : null;
-  if (!session) throw new ApiError("SESSION_REQUIRED", "Sign in to continue.", 401);
+  if (!session) {
+    throw new ApiError("SESSION_REQUIRED", "Refresh Consera to start a new browser session.", 401);
+  }
   context.set("session", session);
   if (!["GET", "HEAD"].includes(context.req.method)) {
     requireOrigin(context.req.header("origin"), context.env.APP_ORIGIN);
@@ -103,18 +102,7 @@ app.use("/api/v1/*", async (context, next) => {
   await next();
 });
 
-app.post("/api/v1/auth/login", async (context) => {
-  requireOrigin(context.req.header("origin"), context.env.APP_ORIGIN);
-  let accessCode = "";
-  try {
-    accessCode = (await parseBody(context, loginSchema)).accessCode;
-  } catch {
-    await verifyAccessCode(context.env, "invalid-login-shape");
-    throw new ApiError("AUTHENTICATION_FAILED", "The access code is invalid.", 401);
-  }
-  if (!(await verifyAccessCode(context.env, accessCode))) {
-    throw new ApiError("AUTHENTICATION_FAILED", "The access code is invalid.", 401);
-  }
+app.get("/api/v1/session", async (context) => {
   const session = await createSession(context.env);
   setCookie(context, SESSION_COOKIE, session.token, {
     httpOnly: true,
@@ -133,37 +121,6 @@ app.post("/api/v1/auth/login", async (context) => {
       context.get("requestId"),
     ),
   );
-});
-
-app.post("/api/v1/auth/logout", (context) => {
-  deleteCookie(context, SESSION_COOKIE, { path: "/", secure: true });
-  return context.json(success({ authenticated: false }, context.get("requestId")));
-});
-
-app.get("/api/v1/session", async (context) => {
-  const token = cookieValue(context.req.header("cookie"), SESSION_COOKIE);
-  const session = token ? await verifySession(context.env, token) : null;
-  if (session) {
-    const renewed = await createSession(context.env);
-    setCookie(context, SESSION_COOKIE, renewed.token, {
-      httpOnly: true,
-      maxAge: SESSION_MAX_AGE_SECONDS,
-      path: "/",
-      sameSite: "Strict",
-      secure: true,
-    });
-    return context.json(
-      success(
-        {
-          authenticated: true,
-          csrfToken: renewed.csrfToken,
-          expiresAt: renewed.expiresAt,
-        },
-        context.get("requestId"),
-      ),
-    );
-  }
-  return context.json(success({ authenticated: false }, context.get("requestId")));
 });
 
 app.get("/api/v1/health", async (context) => {
