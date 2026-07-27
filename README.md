@@ -14,8 +14,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Snowflake-030712?style=for-the-badge&logo=snowflake&logoColor=00CCF8" alt="Snowflake" />
-  <img src="https://img.shields.io/badge/Cortex_AI-030712?style=for-the-badge&logo=snowflake&logoColor=00FFB7" alt="Snowflake Cortex AI" />
+  <img src="https://img.shields.io/badge/Snowflake-030712?style=for-the-badge" alt="Snowflake" />
+  <img src="https://img.shields.io/badge/Cortex_AI-030712?style=for-the-badge" alt="Snowflake Cortex AI" />
   <img src="https://img.shields.io/badge/Cloudflare_Workers-030712?style=for-the-badge&logo=cloudflareworkers&logoColor=F38020" alt="Cloudflare Workers" />
   <img src="https://img.shields.io/badge/Next.js_16-030712?style=for-the-badge&logo=nextdotjs&logoColor=FFFFFF" alt="Next.js 16" />
   <img src="https://img.shields.io/badge/React_19-030712?style=for-the-badge&logo=react&logoColor=00CCF8" alt="React 19" />
@@ -152,7 +152,9 @@ state transitions make the product tactile without turning animation into decora
 
 Read [the architecture](docs/architecture.md), [security model](docs/security.md),
 [cost ledger](docs/cost-ledger.md), [dependency ledger](docs/dependency-ledger.md),
-[data licence](docs/data-license.md), and [known limitations](docs/limitations.md).
+[data licence](docs/data-license.md), [acceptance test guide](docs/ACCEPTANCE_TEST_GUIDE.md),
+[submission compliance checklist](docs/HACKATHON_COMPLIANCE.md),
+[demo video script](docs/DEMO_VIDEO_SCRIPT.md), and [known limitations](docs/limitations.md).
 
 ## Repository map
 

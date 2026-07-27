@@ -2,9 +2,11 @@
 
 ## Hacker News
 
-- **Source:** Official Hacker News Firebase API
-- **Planned fields:** Item identifiers, type, author handle, creation time, title, URL, parent,
-  descendants, score, deleted/dead state, and bounded comment text
+- **Source:** [Official Hacker News Firebase API](https://github.com/HackerNews/API)
+- **Fields:** Item identifiers, type, author handle, creation time, title, URL, parent, descendants,
+  score, deleted/dead state, and bounded comment text
+- **Licence:** Official API documentation and examples are MIT licensed. Item and linked-article
+  content remains attributable to its respective author or publisher
 - **Attribution:** Every published signal retains the original Hacker News discussion URL and the
   canonical linked source URL where available
 - **Retention:** Raw landing data 14 days, selected normalized signals 30 days, published evidence
