@@ -108,5 +108,5 @@
   source URL, and a mismatched contribution score type. The contracts now admit explicit ISO
   offsets, the secure view nulls invalid source URLs, and verdicts aggregate relevance
   contributions.
-- **Related commit:** Pending.
+- **Related commit:** `3efb3f0`
 - **Rollback point:** Roll back the latest Cloudflare Worker version and revert this release slice.
