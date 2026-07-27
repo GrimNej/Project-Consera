@@ -57,9 +57,9 @@
 
 - [ ] Cortex Code planning and review artifacts
 - [x] Isolated Snowflake `CONSERA_*` resources
-- [ ] Cloudflare Worker and static asset deployment
-- [ ] Email recipient verification and delivery test
+- [x] Cloudflare Worker and static asset deployment
+- [x] Email recipient verification and Snowflake delivery acceptance
 - [x] Full Snowflake profile, ingestion idempotency, evaluation, and suppression replay
 - [x] README and architecture assets
 - [ ] Submission artifacts
-- [ ] Final GitHub push
+- [x] Final GitHub push

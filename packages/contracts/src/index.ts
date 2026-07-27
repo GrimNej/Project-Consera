@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+const isoDatetimeSchema = z.string().datetime({ offset: true });
+
 export const impactTypeSchema = z.enum([
   "OPPORTUNITY",
   "COMPETITIVE_THREAT",
@@ -30,7 +32,7 @@ export const evidenceSchema = z.object({
   excerpt: z.string().min(1).max(1_200),
   id: z.string().min(1).max(120),
   label: z.string().min(1).max(140),
-  publishedAt: z.string().datetime().nullable(),
+  publishedAt: isoDatetimeSchema.nullable(),
   sourceKind: z.enum(["PROJECT", "HN_STORY", "HN_COMMENT", "ARTICLE", "OFFICIAL"]),
   sourceUrl: z.url().nullable(),
 });
@@ -52,11 +54,11 @@ export const projectProfileSchema = z.object({
 export const projectSchema = z.object({
   activeProfile: projectProfileSchema.nullable(),
   alertsEnabled: z.boolean(),
-  createdAt: z.string().datetime(),
+  createdAt: isoDatetimeSchema,
   id: z.string().uuid(),
   name: z.string().min(2).max(100),
   profileState: z.enum(["EMPTY", "EXTRACTING", "REVIEW", "ACTIVE", "FAILED"]),
-  updatedAt: z.string().datetime(),
+  updatedAt: isoDatetimeSchema,
   version: z.number().int().positive(),
 });
 
@@ -68,7 +70,7 @@ export const projectProfileDraftSchema = z.object({
 
 export const signalSchema = z.object({
   deepAnalysisCount: z.number().int().nonnegative(),
-  discoveredAt: z.string().datetime(),
+  discoveredAt: isoDatetimeSchema,
   discussionUrl: z.url(),
   id: z.string().min(1).max(120),
   points: z.number().int().nonnegative(),
@@ -90,7 +92,7 @@ export const verdictSchema = z.object({
   alertWorthiness: scoreSchema,
   confidence: scoreSchema,
   contributions: z.array(scoreContributionSchema).min(1).max(20),
-  createdAt: z.string().datetime(),
+  createdAt: isoDatetimeSchema,
   evidence: z.array(evidenceSchema).min(1).max(20),
   headline: z.string().min(1).max(220),
   id: z.string().uuid(),
@@ -100,7 +102,7 @@ export const verdictSchema = z.object({
   projectId: z.string().uuid(),
   projectName: z.string().min(1).max(100),
   protectiveFactors: z.array(z.string().min(1).max(600)).max(5),
-  publishedAt: z.string().datetime(),
+  publishedAt: isoDatetimeSchema,
   recommendations: z.array(z.string().min(1).max(600)).min(1).max(5),
   relevance: scoreSchema,
   replacementPressure: scoreSchema,
@@ -129,7 +131,7 @@ export const suppressionReasonSchema = z.enum([
 ]);
 
 export const alertSchema = z.object({
-  createdAt: z.string().datetime(),
+  createdAt: isoDatetimeSchema,
   deliveryState: z.enum([
     "QUEUED",
     "SENDING",
@@ -151,7 +153,7 @@ export const alertSchema = z.object({
 export const activitySchema = z.object({
   detail: z.string().min(1).max(300),
   id: z.string().min(1).max(120),
-  occurredAt: z.string().datetime(),
+  occurredAt: isoDatetimeSchema,
   state: z.enum(["SUCCESS", "RUNNING", "SUPPRESSED", "WARNING", "FAILED"]),
   title: z.string().min(1).max(160),
 });
@@ -166,7 +168,7 @@ export const dashboardSchema = z.object({
     totalEnvelope: z.number().positive(),
   }),
   health: healthStateSchema,
-  latestIngestionAt: z.string().datetime().nullable(),
+  latestIngestionAt: isoDatetimeSchema.nullable(),
   projects: z.array(projectSchema),
   signalsReviewed: z.number().int().nonnegative(),
   suppressed: z.number().int().nonnegative(),
@@ -188,8 +190,8 @@ export const askResponseSchema = z.object({
   quotaRemaining: z.number().int().nonnegative(),
   suggestedAction: z.string().min(1).max(600).nullable(),
   timeRange: z.object({
-    from: z.string().datetime(),
-    to: z.string().datetime(),
+    from: isoDatetimeSchema,
+    to: isoDatetimeSchema,
   }),
 });
 

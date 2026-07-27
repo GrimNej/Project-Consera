@@ -91,3 +91,22 @@
   one idempotent Snowflake request and dispatches one fixed GitHub Actions workflow.
 - **Related commit:** `7284b3b`
 - **Rollback point:** Revert the cost-safe release slice before production deployment.
+
+## 2026-07-27: Production release and live browser verification
+
+- **Goal:** Publish Consera at its custom domain and verify the complete authenticated manual-run
+  path against live Snowflake and GitHub Actions.
+- **Files:** `apps/web/e2e/production.spec.ts`, `apps/web/playwright.production.config.ts`,
+  `packages/contracts/`, `snowflake/migrations/V002__application_contract.sql`,
+  `docs/evidence/production-release-verification.json`.
+- **Commands:** Next.js production build, Wrangler deploy, production Playwright Chromium, axe,
+  GitHub workflow status polling, and sanitized Snowflake state checks.
+- **Evidence:** `docs/evidence/production-release-verification.json` records the passing landing,
+  access gate, live workspace, manual dispatch, accessibility, triggered-task, and cost-boundary
+  checks. The real production browser gate completed in 12.5 seconds.
+- **Decision/issue:** Live contract validation exposed timezone offsets, one non-absolute public
+  source URL, and a mismatched contribution score type. The contracts now admit explicit ISO
+  offsets, the secure view nulls invalid source URLs, and verdicts aggregate relevance
+  contributions.
+- **Related commit:** Pending.
+- **Rollback point:** Roll back the latest Cloudflare Worker version and revert this release slice.

@@ -7,6 +7,7 @@
     "dev": "next dev",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:e2e:production": "playwright test --config playwright.production.config.ts",
     "test:e2e:update": "playwright test --update-snapshots",
     "typecheck": "tsc --noEmit"
   },

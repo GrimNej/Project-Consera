@@ -1,0 +1,25 @@
+{
+  "cost_boundary": {
+    "ai_credits_used_today": 0.2,
+    "ai_daily_limit": 0.3,
+    "cloudflare_kv_bindings": 0,
+    "cloudflare_scheduled_triggers": 0,
+    "warehouse_monthly_quota": 5
+  },
+  "generated_at": "2026-07-27T06:51:12.003Z",
+  "production": {
+    "access_gate": "PASSED",
+    "accessibility": "PASSED",
+    "domain": "https://consera.grimnej.com",
+    "live_snowflake_workspace": "PASSED",
+    "manual_ingestion_dispatch": "PASSED",
+    "public_landing": "PASSED",
+    "visible_demo_language_check": "PASSED"
+  },
+  "runtime": {
+    "evaluation_jobs_succeeded": 2,
+    "manual_ingestion_requests_succeeded": 2,
+    "stream_triggered_tasks_started": 4
+  },
+  "status": "PASSED"
+}

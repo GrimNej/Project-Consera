@@ -109,7 +109,16 @@ SELECT
         'discussionUrl', signal.HN_URL,
         'id', signal.SIGNAL_ID,
         'points', COALESCE(signal.CURRENT_SCORE, 0),
-        'sourceUrl', signal.CANONICAL_URL,
+        'sourceUrl',
+        IFF(
+            REGEXP_LIKE(
+                signal.CANONICAL_URL,
+                '^https?://[^[:space:]]+$',
+                'i'
+            ),
+            signal.CANONICAL_URL,
+            NULL
+        ),
         'state',
         CASE signal.SIGNAL_STATE
             WHEN 'INGESTED' THEN 'INGESTED'
@@ -171,7 +180,7 @@ FROM INTELLIGENCE.SCORE_CONTRIBUTIONS AS contribution
 INNER JOIN INTELLIGENCE.VERDICT_COMPONENTS AS component
     ON contribution.VERDICT_ID = component.VERDICT_ID
     AND contribution.COMPONENT_TYPE = component.COMPONENT_TYPE
-WHERE contribution.SCORE_TYPE = 'alert_worthiness'
+WHERE contribution.SCORE_TYPE = 'relevance'
 GROUP BY contribution.VERDICT_ID;
 
 CREATE OR REPLACE SECURE VIEW APP_API.VERDICT_RECOMMENDATION_AGG_V AS

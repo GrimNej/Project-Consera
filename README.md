@@ -25,6 +25,7 @@
 </p>
 
 <p align="center">
+  <a href="https://consera.grimnej.com"><strong>Open Consera</strong></a> ·
   <a href="#the-product"><strong>The product</strong></a> ·
   <a href="#how-consera-works">Workflow</a> ·
   <a href="#system-at-a-glance">Architecture</a> ·
@@ -210,6 +211,9 @@ pnpm typecheck
 pnpm test
 pnpm build
 pnpm --filter @consera/web test:e2e
+
+# Production release gate requires private environment values.
+pnpm --filter @consera/web test:e2e:production
 
 uv run ruff check .
 uv run ruff format --check .

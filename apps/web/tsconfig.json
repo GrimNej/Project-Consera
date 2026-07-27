@@ -9,6 +9,7 @@
     "next-env.d.ts",
     "next.config.ts",
     "playwright.config.ts",
+    "playwright.production.config.ts",
     "vitest.config.ts",
     ".next/types/**/*.ts",
     "app/**/*.ts",
