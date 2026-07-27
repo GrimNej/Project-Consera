@@ -89,5 +89,5 @@
   low-relevance suppression. The monitor reported 0 of 5 credits used when installed.
 - **Decision/issue:** The former minute-level polling pattern was removed. A manual run now queues
   one idempotent Snowflake request and dispatches one fixed GitHub Actions workflow.
-- **Related commit:** Pending.
+- **Related commit:** `7284b3b`
 - **Rollback point:** Revert the cost-safe release slice before production deployment.
