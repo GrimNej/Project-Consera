@@ -98,5 +98,7 @@ test("mobile navigation and intelligence remain readable at 390 px", async ({ pa
   await expect(page.getByRole("heading", { name: /See the consequence/ })).toBeVisible();
   await expect(page.getByRole("button", { name: "Check for new signals" })).toBeVisible();
   await settleVisual(page);
-  await expect(page).toHaveScreenshot("intelligence-mobile.png", { fullPage: true });
+  await expect(page).toHaveScreenshot("intelligence-mobile.png", {
+    clip: { height: 2000, width: 390, x: 0, y: 0 },
+  });
 });
