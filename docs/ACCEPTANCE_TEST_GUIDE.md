@@ -26,6 +26,7 @@ uv run mypy snowflake bridges scripts
 uv run pytest
 uv run sqlfluff lint snowflake/
 uv run python scripts/cloudflare_cost_guard.py
+uv run python -m scripts.reliability_audit
 ```
 
 Expected result:
@@ -55,58 +56,53 @@ Open the URL printed by Next.js. Verify:
 
 ## 3. Live preflight
 
+Run the bounded live metadata and aggregate-state audit once:
+
+```powershell
+uv run python -m scripts.live_release_audit `
+  --connection CONSERA_ADMIN_AUTOMATION
+```
+
+The command must report `Consera live release audit passed`. Its sanitized evidence verifies three
+isolated one-credit weekly monitors, X-Small warehouses, 60-second auto-suspend, append-only
+streams, the non-retriggering task graph, V005 migration state, exactly one active project, queue
+health, recent task multiplicity, and delivery health.
+
 Open [consera.grimnej.com](https://consera.grimnej.com), then select `Open Consera`.
 
 Pass conditions:
 
-- The workspace opens within 60 seconds after a cold Snowflake start.
+- The workspace opens immediately from a validated edge response or deployed snapshot. A cold live
+  refresh can continue in the background.
 - Overview shows project, signal, verdict, alert, and AI-budget state.
-- `All systems nominal` appears.
+- The synchronization label states whether the response is live, edge-cached, or a timestamped
+  last-known view.
 - No access-code prompt appears.
 
 If the landing page works but the workspace reports that Snowflake could not complete the request,
 stop the rehearsal. Check the Consera resource monitor before retrying. Repeated refreshes will not
 repair a suspended warehouse.
 
-## 4. Real onboarding scenario
+## 4. Reviewed project scenario
 
-Open Projects, select `Add project`, name it `PatchPilot`, and paste:
-
-```markdown
-# PatchPilot
-
-PatchPilot is an evidence-first AI code review assistant for small engineering teams. It reviews
-GitHub pull requests, links every finding to changed code, and requires human approval before
-suggesting a patch.
-
-Users: maintainers and platform teams. Capabilities: pull-request risk analysis, dependency-change
-review, cited recommendations. Stack: Python 3.11, Next.js, PostgreSQL, GitHub Actions, Cloudflare
-Workers. Providers: GitHub API and a hosted language-model provider. Constraints: no autonomous
-merges, no source retention outside the project, and a strict per-review inference budget.
-Priorities: lower model cost, provider portability, GitHub API compatibility, and high precision.
-Monitor: model pricing, coding-agent launches, GitHub API changes, dependency security, and
-code-review competitors.
-```
-
-Confirm that the text contains no credentials, then select `Create reviewed context`.
+Open Projects and select `AI Change Observatory`.
 
 Expected result:
 
-1. The project is admitted and profile extraction begins.
-2. A reviewable draft appears, usually within 20 to 90 seconds after a cold start.
-3. The draft shows its exact source excerpt, summary, capabilities, differentiators, dependencies,
-   providers, monitored topics, constraints, and completeness.
-4. Edit one field to prove the human review boundary.
-5. Select `Approve and begin monitoring`.
-6. The project shows an active, versioned profile. It does not become authoritative before approval.
+1. Exactly one active project is visible in the judging workspace.
+2. Its reviewed profile covers models, APIs, agents, inference, developer tooling, open-source
+   alternatives, RAG, vector search, evaluation, security, policy, licensing, and pricing.
+3. The project shows an immutable active profile version and its monitored topics.
+4. No profile draft or archived historical project appears as active.
 
-Do not repeat this scenario in production unless a fresh project is useful. It consumes a bounded AI
-reservation.
+The create, secret-screen, extraction, review, and compare-and-set activation paths remain covered
+by automated tests. Do not create another live project during routine judging because profile
+extraction consumes a bounded AI reservation and would weaken the focused demonstration.
 
 ## 5. Admission and safety scenario
 
-Use the automated test suite for routine negative testing. For one live release check, attempt a
-separate project containing a recognizable private-key header such as `-----BEGIN PRIVATE KEY-----`.
+Use the automated test suite for negative testing. It submits a synthetic document containing a
+recognizable private-key header such as `-----BEGIN PRIVATE KEY-----`.
 
 Expected result:
 
@@ -114,7 +110,7 @@ Expected result:
 - No active project profile is created.
 - The secret value is not echoed into application logs.
 
-Never paste a real secret.
+Never paste a real secret or run this mutation in the final judging workspace.
 
 ## 6. Live intelligence run
 
@@ -152,6 +148,10 @@ Expected result:
 Do not promise that every manual run sends email. Email is evidence of a consequence clearing the
 policy, not evidence that ingestion ran.
 
+For the recorded demonstration, use only a real delivery that was produced by the active AI Change
+Observatory project. If the current bounded run produces only suppression decisions, show that
+honest outcome and use the previously verified real delivery as the email example.
+
 ## 8. Ask Consera
 
 Select an active project and ask:
@@ -179,7 +179,11 @@ correct safe result. Do not raise the cap for a rehearsal.
 - Confirm the browser console has no errors.
 - Confirm no account identifiers, keys, tokens, raw prompts, or private project text appear in
   screenshots or recordings.
-- Confirm all Consera warehouses suspend after 60 seconds of inactivity.
+- Confirm all Consera warehouses remain X-Small, use separate weekly monitors, disable query
+  acceleration, and suspend after 60 seconds of inactivity.
+- Confirm the task history has one landing, one evaluation, and one alert graph run per admitted
+  batch, with no state-table retrigger loop.
+- Confirm one daily schedule and one explicit manual dispatch are the only ingestion triggers.
 - Record the commit SHA, deployment URL, test output, and rehearsal date.
 
 ## Release verdict

@@ -153,3 +153,82 @@
 - **Related commits:** `abffff5`, `0b0fa83`
 - **Rollback point:** Revert `0b0fa83` to remove the submission kit. Revert `abffff5` only if the
   prior Snowflake bootstrap behavior is intentionally restored.
+
+## 2026-07-31: Quiet scheduled budget boundary
+
+- **Goal:** Stop an intentional Snowflake resource-monitor pause from producing repeated scheduled
+  GitHub failure notifications while preserving real failure visibility.
+- **Files:** `.github/workflows/hn-ingestion.yml`, `bridges/hn_bridge/main.py`,
+  `bridges/hn_bridge/upload.py`, and bridge tests.
+- **Commands:** Ruff, full mypy, all bridge tests, staged whitespace validation, remote push, and
+  GitHub Actions API history inspection.
+- **Evidence:** Ten bridge tests pass. Error 090073 is the only condition classified as an
+  intentional budget pause. Authentication, configuration, source, schema, and other Snowflake
+  failures remain errors. Checkout and uv setup use current Node 24-compatible releases pinned to
+  full commit SHAs.
+- **Decision/issue:** A scheduled budget pause exits successfully with a sanitized `PAUSED_BUDGET`
+  summary because retrying cannot change the weekly quota. The same state remains nonzero for a
+  manual run so an operator request is never presented as completed live work.
+- **Related commit:** `f88ee5b`
+- **Rollback point:** Revert `f88ee5b` to restore the former failure behavior and action versions.
+
+## 2026-07-31: Cost-safe task graph and AI Observatory
+
+- **Goal:** Replace the feedback-prone state-stream tasks, isolate warehouse budgets, and focus the
+  release on one broad AI intelligence project.
+- **Files:** `snowflake/migrations/V005__cost_safe_task_graph.sql`,
+  `snowflake/operations/recover_cost_boundaries.sql`, Snowpark procedures, `scripts/migrate.py`,
+  `scripts/seed_ai_observatory.py`, `scripts/live_release_audit.py`, and the AI Observatory fixture.
+- **Commands:** Owner-approved resource-monitor recovery, immutable migration runner, AI Observatory
+  seed, one production manual dispatch, the delayed daily schedule, and the live release audit.
+- **Evidence:** `docs/evidence/release-reliability-verification.json` records one active
+  Observatory, V005 applied, four append-only streams, all four tasks started, two complete graph
+  runs, zero task failures, zero current-project queue failures, and zero delivery failures. One
+  genuine active-project alert and one genuine email delivery reached `SENT`.
+- **Decision/issue:** The three warehouses now have independent one-credit weekly monitors. A
+  Snowflake no-data trigger recheck is recorded as `SKIPPED`; it invokes no child task and is
+  excluded from successful-run multiplicity without hiding failures. Archived terminal jobs remain
+  immutable history but cannot degrade the active project.
+- **Related commits:** `4150e3b`, `dc2dbc5`
+- **Rollback point:** Suspend the task graph, revert `dc2dbc5`, and restore the preceding task
+  definitions only if the historical feedback topology is intentionally required.
+
+## 2026-07-31: Resilient public workspace and release breakers
+
+- **Goal:** Keep the public experience available without Workers KV polling or repeated Snowflake
+  reads, and make release regressions fail before deployment.
+- **Files:** `apps/api/src/workspace-cache.ts`, the consolidated Snowflake workspace client,
+  `apps/api/src/snapshot/workspace.json`, console surfaces, shared contracts,
+  `.github/workflows/ci.yml`, and `scripts/reliability_audit.py`.
+- **Commands:** Full TypeScript and Python format, lint, type, and test gates; SQLFluff; Cloudflare
+  binding type generation; production build; local Chromium, axe, visual regression; dependency
+  audit; live snapshot export; and the release reliability audit.
+- **Evidence:** 29 TypeScript tests, 57 Python tests, four local browser journeys, the static
+  Next.js export, the Worker dry run, and the release audit pass. The deployed snapshot contains one
+  project, 100 bounded signals, one verdict, and one alert and remains below the one-megabyte guard.
+- **Decision/issue:** One workspace request replaces four Snowflake reads. The state-free Cache API
+  serves fresh data for 15 minutes, retains the last known good result for seven days, coalesces
+  same-isolate refreshes, and falls back to a real deployed snapshot. No KV, Queue, Durable Object,
+  or Cloudflare Cron binding exists.
+- **Related commits:** `1073264`, `a45a274`
+- **Rollback point:** Revert `1073264` to restore uncached workspace reads. Revert `a45a274` only if
+  the cross-layer release breakers are deliberately removed.
+
+## 2026-07-31: Cortex Code release challenge
+
+- **Goal:** Use Cortex Code for a meaningful Snowflake-specific challenge before public deployment.
+- **Files:** `snowflake/migrations/V006__profile_task_guards.sql`, `scripts/live_release_audit.py`,
+  `scripts/reliability_audit.py`, `docs/evidence/cortex-cost-task-review.md`, and
+  `docs/COCO_USAGE_LOG.md`.
+- **Commands:** Official Cortex Code update, cached-owner read-only review, immutable migration
+  runner, focused Python and SQL gates, and live release audit.
+- **Evidence:** The sanitized Cortex review records every accepted, changed, and rejected
+  recommendation. V006 is applied and recorded, the profile task is started with `NO_OVERLAP`, and
+  the live audit passes.
+- **Decision/issue:** The service JWT connection remains incompatible with Cortex Code v1.1.52, but
+  the already-cached owner OAuth token completed the review without another login. Recommendations
+  that would hide source-global failures, terminalize valid deferred work, or reset a quota window
+  were rejected with product evidence.
+- **Related commit:** `d3db0dc`
+- **Rollback point:** Revert `d3db0dc` only if the profile task's explicit cost and retry guards are
+  intentionally removed.

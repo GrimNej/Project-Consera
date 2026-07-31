@@ -60,6 +60,12 @@
 - [x] Cloudflare Worker and static asset deployment
 - [x] Email recipient verification and Snowflake delivery acceptance
 - [x] Full Snowflake profile, ingestion idempotency, evaluation, and suppression replay
+- [x] Once-daily ingestion plus explicit manual trigger
+- [x] Non-retriggering Snowflake task graph and isolated weekly warehouse budgets
+- [x] Validated edge cache and timestamped deployed-snapshot fallback
+- [x] Immutable migration history and checksum drift breaker
+- [x] Cross-layer reliability and cost regression audit
+- [x] Single AI Change Observatory release profile
 - [x] README and architecture assets
 - [ ] Submission artifacts
-- [x] Final GitHub push
+- [ ] Final GitHub push

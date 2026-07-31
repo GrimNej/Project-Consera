@@ -7,10 +7,9 @@ Primary track: AI-Native Data Application.
 
 - Record the browser at 1440 by 900 and export at 1080p.
 - Use a clean profile with bookmarks, extensions, notifications, and personal data hidden.
-- Pre-create one polished active project and one published dossier.
-- Keep one new project document ready to paste.
+- Use the single active AI Change Observatory project and one real published dossier.
 - Start with sleeping warehouses, then open the workspace 60 seconds before recording.
-- Use one transparent cut while profile extraction and live ingestion finish.
+- Use one transparent cut while live ingestion and evaluation finish.
 - Show a real received email only after verifying it contains no private address or identifier.
 - Never show Snowflake account locators, usernames, keys, session IDs, query IDs, or raw prompts.
 
@@ -28,7 +27,7 @@ The Consera landing hero. Let the signal-flow animation move once, then point to
 
 **On-screen caption**
 
-`Snowflake CoCo CLI Hackathon 2026 | AI-Native Data Application`
+`AI-native project intelligence | Built on Snowflake`
 
 ## 0:20 to 0:42 | Define the product
 
@@ -43,23 +42,20 @@ Scroll only far enough to reveal the three-stage product story and architecture 
 > and live public signals into cited consequence dossiers, deterministic alert decisions, email, and
 > project-scoped answers.
 
-## 0:42 to 1:25 | Teach Consera a real project
+## 0:42 to 1:25 | Show the reviewed project context
 
 **Show**
 
-Open Projects, select `Add project`, name it `PatchPilot`, paste the prepared project brief from the
-acceptance guide, confirm no secrets, and select `Create reviewed context`. Use a clear time cut to
-the completed review.
-
-Point to the exact source excerpt, extracted fields, completeness, and one editable field. Change
-`Priorities` to include `Reduce false positives`, then select `Approve and begin monitoring`.
+Open Projects and select `AI Change Observatory`. Point to the active profile version, summary,
+providers, dependencies, monitored topics, and constraints. Briefly show the evidence-backed review
+model in the architecture flow.
 
 **Say**
 
-> I start with ordinary Markdown, not a special schema. Consera screens it as untrusted text and
-> uses Snowflake Cortex to propose a structured profile. The source excerpt remains visible, every
-> field is reviewable, and nothing becomes authoritative until I approve it. Approval creates a new
-> versioned profile for monitoring.
+> Consera began with an ordinary Markdown brief, not a special schema. It screened that text as
+> untrusted data, used Snowflake Cortex to propose a structured profile, and required human review
+> before activation. This approved version tells the system to watch material changes across AI
+> models, APIs, agents, inference, tooling, security, policy, licensing, and pricing.
 
 ## 1:25 to 1:52 | Prove silence first
 
@@ -83,7 +79,7 @@ completed run and toggle `Show dismissed`.
 
 Overlay the repository flow SVG for six seconds:
 
-`Hacker News API → GitHub Actions bridge → Snowflake landing → Streams and Tasks → Cortex → policy → email`
+`Hacker News API -> GitHub Actions bridge -> Snowflake landing -> task graph -> Cortex -> policy -> email`
 
 **Say**
 

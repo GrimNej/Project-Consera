@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-07-31T06:52:29Z",
+  "dashboardHealth": "HEALTHY",
+  "findings": [],
+  "metrics": {
+    "active_project_count": 1,
+    "observatory_count": 1,
+    "queue_failure_count": 0,
+    "terminal_delivery_failure_count": 0,
+    "v005_count": 1,
+    "v006_count": 1
+  },
+  "monitorCount": 3,
+  "passed": true,
+  "streamModes": {
+    "ALERT_DECISION_STREAM": "APPEND_ONLY",
+    "EVALUATION_JOB_STREAM": "APPEND_ONLY",
+    "INGEST_BATCH_STREAM": "APPEND_ONLY",
+    "PROJECT_DOCUMENT_STREAM": "APPEND_ONLY"
+  },
+  "taskRunsLastTwoHours": {
+    "FAILED": 0,
+    "PROCESS_ALERT_TASK": 2,
+    "PROCESS_EVALUATION_TASK": 2,
+    "PROCESS_LANDING_TASK": 2,
+    "PROCESS_PROFILE_TASK": 0
+  },
+  "taskStates": {
+    "PROCESS_ALERT_TASK": "started",
+    "PROCESS_EVALUATION_TASK": "started",
+    "PROCESS_LANDING_TASK": "started",
+    "PROCESS_PROFILE_TASK": "started"
+  },
+  "warehouseStates": {
+    "CONSERA_APP_WH": "SUSPENDED",
+    "CONSERA_INGEST_WH": "SUSPENDED",
+    "CONSERA_PIPELINE_WH": "STARTED"
+  }
+}

@@ -25,12 +25,12 @@
 </p>
 
 <p align="center">
-  <a href="https://consera.grimnej.com"><strong>Open Consera</strong></a> ·
-  <a href="#the-product"><strong>The product</strong></a> ·
-  <a href="#how-consera-works">Workflow</a> ·
-  <a href="#system-at-a-glance">Architecture</a> ·
-  <a href="#product-surfaces">Surfaces</a> ·
-  <a href="#trust-by-construction">Trust</a> ·
+  <a href="https://consera.grimnej.com"><strong>Open Consera</strong></a> |
+  <a href="#the-product"><strong>The product</strong></a> |
+  <a href="#how-consera-works">Workflow</a> |
+  <a href="#system-at-a-glance">Architecture</a> |
+  <a href="#product-surfaces">Surfaces</a> |
+  <a href="#trust-by-construction">Trust</a> |
   <a href="#development">Development</a>
 </p>
 
@@ -110,8 +110,9 @@ alert decisions, delivery state, and health. Snowpark Python performs bounded tr
 analysis. Streams and triggered tasks move work through the pipeline without an external queue.
 
 The public-source bridge is deliberately small. It can call only documented Hacker News Firebase
-endpoints, validates every response before use, creates a reproducible batch hash, and authenticates
-to one allowlisted ingestion procedure with a separate service identity.
+endpoints, interleaves bounded samples from the new, top, best, and Show HN feeds, validates every
+response before use, creates a reproducible batch hash, and authenticates to one allowlisted
+ingestion procedure with a separate service identity.
 
 ## Product surfaces
 
@@ -143,8 +144,9 @@ state transitions make the product tactile without turning animation into decora
   reconciliation, and ambiguity-safe email state prevent runaway work.
 - **The application boundary is narrow.** The browser cannot provide SQL, Snowflake object names,
   roles, warehouses, or procedure names.
-- **Cost is protected twice.** A resource monitor protects Consera warehouses and an application
-  ledger reserves estimated AI credits before every call.
+- **Cost is protected twice.** Three isolated weekly resource monitors protect the ingestion,
+  pipeline, and application warehouses. An application ledger reserves estimated AI credits before
+  every call.
 - **Cloudflare state stays at zero.** Static assets bypass Worker code and the API uses no Workers
   KV, Durable Objects, Queues, or scheduled triggers.
 - **No payment method is required.** The implementation uses the existing Snowflake trial, free
@@ -175,6 +177,11 @@ snowflake/
 scripts/                Keys, reproducible bundles, migration, and platform gates
 docs/                   Architecture, evidence, ledgers, and operating records
 ```
+
+The judging workspace is intentionally focused on one reviewed project, **AI Change Observatory**.
+It monitors material model, API, agent, inference, tooling, security, licensing, policy, and pricing
+changes across the AI ecosystem. Historical project records remain append-only and archived rather
+than deleted.
 
 ## Development
 
@@ -222,6 +229,8 @@ uv run ruff format --check .
 uv run mypy snowflake bridges scripts
 uv run pytest
 uv run sqlfluff lint snowflake/
+uv run python scripts/cloudflare_cost_guard.py
+uv run python -m scripts.reliability_audit
 ```
 
 Secrets, account identifiers, private keys, source bodies, and prompts containing source text must

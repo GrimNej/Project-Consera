@@ -28,5 +28,8 @@ No runtime dependency is loaded from a CDN.
 range. Wrangler owns the generated Worker runtime declarations, so the older direct
 `@cloudflare/workers-types` package is not part of the application lock.
 
-`pnpm audit --prod --audit-level high` reports no known vulnerabilities after the 2026-07-23 patch
-refresh.
+Wrangler remains pinned at 4.112.0 with compatibility date 2026-07-21. A newer release was rejected
+during the 2026-07-31 audit because it was inside the repository's dependency minimum-age window and
+would have required explicit supply-chain exceptions.
+
+`pnpm audit --prod --audit-level high` reports no known vulnerabilities on 2026-07-31.
