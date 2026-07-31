@@ -73,8 +73,8 @@ export function LandingPage() {
         <motion.div
           animate={{ opacity: 1, y: 0 }}
           className="hero-copy"
-          initial={reducedMotion ? false : { opacity: 0, y: 22 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 22 }}
+          transition={{ duration: reducedMotion ? 0 : 0.75, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="eyebrow">
             <span className="live-dot" />
@@ -114,8 +114,12 @@ export function LandingPage() {
           aria-label="A large volume of technology signals being filtered into one material project consequence"
           className="intelligence-scene"
           id="product"
-          initial={reducedMotion ? false : { opacity: 0, scale: 0.97, y: 28 }}
-          transition={{ delay: reducedMotion ? 0 : 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, scale: 0.97, y: 28 }}
+          transition={{
+            delay: reducedMotion ? 0 : 0.12,
+            duration: reducedMotion ? 0 : 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
           <svg aria-hidden="true" className="radar-field" viewBox="0 0 720 720">
             <defs>

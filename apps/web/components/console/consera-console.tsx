@@ -286,9 +286,9 @@ export function ConseraConsole() {
         <AnimatePresence mode="wait">
           <motion.div
             animate={{ opacity: 1, y: 0 }}
-            initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 8 }}
             key={view}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: reducedMotion ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
             {view === "overview" && (
               <OverviewSurface

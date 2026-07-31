@@ -1,5 +1,15 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+async function settleVisual(page: Page): Promise<void> {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+    });
+  });
+}
 
 test("landing page communicates the product and passes accessibility checks", async ({ page }) => {
   await page.goto("/");
@@ -7,6 +17,7 @@ test("landing page communicates the product and passes accessibility checks", as
   await expect(page.getByRole("heading", { level: 1 })).toContainText("The market moves");
   await expect(page.getByText("Silence-first project intelligence")).toBeVisible();
   await expect(page.getByRole("link", { name: "Open Consera" })).toBeVisible();
+  await settleVisual(page);
   await expect(page).toHaveScreenshot("landing-desktop.png", { fullPage: true });
 
   const accessibility = await new AxeBuilder({ page }).analyze();
@@ -86,5 +97,6 @@ test("mobile navigation and intelligence remain readable at 390 px", async ({ pa
   await page.getByRole("button", { name: "Intelligence" }).click();
   await expect(page.getByRole("heading", { name: /See the consequence/ })).toBeVisible();
   await expect(page.getByRole("button", { name: "Check for new signals" })).toBeVisible();
+  await settleVisual(page);
   await expect(page).toHaveScreenshot("intelligence-mobile.png", { fullPage: true });
 });
