@@ -1,6 +1,8 @@
 import { fixtureAlerts, fixtureDashboard, fixtureSignals } from "@consera/fixture-data";
+import { workspaceContentSchema } from "@consera/contracts";
 import { describe, expect, it, vi } from "vitest";
 
+import deployedSnapshot from "./snapshot/workspace.json";
 import { loadWorkspace } from "./workspace-cache";
 
 const content = {
@@ -33,6 +35,11 @@ function stored(capturedAt: string): Response {
 }
 
 describe("state-free workspace cache", () => {
+  it("keeps the real deployed snapshot inside the public workspace contract", () => {
+    expect(deployedSnapshot.ready).toBe(true);
+    expect(workspaceContentSchema.safeParse(deployedSnapshot.workspace).success).toBe(true);
+  });
+
   it("serves a fresh edge snapshot without waking Snowflake", async () => {
     const live = vi.fn(() => Promise.resolve(content));
     const waitUntil = vi.fn();

@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-07-31T06:52:29Z",
+  "capturedAt": "2026-07-31T06:59:01Z",
   "dashboardHealth": "HEALTHY",
   "findings": [],
   "metrics": {
@@ -8,7 +8,8 @@
     "queue_failure_count": 0,
     "terminal_delivery_failure_count": 0,
     "v005_count": 1,
-    "v006_count": 1
+    "v006_count": 1,
+    "v007_count": 1
   },
   "monitorCount": 3,
   "passed": true,

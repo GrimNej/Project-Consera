@@ -72,6 +72,7 @@ def valid_state() -> dict[str, object]:
             "terminal_delivery_failure_count": 0,
             "v005_count": 1,
             "v006_count": 1,
+            "v007_count": 1,
         },
         "monitors": monitors,
         "streams": streams,

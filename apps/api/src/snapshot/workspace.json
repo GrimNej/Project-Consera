@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-07-31T06:27:02.905Z",
+  "capturedAt": "2026-07-31T06:58:43.793Z",
   "ready": true,
   "workspace": {
     "alerts": [
@@ -9,7 +9,7 @@
         "id": "c5c11205-99ff-5b28-8d0d-0c2dc50b9549",
         "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
         "projectName": "AI Change Observatory",
-        "suppressionReason": "None",
+        "suppressionReason": null,
         "verdictHeadline": "Nvidia's $750B AI bet deepens fears of a circular tech bubble.",
         "verdictId": "d9d96629-3d2c-58fd-a8be-4d6874acebf0",
         "verdictType": "OPPORTUNITY"

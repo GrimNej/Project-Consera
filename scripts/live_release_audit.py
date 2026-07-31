@@ -136,6 +136,8 @@ def validate_release_state(state: Mapping[str, Any]) -> list[str]:
         findings.append("V005_MIGRATION_NOT_RECORDED")
     if int(metrics.get("v006_count") or 0) != 1:
         findings.append("V006_MIGRATION_NOT_RECORDED")
+    if int(metrics.get("v007_count") or 0) != 1:
+        findings.append("V007_MIGRATION_NOT_RECORDED")
     if int(metrics.get("queue_failure_count") or 0) != 0:
         findings.append("QUEUE_FAILURES_PRESENT")
     if int(metrics.get("terminal_delivery_failure_count") or 0) != 0:
@@ -194,6 +196,12 @@ def collect_release_state(connection: SnowflakeConnection) -> dict[str, Any]:
                     WHERE VERSION = 'V006'
                         AND STATE = 'APPLIED'
                 ) AS V006_COUNT,
+                (
+                    SELECT COUNT(*)
+                    FROM CONSERA.OPS.SCHEMA_MIGRATIONS
+                    WHERE VERSION = 'V007'
+                        AND STATE = 'APPLIED'
+                ) AS V007_COUNT,
                 (
                     SELECT COUNT(*)
                     FROM CONSERA.OPS.BATCH_WORK_QUEUE
