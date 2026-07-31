@@ -1,0 +1,15 @@
+{
+  "capturedAt": "2026-07-31T07:01:25Z",
+  "commit": "9f8d651",
+  "domain": "https://consera.grimnej.com",
+  "passed": true,
+  "checks": {
+    "accessibilityViolations": 0,
+    "activeProjects": 1,
+    "alerts": 1,
+    "landing": "PASS",
+    "signals": 100,
+    "syncModes": ["EDGE_CACHE", "EDGE_CACHE"],
+    "verdicts": 1
+  }
+}

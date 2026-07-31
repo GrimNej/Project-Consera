@@ -232,3 +232,23 @@
 - **Related commit:** `d3db0dc`
 - **Rollback point:** Revert `d3db0dc` only if the profile task's explicit cost and retry guards are
   intentionally removed.
+
+## 2026-07-31: Production contract recovery
+
+- **Goal:** Deploy the consolidated workspace and prove that both live and fallback data satisfy the
+  public contract with a real sent alert.
+- **Files:** `snowflake/migrations/V007__normalize_alert_nulls.sql`,
+  `apps/api/src/workspace-cache.test.ts`, `apps/api/src/snapshot/workspace.json`,
+  `scripts/live_release_audit.py`, and `docs/evidence/production-cost-safe-release.json`.
+- **Commands:** Immutable V007 migration, live snapshot export, full TypeScript, Python, SQL, build,
+  and reliability gates, Wrangler production deployment, and read-only Chromium plus axe audit.
+- **Evidence:** The first production audit exposed a literal `"None"` suppression reason in the real
+  sent alert. A regression test failed on that exact snapshot. V007 normalizes historical
+  Python-style null text at the secure-view boundary, the same test then passes, and the final
+  production audit records zero accessibility violations, one active project, 100 bounded signals,
+  one verdict, one alert, and two consecutive edge-cache responses.
+- **Decision/issue:** Live and deployed fallback data must be parsed by the same shared Zod
+  contract. A fallback is not considered valid merely because it was exported successfully.
+- **Related commit:** `9f8d651`
+- **Rollback point:** Revert `9f8d651` only if sent alerts can again emit a valid JSON null through
+  a different immutable migration and the snapshot-contract regression remains.
