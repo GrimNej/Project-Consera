@@ -659,4 +659,14 @@ def process_landing_queue(session: Session) -> dict[str, Any]:
                     batch_id,
                 ],
             ).collect()
+        except Exception:
+            session.sql(
+                """
+                UPDATE CONSERA.OPS.BATCH_WORK_QUEUE
+                SET STATE = 'FAILED_RETRYABLE',
+                    LAST_ERROR_CODE = 'INGESTION_INTERNAL_ERROR'
+                WHERE BATCH_ID = ?
+                """,
+                params=[batch_id],
+            ).collect()
     return {"batches": results, "processed": len(results)}

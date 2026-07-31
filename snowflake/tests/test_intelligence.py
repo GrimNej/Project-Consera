@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+from unittest.mock import MagicMock
+
 from consera_core.models import DeepVerdictDraft
-from intelligence import _expand_deep_draft
+from intelligence import _claim_job, _expand_deep_draft
+from snowflake.snowpark import Row
 
 
 def test_flat_verdict_draft_expands_to_evidence_bound_domain_output() -> None:
@@ -43,3 +46,13 @@ def test_flat_verdict_draft_expands_to_evidence_bound_domain_output() -> None:
         "signal-evidence",
         "project-evidence",
     }
+
+
+def test_claim_does_not_consume_a_provider_attempt_before_budget_reservation() -> None:
+    session = MagicMock()
+    session.sql.return_value.collect.return_value = [{"number of rows updated": 1}]
+
+    assert _claim_job(session, Row(JOB_ID="job-1", LEASE_GENERATION=0)) is not None
+    statement = session.sql.call_args.args[0]
+    assert "STATE = 'CLAIMED'" in statement
+    assert "PROVIDER_ATTEMPT_COUNT = PROVIDER_ATTEMPT_COUNT + 1" not in statement

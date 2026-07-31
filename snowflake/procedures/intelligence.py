@@ -345,9 +345,8 @@ def _claim_job(session: Session, row: Row) -> tuple[str, int] | None:
     result = session.sql(
         """
         UPDATE CONSERA.OPS.EVALUATION_JOBS
-        SET STATE = 'RUNNING',
+        SET STATE = 'CLAIMED',
             CLAIM_COUNT = CLAIM_COUNT + 1,
-            PROVIDER_ATTEMPT_COUNT = PROVIDER_ATTEMPT_COUNT + 1,
             LEASE_OWNER = CURRENT_USER(),
             LEASE_TOKEN = ?,
             LEASE_GENERATION = ?,
@@ -368,6 +367,33 @@ def _claim_job(session: Session, row: Row) -> tuple[str, int] | None:
     if not result or int(row_value(result[0], "number of rows updated")) != 1:
         return None
     return token, generation
+
+
+def _start_provider_attempt(
+    session: Session,
+    job_id: str,
+    lease_token: str,
+    lease_generation: int,
+) -> None:
+    """Consume a provider attempt only after a budget reservation succeeds."""
+    result = session.sql(
+        """
+        UPDATE CONSERA.OPS.EVALUATION_JOBS
+        SET STATE = 'RUNNING',
+            PROVIDER_ATTEMPT_COUNT = PROVIDER_ATTEMPT_COUNT + 1,
+            HEARTBEAT_AT = CURRENT_TIMESTAMP(),
+            UPDATED_AT = CURRENT_TIMESTAMP()
+        WHERE JOB_ID = ?
+          AND STATE = 'CLAIMED'
+          AND LEASE_TOKEN = ?
+          AND LEASE_GENERATION = ?
+          AND LEASE_EXPIRES_AT > CURRENT_TIMESTAMP()
+          AND PROVIDER_ATTEMPT_COUNT < MAX_PROVIDER_ATTEMPTS
+        """,
+        params=[job_id, lease_token, lease_generation],
+    ).collect()
+    if not result or int(row_value(result[0], "number of rows updated")) != 1:
+        raise PipelineError("JOB_PROVIDER_START_CAS_FAILED")
 
 
 def _job_context(session: Session, job_id: str) -> Row:
@@ -408,7 +434,7 @@ def _job_context(session: Session, job_id: str) -> Row:
             ON job.SIGNAL_ID = signal.SIGNAL_ID
             AND job.SIGNAL_VERSION_ID = signal.CURRENT_VERSION_ID
         WHERE job.JOB_ID = ?
-          AND job.STATE = 'RUNNING'
+          AND job.STATE IN ('CLAIMED', 'RUNNING')
           AND project.ACTIVE_PROFILE_VERSION_ID = job.PROFILE_VERSION_ID
         """,
         params=[job_id],
@@ -891,6 +917,7 @@ def analyze_job(
         reserved_input_tokens=max(1, len(prompt) // 3),
         reserved_output_tokens=4200,
     )
+    _start_provider_attempt(session, job_id, lease_token, lease_generation)
     result = call_ai_complete(
         session,
         usage_id=usage_id,
@@ -986,6 +1013,8 @@ def process_evaluation_queue(session: Session) -> dict[str, Any]:
                 """
                 UPDATE CONSERA.OPS.EVALUATION_JOBS
                 SET STATE = ?,
+                    BUDGET_DEFERRAL_COUNT = BUDGET_DEFERRAL_COUNT
+                        + IFF(? = 'DEFERRED_BUDGET', 1, 0),
                     NEXT_ATTEMPT_AT = IFF(
                         ? IN ('FAILED_RETRYABLE', 'DEFERRED_BUDGET'),
                         DATEADD('minute', 15, CURRENT_TIMESTAMP()),
@@ -1000,7 +1029,7 @@ def process_evaluation_queue(session: Session) -> dict[str, Any]:
                   AND LEASE_TOKEN = ?
                   AND LEASE_GENERATION = ?
                 """,
-                params=[state, state, error.code, job_id, token, generation],
+                params=[state, state, state, error.code, job_id, token, generation],
             ).collect()
         except Exception:
             session.sql(

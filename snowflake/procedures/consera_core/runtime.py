@@ -10,7 +10,7 @@ from snowflake.snowpark import Row, Session
 
 from consera_core.ids import canonical_json, sha256_text, stable_uuid
 
-DAILY_AI_CREDIT_LIMIT = 0.3
+DEFAULT_DAILY_AI_CREDIT_LIMIT = 0.3
 ASSUMED_MAX_CREDITS_PER_CALL = 0.10
 _UNSUPPORTED_SCHEMA_KEYWORDS = frozenset(
     {
@@ -138,6 +138,23 @@ def selected_model(session: Session) -> str:
     return str(row_value(rows[0], "MODEL_ID"))
 
 
+def daily_ai_credit_limit(session: Session) -> float:
+    """Read the authoritative daily circuit breaker with a conservative ceiling."""
+    rows = session.sql(
+        """
+        SELECT CONFIG_VALUE::FLOAT AS VALUE
+        FROM CONSERA.OPS.PIPELINE_CONFIG
+        WHERE CONFIG_KEY = 'daily_ai_credit_limit'
+        """
+    ).collect()
+    if not rows:
+        return DEFAULT_DAILY_AI_CREDIT_LIMIT
+    configured = float(row_value(rows[0], "VALUE"))
+    if configured <= 0:
+        return 0.0
+    return min(DEFAULT_DAILY_AI_CREDIT_LIMIT, configured)
+
+
 def reserve_ai_usage(
     session: Session,
     *,
@@ -165,7 +182,7 @@ def reserve_ai_usage(
         """
     ).collect()
     spent = float(row_value(spent_rows[0], "SPENT"))
-    if spent + ASSUMED_MAX_CREDITS_PER_CALL > DAILY_AI_CREDIT_LIMIT:
+    if spent + ASSUMED_MAX_CREDITS_PER_CALL > daily_ai_credit_limit(session):
         raise PipelineError("AI_DAILY_BUDGET_EXHAUSTED")
 
     prior_rows = session.sql(

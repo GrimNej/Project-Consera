@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+from unittest.mock import MagicMock
+
 import pytest
 from consera_core.runtime import (
     PipelineError,
+    daily_ai_credit_limit,
     snowflake_response_format,
     structured_output,
 )
@@ -78,3 +81,10 @@ def test_response_format_removes_unsupported_constraints_and_nullable_wrapper() 
 def test_invalid_structured_output_is_rejected() -> None:
     with pytest.raises(PipelineError, match="AI_RESPONSE_ENVELOPE_INVALID"):
         structured_output({"structured_output": []})
+
+
+def test_configured_ai_budget_cannot_raise_the_hard_daily_ceiling() -> None:
+    session = MagicMock()
+    session.sql.return_value.collect.return_value = [{"VALUE": 4.0}]
+
+    assert daily_ai_credit_limit(session) == 0.3

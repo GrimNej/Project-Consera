@@ -410,4 +410,15 @@ def process_profile_queue(session: Session) -> dict[str, Any]:
                     document_id,
                 ],
             ).collect()
+        except Exception:
+            session.sql(
+                """
+                UPDATE CONSERA.OPS.PROFILE_WORK_QUEUE
+                SET STATE = 'FAILED_RETRYABLE',
+                    LAST_ERROR_CODE = 'PROFILE_INTERNAL_ERROR'
+                WHERE DOCUMENT_ID = ?
+                  AND STATE = 'RUNNING'
+                """,
+                params=[document_id],
+            ).collect()
     return {"processed": len(results), "profiles": results}
