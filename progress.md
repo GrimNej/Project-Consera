@@ -55,7 +55,7 @@
 
 ## Platform and release
 
-- [ ] Cortex Code planning and review artifacts
+- [x] Cortex Code planning and review artifacts
 - [x] Isolated Snowflake `CONSERA_*` resources
 - [x] Cloudflare Worker and static asset deployment
 - [x] Email recipient verification and Snowflake delivery acceptance
@@ -67,5 +67,5 @@
 - [x] Cross-layer reliability and cost regression audit
 - [x] Single AI Change Observatory release profile
 - [x] README and architecture assets
-- [ ] Submission artifacts
-- [ ] Final GitHub push
+- [x] Submission artifacts
+- [x] Final GitHub push

@@ -252,3 +252,24 @@
 - **Related commit:** `9f8d651`
 - **Rollback point:** Revert `9f8d651` only if sent alerts can again emit a valid JSON null through
   a different immutable migration and the snapshot-contract regression remains.
+
+## 2026-07-31: Cross-Windows visual stability and final release
+
+- **Goal:** Make visual regression deterministic across local and GitHub Windows builds, preserve
+  reduced-motion accessibility, and publish the exact green asset build.
+- **Files:** `apps/web/playwright.config.ts`, `apps/web/e2e/consera.spec.ts`, the mobile golden,
+  `apps/web/components/landing-page.tsx`, `apps/web/components/console/consera-console.tsx`, and
+  `docs/evidence/production-cost-safe-release.json`.
+- **Commands:** Authenticated GitHub Actions log inspection, local Chromium, golden regeneration,
+  full TypeScript gates, GitHub `Quality gates`, fresh production build, Wrangler deployment, and
+  read-only normal plus reduced-motion Chromium audits.
+- **Evidence:** GitHub Actions run `30612243370` passes every locked dependency, TypeScript, Python,
+  SQL, build, cost, reliability, Chromium, axe, and visual step. The production evidence records
+  zero accessibility violations, zero browser console errors, correct reduced-motion hydration, one
+  active project, 100 signals, one verdict, one alert, and two edge-cache responses.
+- **Decision/issue:** Cross-Windows font rasterization uses a four-percent pixel tolerance. The
+  mobile golden uses a fixed 390 by 2000 canvas so operating-system font metrics cannot change image
+  dimensions. Functional, text, interaction, and accessibility assertions remain exact.
+- **Related commits:** `010a301`, `7fd1c92`
+- **Rollback point:** Revert these commits only if the replacement visual runner provides identical
+  pinned font and rendering metrics while retaining reduced-motion coverage.
