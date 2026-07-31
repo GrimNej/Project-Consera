@@ -18,6 +18,15 @@ class ConfigurationError(RuntimeError):
     """Missing or malformed bridge configuration."""
 
 
+class BudgetPausedError(RuntimeError):
+    """The isolated ingestion warehouse reached its intentional weekly ceiling."""
+
+
+def _resource_monitor_exhausted(error: snowflake.connector.errors.ProgrammingError) -> bool:
+    """Classify only Snowflake's documented warehouse resource-monitor stop."""
+    return int(getattr(error, "errno", 0) or 0) == 90073
+
+
 def _variant_object(value: object) -> dict[str, Any]:
     """Normalize connector VARIANT representations without exposing payload data."""
     if isinstance(value, dict):
@@ -85,33 +94,43 @@ class SnowflakeSettings:
 
 def upload_batch(batch: IngestBatch, settings: SnowflakeSettings) -> dict[str, Any]:
     """Call the sole ingestion procedure and return its sanitized result."""
-    connection = snowflake.connector.connect(
-        account=settings.account,
-        user=settings.user,
-        private_key=settings.private_key_der(),
-        warehouse=settings.warehouse,
-        database=settings.database,
-        schema="LANDING",
-        role=settings.role,
-        session_parameters={"QUERY_TAG": "consera:hn-bridge-v1"},
-    )
+    try:
+        connection = snowflake.connector.connect(
+            account=settings.account,
+            user=settings.user,
+            private_key=settings.private_key_der(),
+            warehouse=settings.warehouse,
+            database=settings.database,
+            schema="LANDING",
+            role=settings.role,
+            session_parameters={"QUERY_TAG": "consera:hn-bridge-v1"},
+        )
+    except snowflake.connector.errors.ProgrammingError as error:
+        if _resource_monitor_exhausted(error):
+            raise BudgetPausedError("INGESTION_BUDGET_PAUSED") from None
+        raise
     try:
         cursor = connection.cursor()
         try:
-            cursor.execute(
-                """
-                CALL CONSERA.LANDING.INGEST_HN_BATCH(
-                    PARSE_JSON(%s),
-                    %s,
-                    %s
+            try:
+                cursor.execute(
+                    """
+                    CALL CONSERA.LANDING.INGEST_HN_BATCH(
+                        PARSE_JSON(%s),
+                        %s,
+                        %s
+                    )
+                    """,
+                    (
+                        batch.model_dump_json(),
+                        batch.payload_sha256,
+                        batch.github_run_id or "",
+                    ),
                 )
-                """,
-                (
-                    batch.model_dump_json(),
-                    batch.payload_sha256,
-                    batch.github_run_id or "",
-                ),
-            )
+            except snowflake.connector.errors.ProgrammingError as error:
+                if _resource_monitor_exhausted(error):
+                    raise BudgetPausedError("INGESTION_BUDGET_PAUSED") from None
+                raise
             row = cursor.fetchone()
             if not row:
                 raise RuntimeError("INGEST_RESULT_INVALID")

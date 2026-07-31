@@ -61,3 +61,46 @@ def test_non_json_is_rejected_before_parsing() -> None:
 
 def test_round_robin_deduplicates() -> None:
     assert _round_robin([[1, 2], [1, 3]], 4) == [1, 2, 3]
+
+
+def test_retryable_source_failure_recovers_with_bounded_backoff() -> None:
+    attempts = 0
+    waits: list[float] = []
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        nonlocal attempts
+        attempts += 1
+        if attempts < 3:
+            return httpx.Response(503, headers={"content-type": "application/json"})
+        return response([])
+
+    with HackerNewsClient(
+        transport=httpx.MockTransport(handler),
+        sleeper=waits.append,
+        randomizer=lambda: 0.5,
+    ) as client:
+        assert client._bounded_json("/v0/newstories.json", 1_000) == []
+
+    assert attempts == 3
+    assert waits == [0.2, 0.4]
+
+
+def test_retryable_source_failure_stops_after_three_attempts() -> None:
+    attempts = 0
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        nonlocal attempts
+        attempts += 1
+        raise httpx.ConnectError("sanitized")
+
+    with (
+        HackerNewsClient(
+            transport=httpx.MockTransport(handler),
+            sleeper=lambda _delay: None,
+            randomizer=lambda: 0.0,
+        ) as client,
+        pytest.raises(SourceError, match="HN_FETCH_FAILED"),
+    ):
+        client._bounded_json("/v0/newstories.json", 1_000)
+
+    assert attempts == 3
