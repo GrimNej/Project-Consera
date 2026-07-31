@@ -97,6 +97,7 @@ def validate_release_state(state: Mapping[str, Any]) -> list[str]:
     landing = tasks.get("PROCESS_LANDING_TASK", {})
     evaluation = tasks.get("PROCESS_EVALUATION_TASK", {})
     alert = tasks.get("PROCESS_ALERT_TASK", {})
+    profile = tasks.get("PROCESS_PROFILE_TASK", {})
     if "INGEST_BATCH_STREAM" not in _string(landing.get("condition")).upper():
         findings.append("LANDING_TRIGGER_INVALID")
     if "PROCESS_LANDING_TASK" not in _string(evaluation.get("predecessors")).upper():
@@ -105,6 +106,8 @@ def validate_release_state(state: Mapping[str, Any]) -> list[str]:
         findings.append("ALERT_PREDECESSOR_INVALID")
     if _string(evaluation.get("condition")) or _string(alert.get("condition")):
         findings.append("STATE_TABLE_TRIGGER_REMAINS")
+    if _string(profile.get("overlap_policy")).upper() != "NO_OVERLAP":
+        findings.append("PROFILE_TASK_OVERLAP_POLICY_INVALID")
 
     streams = {
         _string(row.get("name")): row
@@ -131,6 +134,8 @@ def validate_release_state(state: Mapping[str, Any]) -> list[str]:
         findings.append("AI_OBSERVATORY_NOT_ACTIVE")
     if int(metrics.get("v005_count") or 0) != 1:
         findings.append("V005_MIGRATION_NOT_RECORDED")
+    if int(metrics.get("v006_count") or 0) != 1:
+        findings.append("V006_MIGRATION_NOT_RECORDED")
     if int(metrics.get("queue_failure_count") or 0) != 0:
         findings.append("QUEUE_FAILURES_PRESENT")
     if int(metrics.get("terminal_delivery_failure_count") or 0) != 0:
@@ -183,6 +188,12 @@ def collect_release_state(connection: SnowflakeConnection) -> dict[str, Any]:
                     WHERE VERSION = 'V005'
                         AND STATE = 'APPLIED'
                 ) AS V005_COUNT,
+                (
+                    SELECT COUNT(*)
+                    FROM CONSERA.OPS.SCHEMA_MIGRATIONS
+                    WHERE VERSION = 'V006'
+                        AND STATE = 'APPLIED'
+                ) AS V006_COUNT,
                 (
                     SELECT COUNT(*)
                     FROM CONSERA.OPS.BATCH_WORK_QUEUE

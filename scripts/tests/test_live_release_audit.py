@@ -50,6 +50,7 @@ def valid_state() -> dict[str, object]:
         {
             "condition": "SYSTEM$STREAM_HAS_DATA('CONSERA.CORE.PROJECT_DOCUMENT_STREAM')",
             "name": "PROCESS_PROFILE_TASK",
+            "overlap_policy": "NO_OVERLAP",
             "predecessors": "[]",
             "state": "started",
         },
@@ -70,6 +71,7 @@ def valid_state() -> dict[str, object]:
             "queue_failure_count": 0,
             "terminal_delivery_failure_count": 0,
             "v005_count": 1,
+            "v006_count": 1,
         },
         "monitors": monitors,
         "streams": streams,

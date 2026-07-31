@@ -12,6 +12,7 @@ WORKFLOW = REPO_ROOT / ".github" / "workflows" / "hn-ingestion.yml"
 QUALITY_WORKFLOW = REPO_ROOT / ".github" / "workflows" / "ci.yml"
 BOOTSTRAP = REPO_ROOT / "snowflake" / "bootstrap" / "00_account_resources.sql"
 TASK_GRAPH = REPO_ROOT / "snowflake" / "migrations" / "V005__cost_safe_task_graph.sql"
+PROFILE_TASK_GUARDS = REPO_ROOT / "snowflake" / "migrations" / "V006__profile_task_guards.sql"
 RUNTIME = REPO_ROOT / "snowflake" / "procedures" / "consera_core" / "runtime.py"
 SNAPSHOT = REPO_ROOT / "apps" / "api" / "src" / "snapshot" / "workspace.json"
 WORKER_CONFIG = REPO_ROOT / "apps" / "api" / "wrangler.jsonc"
@@ -30,6 +31,7 @@ def reliability_findings(*, require_snapshot: bool = True) -> list[str]:
     bootstrap = BOOTSTRAP.read_text(encoding="utf-8")
     quality_workflow = QUALITY_WORKFLOW.read_text(encoding="utf-8")
     task_graph = TASK_GRAPH.read_text(encoding="utf-8")
+    profile_task_guards = PROFILE_TASK_GUARDS.read_text(encoding="utf-8")
     runtime = RUNTIME.read_text(encoding="utf-8")
     worker_config = WORKER_CONFIG.read_text(encoding="utf-8")
     workspace_cache = WORKSPACE_CACHE.read_text(encoding="utf-8")
@@ -121,6 +123,17 @@ def reliability_findings(*, require_snapshot: bool = True) -> list[str]:
     )[-1].split("CREATE OR REPLACE SECURE VIEW", maxsplit=1)[0]
     if "SYSTEM$STREAM_HAS_DATA" in evaluation_task or "SYSTEM$STREAM_HAS_DATA" in alert_task:
         findings.append("TASK_CAN_RETRIGGER_FROM_OWN_STATE")
+    findings.extend(
+        _missing(
+            profile_task_guards,
+            (
+                "TASK_AUTO_RETRY_ATTEMPTS = 0",
+                "OVERLAP_POLICY = NO_OVERLAP",
+                "SUSPEND_TASK_AFTER_NUM_FAILURES = 2",
+            ),
+            "PROFILE_TASK_GUARD_MISSING",
+        )
+    )
 
     if "DEFAULT_DAILY_AI_CREDIT_LIMIT = 0.3" not in runtime:
         findings.append("AI_DAILY_CEILING_CHANGED")
