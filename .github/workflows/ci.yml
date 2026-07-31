@@ -1,0 +1,66 @@
+name: Quality gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@a8198c4bff370c8506180b035930dea56dbd5288 # v5
+
+      - name: Select Node
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        with:
+          cache: pnpm
+          node-version: 24.14.0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
+        with:
+          enable-cache: true
+
+      - name: Install exact dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          uv sync --frozen
+
+      - name: Run TypeScript gates
+        run: |
+          pnpm format:check
+          pnpm lint
+          pnpm typecheck
+          pnpm test
+          pnpm build
+          pnpm --filter @consera/api cf-typegen:check
+
+      - name: Run Python and SQL gates
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+          uv run mypy snowflake bridges scripts
+          uv run pytest
+          uv run sqlfluff lint snowflake/
+          uv run python scripts/cloudflare_cost_guard.py
+          uv run python -m scripts.reliability_audit
+
+      - name: Install Chromium
+        run: pnpm --filter @consera/web exec playwright install chromium
+
+      - name: Run browser, accessibility, and visual gates
+        run: pnpm --filter @consera/web test:e2e
