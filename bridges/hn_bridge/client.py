@@ -103,9 +103,8 @@ class HackerNewsClient:
         raise SourceError(last_code)
 
     def story_ids(self) -> list[int]:
-        """Merge new, top, best, and Show HN feeds in stable priority order."""
-        merged: list[int] = []
-        seen: set[int] = set()
+        """Interleave new, top, best, and Show HN feeds without duplicates."""
+        feeds: list[list[int]] = []
         for feed in ("newstories", "topstories", "beststories", "showstories"):
             try:
                 values = _ID_LIST.validate_python(
@@ -113,11 +112,8 @@ class HackerNewsClient:
                 )
             except ValidationError as error:
                 raise SourceError("HN_ID_LIST_INVALID") from error
-            for item_id in values:
-                if item_id > 0 and item_id not in seen:
-                    merged.append(item_id)
-                    seen.add(item_id)
-        return merged
+            feeds.append(values)
+        return _round_robin(feeds, sum(len(feed) for feed in feeds))
 
     def item(self, item_id: int) -> HnItem | None:
         """Fetch and validate one positive item ID."""

@@ -63,6 +63,21 @@ def test_round_robin_deduplicates() -> None:
     assert _round_robin([[1, 2], [1, 3]], 4) == [1, 2, 3]
 
 
+def test_story_ids_interleave_all_supported_feeds() -> None:
+    feeds = {
+        "/v0/newstories.json": [1, 2, 3],
+        "/v0/topstories.json": [10, 11],
+        "/v0/beststories.json": [20],
+        "/v0/showstories.json": [30],
+    }
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return response(feeds[request.url.path])
+
+    with HackerNewsClient(transport=httpx.MockTransport(handler)) as client:
+        assert client.story_ids() == [1, 10, 20, 30, 2, 11, 3]
+
+
 def test_retryable_source_failure_recovers_with_bounded_backoff() -> None:
     attempts = 0
     waits: list[float] = []
