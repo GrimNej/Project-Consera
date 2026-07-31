@@ -376,23 +376,35 @@ export function IntelligenceSurface({
             evidence-supported impacts reach deep analysis.
           </p>
         </div>
-        <button
-          className="button"
-          disabled={runState === "running" || runState === "queued"}
-          onClick={onRun}
-          type="button"
-        >
-          <RefreshCw
-            aria-hidden="true"
-            className={runState === "running" || runState === "queued" ? "is-spinning" : ""}
-            size={18}
-          />
-          {runState === "queued"
-            ? "Run queued"
-            : runState === "running"
-              ? "Checking signals"
-              : "Check for new signals"}
-        </button>
+        <div className="manual-run-control">
+          <button
+            className="button"
+            disabled={runState === "running" || runState === "queued"}
+            onClick={onRun}
+            type="button"
+          >
+            <RefreshCw
+              aria-hidden="true"
+              className={runState === "running" || runState === "queued" ? "is-spinning" : ""}
+              size={18}
+            />
+            {runState === "queued"
+              ? "Run queued"
+              : runState === "running"
+                ? "Checking signals"
+                : "Check for new signals"}
+          </button>
+          {runState === "queued" && (
+            <p role="status">
+              The bounded workflow is running. Refresh in a few minutes to see the latest decision.
+            </p>
+          )}
+          {runState === "failed" && (
+            <p className="is-error" role="alert">
+              The check could not be queued. No run was reported as successful.
+            </p>
+          )}
+        </div>
       </header>
 
       <div className="intelligence-grid">

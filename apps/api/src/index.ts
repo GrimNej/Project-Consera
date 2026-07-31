@@ -18,6 +18,7 @@ import {
   verifySession,
 } from "./security/session";
 import { SnowflakeClientError, snowflakeApi } from "./snowflake/client";
+import { loadWorkspace, workspaceCacheKey } from "./workspace-cache";
 
 type ConseraEnv = {
   Bindings: CloudflareBindings;
@@ -61,6 +62,32 @@ function applySecurityHeaders(headers: Headers): void {
   headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("X-Frame-Options", "DENY");
+}
+
+function isRuntimeCache(value: unknown): value is Cache {
+  return (
+    value !== null &&
+    typeof value === "object" &&
+    typeof Reflect.get(value, "match") === "function" &&
+    typeof Reflect.get(value, "put") === "function" &&
+    typeof Reflect.get(value, "delete") === "function"
+  );
+}
+
+function defaultRuntimeCache(): Cache | null {
+  const cacheStorage: unknown = Reflect.get(globalThis, "caches");
+  if (!cacheStorage || typeof cacheStorage !== "object" || !("default" in cacheStorage)) {
+    return null;
+  }
+  const candidate: unknown = cacheStorage.default;
+  return isRuntimeCache(candidate) ? candidate : null;
+}
+
+async function invalidateWorkspaceCache(requestUrl: string): Promise<void> {
+  const cache = defaultRuntimeCache();
+  if (cache) {
+    await cache.delete(workspaceCacheKey(requestUrl)).catch(() => false);
+  }
 }
 
 app.use("*", async (context, next) => {
@@ -139,6 +166,17 @@ app.get("/api/v1/dashboard", async (context) =>
   ),
 );
 
+app.get("/api/v1/workspace", async (context) => {
+  const cache = defaultRuntimeCache();
+  const workspace = await loadWorkspace({
+    cache,
+    cacheKey: workspaceCacheKey(context.req.url),
+    loadLive: () => snowflakeApi.workspace(context.env, context.get("requestId")),
+    waitUntil: (promise) => context.executionCtx.waitUntil(promise),
+  });
+  return context.json(success(workspace, context.get("requestId")));
+});
+
 app.get("/api/v1/projects", async (context) =>
   context.json(
     success(
@@ -151,6 +189,7 @@ app.get("/api/v1/projects", async (context) =>
 app.post("/api/v1/projects", async (context) => {
   const body = await parseBody(context, createProjectRequestSchema);
   const project = await snowflakeApi.createProject(context.env, body, context.get("requestId"));
+  await invalidateWorkspaceCache(context.req.url);
   return context.json(success(project, context.get("requestId")), 202);
 });
 
@@ -174,6 +213,7 @@ app.post("/api/v1/projects/:projectId/activate", async (context) => {
     { ...body, projectId },
     context.get("requestId"),
   );
+  await invalidateWorkspaceCache(context.req.url);
   return context.json(success(project, context.get("requestId")));
 });
 
@@ -213,6 +253,7 @@ app.post("/api/v1/ingestion/run", async (context) => {
   );
   if (run.dispatchRequired) {
     await dispatchIngestion(context.env.GITHUB_DISPATCH_TOKEN);
+    await invalidateWorkspaceCache(context.req.url);
   }
   return context.json(
     success({ runId: run.runId, state: run.state }, context.get("requestId")),

@@ -13,6 +13,7 @@ import {
   BrainCircuit,
   Check,
   CircleAlert,
+  Clock3,
   FolderKanban,
   LayoutDashboard,
   Menu,
@@ -117,7 +118,6 @@ export function ConseraConsole() {
     try {
       const result = await conseraApi.runIngestion();
       setRunState(result.state === "QUEUED" ? "queued" : "running");
-      window.setTimeout(() => setRunState("idle"), 4_000);
     } catch {
       setRunState("failed");
     }
@@ -232,7 +232,7 @@ export function ConseraConsole() {
         <div className="sidebar-status">
           <span>
             <i />
-            Intelligence online
+            {workspace.sync.stale ? "Last-known intelligence" : "Intelligence online"}
           </span>
           <small>Last signal batch</small>
           <b>{formatDateTime(workspace.dashboard.latestIngestionAt)}</b>
@@ -259,10 +259,29 @@ export function ConseraConsole() {
             <i />
             <span>
               <small>System health</small>
-              <b>{workspace.dashboard.health === "HEALTHY" ? "All systems nominal" : "Degraded"}</b>
+              <b>
+                {workspace.sync.stale
+                  ? "Last synchronized view"
+                  : workspace.dashboard.health === "HEALTHY"
+                    ? "All systems nominal"
+                    : "Degraded"}
+              </b>
             </span>
           </div>
         </header>
+
+        {workspace.sync.stale && (
+          <div className="sync-banner" role="status">
+            <Clock3 aria-hidden="true" size={18} />
+            <span>
+              <b>Showing the last verified Snowflake snapshot</b>
+              <small>
+                Synchronized {formatDateTime(workspace.sync.synchronizedAt)}. Live intelligence will
+                replace it automatically when Snowflake is available.
+              </small>
+            </span>
+          </div>
+        )}
 
         <AnimatePresence mode="wait">
           <motion.div

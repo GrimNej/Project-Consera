@@ -1,0 +1,1533 @@
+{
+  "capturedAt": "2026-07-31T06:27:02.905Z",
+  "ready": true,
+  "workspace": {
+    "alerts": [
+      {
+        "createdAt": "2026-07-30T23:22:35.277-07:00",
+        "deliveryState": "SENT",
+        "id": "c5c11205-99ff-5b28-8d0d-0c2dc50b9549",
+        "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+        "projectName": "AI Change Observatory",
+        "suppressionReason": "None",
+        "verdictHeadline": "Nvidia's $750B AI bet deepens fears of a circular tech bubble.",
+        "verdictId": "d9d96629-3d2c-58fd-a8be-4d6874acebf0",
+        "verdictType": "OPPORTUNITY"
+      }
+    ],
+    "dashboard": {
+      "activities": [
+        {
+          "detail": "43 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "f1a18abc-fab5-49bb-82ac-99b2821597b1",
+          "occurredAt": "2026-07-30T23:22:53.696-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "43 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "96c6a25a-d6cb-425b-a968-3357ec9cf5f2",
+          "occurredAt": "2026-07-30T23:20:15.595-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "The official Hacker News bridge will claim this request.",
+          "id": "1bd1e55a-0bbd-4633-b4b2-1db6f71ebcaf",
+          "occurredAt": "2026-07-30T23:19:51.105-07:00",
+          "state": "RUNNING",
+          "title": "Signal check requested"
+        },
+        {
+          "detail": "2 prior project records were archived without deleting history.",
+          "id": "84d05ddc-1a10-4951-b3df-af4dd2e0ffe3",
+          "occurredAt": "2026-07-30T23:18:17.294-07:00",
+          "state": "SUCCESS",
+          "title": "Workspace focus updated"
+        },
+        {
+          "detail": "A human-reviewed profile now controls consequence analysis.",
+          "id": "f7915601-8abb-4f00-95e6-ef3ef5909bca",
+          "occurredAt": "2026-07-30T23:18:14.057-07:00",
+          "state": "SUCCESS",
+          "title": "Profile activated"
+        },
+        {
+          "detail": "Consera extracted a bounded project model. Review is required before monitoring.",
+          "id": "bb3293af-a8af-4d01-b219-20ddd053b285",
+          "occurredAt": "2026-07-30T23:18:06.687-07:00",
+          "state": "SUCCESS",
+          "title": "Profile ready for review"
+        },
+        {
+          "detail": "README accepted and profile extraction queued.",
+          "id": "c13eab88-29e7-42d9-b282-20946f485696",
+          "occurredAt": "2026-07-30T23:17:25.651-07:00",
+          "state": "RUNNING",
+          "title": "Project admitted"
+        },
+        {
+          "detail": "45 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "cc680736-2d4c-4fd0-a2dc-9092380102af",
+          "occurredAt": "2026-07-27T00:13:10.925-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "The official Hacker News bridge will claim this request.",
+          "id": "058c0dcb-c7ba-416b-a23b-fa461acf8914",
+          "occurredAt": "2026-07-27T00:12:45.986-07:00",
+          "state": "RUNNING",
+          "title": "Signal check requested"
+        },
+        {
+          "detail": "42 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "de1a3935-66e4-4fae-b191-102bd6152b33",
+          "occurredAt": "2026-07-26T23:49:30.301-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "The official Hacker News bridge will claim this request.",
+          "id": "3c50bc1c-46ed-4007-aa95-3edb3f7c030e",
+          "occurredAt": "2026-07-26T23:49:06.743-07:00",
+          "state": "RUNNING",
+          "title": "Signal check requested"
+        },
+        {
+          "detail": "41 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "e7a49138-8f85-4643-9a7d-235e2a09d41c",
+          "occurredAt": "2026-07-26T23:32:49.110-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "46 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "5e26e24e-ac3c-45f2-a91f-b70210642ed4",
+          "occurredAt": "2026-07-23T01:21:32.418-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "48 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "3204ab00-2590-43fe-b229-396f7f2241d8",
+          "occurredAt": "2026-07-23T01:17:25.074-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "18 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "032dc58e-b54d-44c8-b568-6b7b1893909f",
+          "occurredAt": "2026-07-23T01:16:07.862-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "17 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "5e92706d-858a-4ebb-9010-0d56f7893ad7",
+          "occurredAt": "2026-07-23T01:15:33.035-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "The official Hacker News bridge will claim this request.",
+          "id": "e8608e8c-5f0b-4d02-b788-94f8c8fc064a",
+          "occurredAt": "2026-07-23T01:12:41.039-07:00",
+          "state": "RUNNING",
+          "title": "Signal check requested"
+        },
+        {
+          "detail": "A human-reviewed profile now controls consequence analysis.",
+          "id": "56d84f67-3f42-4be0-ade8-19fadec66cfb",
+          "occurredAt": "2026-07-23T01:12:38.593-07:00",
+          "state": "SUCCESS",
+          "title": "Profile activated"
+        },
+        {
+          "detail": "Consera extracted a bounded project model. Review is required before monitoring.",
+          "id": "56c1b45f-7d48-49e1-be73-1599ecbbb008",
+          "occurredAt": "2026-07-23T01:12:33.142-07:00",
+          "state": "SUCCESS",
+          "title": "Profile ready for review"
+        },
+        {
+          "detail": "README accepted and profile extraction queued.",
+          "id": "696356e5-d4c2-477f-9ac1-9760d60604e7",
+          "occurredAt": "2026-07-23T01:11:57.601-07:00",
+          "state": "RUNNING",
+          "title": "Project admitted"
+        }
+      ],
+      "alertsSent": 1,
+      "analyzedDeeply": 3,
+      "credits": {
+        "consumed": 0.2,
+        "reserve": 0.1,
+        "totalEnvelope": 0.3
+      },
+      "health": "HEALTHY",
+      "latestIngestionAt": "2026-07-31T06:22:49.024Z",
+      "projects": [
+        {
+          "activeProfile": {
+            "capabilities": [
+              "Monitor material AI model and API changes",
+              "Track AI agents, inference systems, and developer tooling",
+              "Compare hosted and open-source AI alternatives",
+              "Identify AI security, policy, licensing, and pricing changes",
+              "Recommend bounded evidence-backed evaluation actions"
+            ],
+            "completeness": 1,
+            "constraints": [
+              "Alerts require credible stored evidence",
+              "Popularity alone cannot establish production readiness",
+              "No automatic purchase, migration, deployment, or source-code change"
+            ],
+            "dependencies": [
+              "Large language models",
+              "Generative AI",
+              "AI agents",
+              "Inference APIs",
+              "Retrieval-augmented generation",
+              "Vector search",
+              "Model evaluation"
+            ],
+            "differentiators": [
+              "Provider-neutral coverage across hosted and open-source AI",
+              "Silence-first monitoring with deterministic alert policy",
+              "Explicit separation of source fact, assessment, and next action"
+            ],
+            "monitoredTopics": [
+              "artificial intelligence",
+              "AI models",
+              "large language models",
+              "generative AI",
+              "AI agents",
+              "AI coding assistants",
+              "model releases",
+              "inference",
+              "open-source models",
+              "model APIs",
+              "RAG",
+              "vector databases",
+              "AI security",
+              "AI policy",
+              "model pricing"
+            ],
+            "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+            "providers": [
+              "OpenAI",
+              "Anthropic",
+              "Google Gemini",
+              "Meta Llama",
+              "Mistral",
+              "Hugging Face",
+              "NVIDIA",
+              "Snowflake Cortex",
+              "Ollama",
+              "vLLM"
+            ],
+            "summary": "A vendor-neutral intelligence workspace that helps product and engineering teams identify which AI ecosystem changes deserve investigation, benchmarking, or action.",
+            "targetUsers": [
+              "Product leaders planning AI capabilities",
+              "Engineering teams operating production AI applications",
+              "Founders comparing AI models and platforms"
+            ],
+            "version": 2
+          },
+          "alertsEnabled": true,
+          "createdAt": "2026-07-30T23:17:24.496-07:00",
+          "id": "8b888d19-f983-573a-a452-3f3572a97667",
+          "name": "AI Change Observatory",
+          "profileState": "ACTIVE",
+          "updatedAt": "2026-07-30T23:18:13.510-07:00",
+          "version": 3
+        }
+      ],
+      "signalsReviewed": 110,
+      "suppressed": 0,
+      "topVerdicts": [
+        {
+          "alertWorthiness": 0.71481,
+          "confidence": 0.685,
+          "contributions": [
+            {
+              "component": "capability_overlap",
+              "explanation": "Capability overlap was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+              "rawValue": 0.7,
+              "weight": 0.2,
+              "weightedValue": 0.14
+            },
+            {
+              "component": "dependency_impact",
+              "explanation": "Dependency impact was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+              "rawValue": 0.8,
+              "weight": 0.2,
+              "weightedValue": 0.16
+            },
+            {
+              "component": "evidence_quality",
+              "explanation": "Evidence quality was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+              "rawValue": 0.6,
+              "weight": 0.1,
+              "weightedValue": 0.06
+            },
+            {
+              "component": "solution_adjacency",
+              "explanation": "Solution adjacency was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+              "rawValue": 0.7,
+              "weight": 0.1,
+              "weightedValue": 0.07
+            },
+            {
+              "component": "strategic_relevance",
+              "explanation": "Strategic relevance was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+              "rawValue": 0.8,
+              "weight": 0.3,
+              "weightedValue": 0.24
+            },
+            {
+              "component": "user_pain_signal",
+              "explanation": "User pain signal was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+              "rawValue": 0.5,
+              "weight": 0.1,
+              "weightedValue": 0.05
+            }
+          ],
+          "createdAt": "2026-07-30T23:22:26.032-07:00",
+          "evidence": [
+            {
+              "excerpt": "Nvidia's $750B AI bet deepens fears of a circular tech bubble.",
+              "id": "fcc82b37-2a9d-534d-a6d7-5854b3bc2752",
+              "label": "Hacker News story",
+              "publishedAt": "2026-07-31T05:19:46.000-07:00",
+              "sourceKind": "HN_STORY",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49119284"
+            },
+            {
+              "excerpt": "# AI Change Observatory\n\nAI Change Observatory is a vendor-neutral intelligence workspace for product and engineering teams\nthat build, buy, or operate AI-enabled software. It helps teams decide which developments in the\nfast-moving AI ecosystem deserve investigation and which can be ignored.\n\n## Who it serves\n\n- Product leaders planning AI capabilities and provider strategy\n- Engineering teams operating production AI applications\n- Founders comparing models, platforms, and open-source alternatives\n- Technical program leads tracking cost, reliability, security, and licensing risk\n\n## Core capabilities\n\n- Monitor meaningful model releases, model API changes, deprecations, and pricing updates\n- Track AI agents, coding assistants, inference systems, and developer tooling\n- Compare hosted and open-source language models, multimodal models, and embedding models\n- Identify changes in retrieval, RAG, vector search, evaluation, and model observability\n- Track AI security, safety, policy, copyright, and licensing developments\n- Turn a relevant change into an evidence-backed investigation or benchmarking action\n\n## Technology context\n\nThe project is provider neutral. Relevant technologies in",
+              "id": "536b16c2-abf0-5dfb-95a4-ae7cf295dcff",
+              "label": "Reviewed project README",
+              "publishedAt": "2026-07-30T23:18:07.145-07:00",
+              "sourceKind": "PROJECT",
+              "sourceUrl": null
+            }
+          ],
+          "headline": "Nvidia's $750B AI bet deepens fears of a circular tech bubble.",
+          "id": "d9d96629-3d2c-58fd-a8be-4d6874acebf0",
+          "impactPeak": 0.8,
+          "impactType": "OPPORTUNITY",
+          "opportunity": 0.675,
+          "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+          "projectName": "AI Change Observatory",
+          "protectiveFactors": [
+            "The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies."
+          ],
+          "publishedAt": "2026-07-30T23:22:26.032-07:00",
+          "recommendations": [
+            "Investigate Nvidia's AI Investments: Investigate the implications of Nvidia's AI investments on the AI ecosystem and potential impacts on the project's dependencies and capabilities."
+          ],
+          "relevance": 0.72,
+          "replacementPressure": 0.435,
+          "signalId": "8c60a656-7bf5-5f1a-988f-340a8dda6f27",
+          "summary": "Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+          "threat": 0.515,
+          "uncertainty": "The specific impacts of Nvidia's investments on the AI ecosystem are not yet clear.",
+          "urgency": 0.67375
+        }
+      ]
+    },
+    "signals": [
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:22:31.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119652",
+        "id": "0d64f8d9-5846-5648-9ed7-0d196e7806bb",
+        "points": 1,
+        "sourceUrl": "https://multi-agent-systems-failure-taxonomy.github.io/AdaMAST/blogs/adamast_paper/",
+        "state": "CANDIDATE",
+        "title": "AdaMAST: Adaptive Failure Taxonomies for Improving LLM Agents",
+        "topic": "multi-agent-systems-failure-taxonomy.github.io"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:16:58.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119616",
+        "id": "aeb8b164-33d3-59e7-92f3-c77dd34fd5bc",
+        "points": 1,
+        "sourceUrl": "https://www.sfchronicle.com/tech/article/semicon-west-moving-phoenix-22368164.php",
+        "state": "CANDIDATE",
+        "title": "Longtime Bay Area tech conference is leaving San Francisco after a 50-year run",
+        "topic": "sfchronicle.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:16:44.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119613",
+        "id": "117f92cb-2b86-5d66-aeed-c7e90a5b7cf6",
+        "points": 1,
+        "sourceUrl": "https://www.theatlantic.com/magazine/2026/09/city-drug-addiction-harm-reduction-policy/687967/",
+        "state": "CANDIDATE",
+        "title": "The Cities That Said Yes to Drugs",
+        "topic": "theatlantic.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:15:52.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119606",
+        "id": "a70c6bf0-f498-581c-8467-daa9200d0555",
+        "points": 1,
+        "sourceUrl": null,
+        "state": "CANDIDATE",
+        "title": "Should Airbnb Add Ads?",
+        "topic": "airbnb"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:15:29.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119602",
+        "id": "2f19425d-46e6-5449-b7ea-50e1bf9d0ade",
+        "points": 1,
+        "sourceUrl": "https://www.carbonbrief.org/qa-what-does-chinas-15th-five-year-plan-for-renewables-mean-for-climate-change",
+        "state": "CANDIDATE",
+        "title": "What does China's 15th '5-year plan' for renewables mean for climate change?",
+        "topic": "carbonbrief.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:13:16.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119587",
+        "id": "9b879f15-0754-5c03-8589-5497737c7a1f",
+        "points": 1,
+        "sourceUrl": "https://tempered.to/",
+        "state": "CANDIDATE",
+        "title": "Tempered – AI-Powered PC optimizer that won't show a metric it can't measure",
+        "topic": "tempered.to"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:10:41.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119575",
+        "id": "2977c1cc-c437-5e91-ac8f-bd156866ae02",
+        "points": 1,
+        "sourceUrl": "https://www.fmi.ch/news-events/articles/news.html?news=672",
+        "state": "CANDIDATE",
+        "title": "Forgotten memories can leave silent traces in the brain",
+        "topic": "fmi.ch"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:09:17.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119564",
+        "id": "e191193a-006a-50c5-bfe0-b2c18ccf87c4",
+        "points": 2,
+        "sourceUrl": "https://www.bbc.co.uk/news/articles/cn0nqpy1rk4o",
+        "state": "CANDIDATE",
+        "title": "Teen hackers tell BBC how police are helping them use their skills for good",
+        "topic": "bbc.co.uk"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:08:36.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119559",
+        "id": "e7c52c61-18cb-57af-86fa-a94562fc55c6",
+        "points": 5,
+        "sourceUrl": "https://api-docs.deepseek.com/updates/",
+        "state": "CANDIDATE",
+        "title": "DeepSeek v4 Flash final models show solid improvements",
+        "topic": "api-docs.deepseek.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:08:25.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119557",
+        "id": "8aeebc11-37a5-5bef-a8f8-10c3d5669ee1",
+        "points": 1,
+        "sourceUrl": "https://finance.yahoo.com/healthcare/articles/sodaslim-releases-updated-2026-highlights-122400710.html",
+        "state": "CANDIDATE",
+        "title": "SodaSlim Natural Weight Management Supplement for Wellness",
+        "topic": "finance.yahoo.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:07:05.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119546",
+        "id": "487bb2f3-6aca-5f1f-8ec6-b5e2113203d0",
+        "points": 2,
+        "sourceUrl": "https://articles.fmt.kr/2026-07/oai",
+        "state": "CANDIDATE",
+        "title": "ChatGPT has been silently routing Pro to mini for several months",
+        "topic": "articles.fmt.kr"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:06:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119542",
+        "id": "3058fd56-e241-579c-8877-6151c9a4ccd8",
+        "points": 1,
+        "sourceUrl": "https://techcrunch.com/2026/07/30/linkedin-adds-a-button-to-report-ai-generated-slop/",
+        "state": "CANDIDATE",
+        "title": "LinkedIn adds a button to report AI-generated 'slop'",
+        "topic": "techcrunch.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:05:25.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119537",
+        "id": "8cbb7d45-6e6b-54dd-a199-df0c4e31f221",
+        "points": 1,
+        "sourceUrl": "https://www.reuters.com/world/africa/us-government-map-africa-mislabels-every-country-global-conference-2026-07-30/",
+        "state": "CANDIDATE",
+        "title": "US Government map of Africa mislabels every country at global conference",
+        "topic": "reuters.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:04:33.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119532",
+        "id": "100669b5-d605-591d-b57c-0bbfdfcca877",
+        "points": 1,
+        "sourceUrl": "https://www.textclad.com/2026/07/30/remote/",
+        "state": "CANDIDATE",
+        "title": "Remote",
+        "topic": "textclad.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:02:04.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119518",
+        "id": "e44b00ee-cc83-5c4b-8667-600d416489b4",
+        "points": 1,
+        "sourceUrl": "https://pub.towardsai.net/saps-big-push-for-tabular-ai-what-it-means-for-enterprises-7dc3af2a1d8c?sk=73d9e33939f8f38b3d7ea49f87bb2e6a",
+        "state": "CANDIDATE",
+        "title": "SAP's Big Push for Tabular AI. What It Means for Enterprises",
+        "topic": "pub.towardsai.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:00:34.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119508",
+        "id": "6318b794-fa4e-5aa8-8b87-19b2fb4a8810",
+        "points": 1,
+        "sourceUrl": "https://arxiv.org/abs/2607.25973",
+        "state": "CANDIDATE",
+        "title": "k-Coloring is Faster than Computing the Chromatic Number",
+        "topic": "arxiv.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:57:43.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119491",
+        "id": "97bc9369-7048-5932-8524-d0ee211daac3",
+        "points": 2,
+        "sourceUrl": "https://github.com/Hinikaa/tileroot",
+        "state": "CANDIDATE",
+        "title": "Show HN: Tileroot – save/restore tiling WM layouts (sway, Hyprland, i3)",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:53:04.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119465",
+        "id": "d8b3d103-81d0-525b-8624-1f7acefd7c37",
+        "points": 1,
+        "sourceUrl": "https://grist.org/extreme-heat/these-psychedelic-images-reveal-what-your-weather-app-isnt-telling-you/",
+        "state": "CANDIDATE",
+        "title": "Psychedelic images reveal what your weather app isn't telling you",
+        "topic": "grist.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:52:29.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119460",
+        "id": "efac284e-5fa4-551f-ac0c-3dc99b974ba0",
+        "points": 2,
+        "sourceUrl": "https://lore.kernel.org/lkml/CAKSQd8WxM75DeZvovYXkt2c60ftHeEW_gpf0qTxaLF8i8kjm=w@mail.gmail.com/",
+        "state": "CANDIDATE",
+        "title": "x86 AMX/ACE with >8 tiles",
+        "topic": "lore.kernel.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:52:25.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119458",
+        "id": "fb6c16ee-3b12-564f-9d6a-68799f156074",
+        "points": 1,
+        "sourceUrl": "https://quizpaste.com/",
+        "state": "CANDIDATE",
+        "title": "Show HN: QuizPaste – paste any text or doc, get an instant quiz",
+        "topic": "quizpaste.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:45:13.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119425",
+        "id": "27b95e6f-a1d9-5603-b539-d4227b641e52",
+        "points": 2,
+        "sourceUrl": "https://github.com/mokshablr/gander",
+        "state": "CANDIDATE",
+        "title": "Show HN: Gander, an Android file viewer that asks for no permissions at all",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:43:47.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119420",
+        "id": "5c31aff7-8048-5c54-a507-68c7279dee62",
+        "points": 1,
+        "sourceUrl": "https://www.youtube.com/watch?v=O3BJtUssbhQ",
+        "state": "CANDIDATE",
+        "title": "Book Time: Automatic Page Turner from Japan [video]",
+        "topic": "youtube.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:42:08.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119404",
+        "id": "fa7b5641-7465-5b1e-8287-37f17b722e94",
+        "points": 3,
+        "sourceUrl": "https://www.cbc.ca/news/science/eflect-orbital-approval-FCC-9.7287535",
+        "state": "CANDIDATE",
+        "title": "U.S. FCC approves giant space mirror to deliver 'sunlight on demand'",
+        "topic": "cbc.ca"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:40:28.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119396",
+        "id": "b63abd46-c223-566d-948a-7a3115f068d4",
+        "points": 1,
+        "sourceUrl": "https://www.nytimes.com/wirecutter/reviews/give-up-on-ceramic-nonstick-pans/",
+        "state": "CANDIDATE",
+        "title": "It's Time to Give Up on the Nonstick Pan as We Know It",
+        "topic": "nytimes.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:36:28.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119380",
+        "id": "06f68395-5c4c-5a92-9657-67c10cdd2a9f",
+        "points": 3,
+        "sourceUrl": "https://www.youtube.com/watch?v=RJdgh9eEZvw",
+        "state": "CANDIDATE",
+        "title": "Martin Shkreli Breaks Down the Collapse of Situational Awareness [video]",
+        "topic": "youtube.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:36:28.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119382",
+        "id": "1599b91f-f663-5bc6-a1ec-77946e3bbd4c",
+        "points": 1,
+        "sourceUrl": "https://projectcostestimator.com",
+        "state": "CANDIDATE",
+        "title": "I built a website cost calculator with 9 engines",
+        "topic": "projectcostestimator.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:29:47.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119344",
+        "id": "7a080de0-4087-58b1-8750-cc99e3a4d2ee",
+        "points": 4,
+        "sourceUrl": "https://pressgazette.co.uk/publishers/digital-journalism/first-tremors-of-ai-earthquake-showing-in-digital-revenue-hit/",
+        "state": "CANDIDATE",
+        "title": "'First tremors' of AI earthquake showing in digital revenue hit",
+        "topic": "pressgazette.co.uk"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:26:13.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119322",
+        "id": "48a5d02b-68a2-52e6-ab20-f7b79943e523",
+        "points": 4,
+        "sourceUrl": "https://human2llm.pages.dev/",
+        "state": "CANDIDATE",
+        "title": "Human Honeypot",
+        "topic": "human2llm.pages.dev"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:25:24.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119315",
+        "id": "a694d9ca-9c91-52ed-91fc-bd88874fe567",
+        "points": 2,
+        "sourceUrl": "https://pagarevijayy.substack.com/p/critical-rendering-path-the-foundation",
+        "state": "CANDIDATE",
+        "title": "Critical Rendering Path: The Foundation of Web Performance [Part 1]",
+        "topic": "pagarevijayy.substack.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T05:22:18.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119293",
+        "id": "16f4770d-2d3a-5eef-8f30-6a62d4dda981",
+        "points": 4,
+        "sourceUrl": "https://www.cnbc.com/2026/07/30/leopold-aschenbrenners-hedge-fund-is-facing-steep-ai-losses.html",
+        "state": "CANDIDATE",
+        "title": "Aschenbrenner's hedge fund forced to unwind all public stock positions",
+        "topic": "cnbc.com"
+      },
+      {
+        "deepAnalysisCount": 1,
+        "discoveredAt": "2026-07-31T05:19:46.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119284",
+        "id": "8c60a656-7bf5-5f1a-988f-340a8dda6f27",
+        "points": 4,
+        "sourceUrl": "https://www.latimes.com/business/story/2026-07-29/nvidias-750-billion-ai-bet-deepens-fears-of-circular-tech-bubble",
+        "state": "ANALYZED",
+        "title": "Nvidia's $750B AI bet deepens fears of a circular tech bubble",
+        "topic": "latimes.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T07:10:56.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49066066",
+        "id": "c1064e3f-5e3c-5f95-bee6-0098bcd953a8",
+        "points": 2,
+        "sourceUrl": null,
+        "state": "CANDIDATE",
+        "title": "Show HN: How to Resolve Software Deployment Issues with SeaTicket in 4 Steps",
+        "topic": "deployment"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T07:07:55.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49066049",
+        "id": "9d008d58-6b16-5255-bd6d-5762429cb6a9",
+        "points": 1,
+        "sourceUrl": "https://www.economist.com/china/2026/07/16/china-wants-to-end-ai-romances",
+        "state": "CANDIDATE",
+        "title": "China wants to end AI romances",
+        "topic": "economist.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T07:07:26.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49066044",
+        "id": "d618526e-7b59-5d14-b4fa-abe7d9dc0cd1",
+        "points": 1,
+        "sourceUrl": "https://codeberg.org/joexo/write",
+        "state": "CANDIDATE",
+        "title": "Show HN: 'Write' – A Markdown Editor in the Browser",
+        "topic": "codeberg.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T07:03:32.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49066018",
+        "id": "acf7d96b-a207-55b3-93f2-87133a6fdff5",
+        "points": 1,
+        "sourceUrl": "https://chromewebstore.google.com/detail/repost-api-tester/eipmeckflplenlbnlhbpmjojahephhkp",
+        "state": "CANDIDATE",
+        "title": "API Testing Chrome Extension",
+        "topic": "chromewebstore.google.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T07:01:01.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49066005",
+        "id": "9194a2b4-fe96-564d-9e50-cf4f942cd1e1",
+        "points": 1,
+        "sourceUrl": "https://www.lesswrong.com/posts/Mxx5GapJtqyQtpy96/openai-s-myopia-keeps-causing-alignment-problems",
+        "state": "CANDIDATE",
+        "title": "OpenAI's myopia keeps causing alignment problems",
+        "topic": "lesswrong.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T07:00:22.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49066000",
+        "id": "9fa5bb77-574f-549d-97e7-f027f0cb94ab",
+        "points": 1,
+        "sourceUrl": "https://agenthost.space/",
+        "state": "CANDIDATE",
+        "title": "AgentHost – Persistent, governed AI agents in your own cloud",
+        "topic": "agenthost.space"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:59:31.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065994",
+        "id": "8c9c1bee-2309-59c7-9dd7-6ca6ea09e15b",
+        "points": 1,
+        "sourceUrl": "https://fzakaria.com/2026/07/26/seriously-what-is-the-large-code-model-even-for",
+        "state": "CANDIDATE",
+        "title": "Seriously, what is the large code-model even for?",
+        "topic": "fzakaria.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:55:28.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065980",
+        "id": "0d950ae3-cb5e-5b33-aa91-aa860c729234",
+        "points": 1,
+        "sourceUrl": "https://finance.yahoo.com/healthcare/articles/sodaslim-releases-updated-2026-highlights-122400710.html",
+        "state": "CANDIDATE",
+        "title": "Sodaslim| Natural Weight Management Support",
+        "topic": "finance.yahoo.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:54:56.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065977",
+        "id": "0f30205e-bebc-554e-9064-15fe26575894",
+        "points": 2,
+        "sourceUrl": "https://www.youtube.com/watch?v=vS6HEes8daw",
+        "state": "CANDIDATE",
+        "title": "The Problem with Capitalism – Smarter Every Day [video]",
+        "topic": "youtube.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:52:01.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065956",
+        "id": "149d2000-1176-5cfa-a915-1912b3926c26",
+        "points": 1,
+        "sourceUrl": "https://github.com/woosal1337/blog/tree/main/videos/ep01-the-cure-for-ai-slop",
+        "state": "CANDIDATE",
+        "title": "ASD-STE100 Simplified Technical English for LLMs",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:50:03.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065937",
+        "id": "33523eb9-4207-52e4-8c9a-3d56e407ec2b",
+        "points": 1,
+        "sourceUrl": "https://officeimo.com/",
+        "state": "CANDIDATE",
+        "title": "Word, Excel, PowerPoint, Markdown, PowerPoint, Visio, OneNote, Email as C#/MIT",
+        "topic": "officeimo.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:48:37.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065929",
+        "id": "99f14810-191b-5bc2-828e-5fa18ffb622c",
+        "points": 1,
+        "sourceUrl": "https://tangled.org/pds.dad/lexidraw",
+        "state": "CANDIDATE",
+        "title": "Lexidraw: Excalidraw fork with collaborative editing powered by iroh",
+        "topic": "tangled.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:45:08.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065903",
+        "id": "7174d8ed-af72-5d4e-b968-4386503d8d53",
+        "points": 1,
+        "sourceUrl": "https://github.com/YoniRaviv/Relay",
+        "state": "CANDIDATE",
+        "title": "Show HN: Relay – turn Claude Code into a visual Kanban build loop",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:38:54.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065874",
+        "id": "a7e0af70-1d52-50ae-80ef-dbbcf3d60c30",
+        "points": 1,
+        "sourceUrl": "https://www.n16f.net/blog/concurrency-interactivity-mutability-choose-two/",
+        "state": "CANDIDATE",
+        "title": "Concurrency, interactivity, mutability, choose two",
+        "topic": "n16f.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:37:21.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065869",
+        "id": "b93edc01-bffb-5cb1-9202-7f3e6e65c8e3",
+        "points": 1,
+        "sourceUrl": "https://www.reuters.com/business/world-at-work/germanys-sick-note-crackdown-may-be-treating-symptoms-not-disease-2026-07-27/",
+        "state": "CANDIDATE",
+        "title": "Germany's sick-note crackdown may be treating the symptoms, not the disease",
+        "topic": "reuters.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:34:18.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065854",
+        "id": "d2f79ced-3180-5320-ac97-aaf8993622c3",
+        "points": 1,
+        "sourceUrl": "https://wordeq.app/",
+        "state": "CANDIDATE",
+        "title": "Show HN: WordEq",
+        "topic": "wordeq.app"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:33:07.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065847",
+        "id": "5591e85f-461e-55f7-8680-69b4a4921bdb",
+        "points": 3,
+        "sourceUrl": "https://medium.com/@DolphinDB_Inc/high-performance-factor-evaluation-with-dolphindb-23bb6954503f",
+        "state": "CANDIDATE",
+        "title": "High-Performance Factor Evaluation",
+        "topic": "medium.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:30:23.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065834",
+        "id": "0589fc72-3f24-5ed1-9912-d87cccaf2025",
+        "points": 1,
+        "sourceUrl": null,
+        "state": "CANDIDATE",
+        "title": "Show HN: Case study: A coding agent refactors a 750k LOC app, no code review",
+        "topic": "refactors"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:30:15.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065830",
+        "id": "89e72a7d-0a2d-5ea3-9e5c-a204dc00d8aa",
+        "points": 1,
+        "sourceUrl": "https://www.youtube.com/watch?v=L0iIW6wpSGQ",
+        "state": "CANDIDATE",
+        "title": "Apple Sues OpenAI: The 41-Page Lawsuit Exposing Their Secret War: Lawsuit",
+        "topic": "youtube.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:29:49.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065825",
+        "id": "d6911b5f-467d-5415-b02f-2a72261ddee8",
+        "points": 1,
+        "sourceUrl": "https://asciinema.org/s/HS1tpO6cjFsaSzS7",
+        "state": "CANDIDATE",
+        "title": "Show HN: Codex Plays NetHack",
+        "topic": "asciinema.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:27:38.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065810",
+        "id": "cdd19a4e-de3b-5981-a981-878cba49689d",
+        "points": 1,
+        "sourceUrl": null,
+        "state": "CANDIDATE",
+        "title": "Ask HN: Are we having a substantial increase of \"Show HN\" since LLM aided coding",
+        "topic": "substantial"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:26:52.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065804",
+        "id": "241df712-59fb-562f-8d37-6d02fccd6fca",
+        "points": 1,
+        "sourceUrl": "https://opensparrow.org/en/",
+        "state": "CANDIDATE",
+        "title": "OpenSparrow v3.0 is out. The GDPR anonymization module",
+        "topic": "opensparrow.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:26:40.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065802",
+        "id": "a8711f18-144c-5374-aadf-56359fbf2f5f",
+        "points": 1,
+        "sourceUrl": "https://github.com/kyzrxe-max/agent-guard",
+        "state": "CANDIDATE",
+        "title": "AgentControl",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:23:46.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065785",
+        "id": "52c4d3eb-4335-5e42-ad02-6bc9d5894a57",
+        "points": 1,
+        "sourceUrl": "https://alsterrunde.com/hamburgs-stadtpark-a-park-built-to-be-used/",
+        "state": "CANDIDATE",
+        "title": "Hamburg's Stadtpark: A Park Built to Be Used",
+        "topic": "alsterrunde.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:22:56.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065779",
+        "id": "31b7c432-04a0-570e-98f9-d9c8c9affa5b",
+        "points": 2,
+        "sourceUrl": "https://github.com/wassgha/rescript",
+        "state": "CANDIDATE",
+        "title": "Show HN: Descript wanted $24/mo, I built an open-source alternative in a weekend",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:18:10.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065752",
+        "id": "cad60d51-13cb-5f7f-939b-4d2001555119",
+        "points": 8,
+        "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K3",
+        "state": "CANDIDATE",
+        "title": "Kimi-K3 Releases on HuggingFace 6/27",
+        "topic": "huggingface.co"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:16:09.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065739",
+        "id": "e4838a6d-553c-5416-89ad-87af3ef9ad41",
+        "points": 1,
+        "sourceUrl": "https://maxfield.lol/blog/proprietary-software/",
+        "state": "CANDIDATE",
+        "title": "If your code leaked tomorrow, would it matter?",
+        "topic": "maxfield.lol"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:15:54.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065738",
+        "id": "d2a0947b-2645-5b72-9136-fcc3bb120075",
+        "points": 1,
+        "sourceUrl": "https://github.com/CyrusNuevoDia/skill-language-server",
+        "state": "CANDIDATE",
+        "title": "Show HN: Skill-language-server – A language server for agent skills",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:14:06.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065725",
+        "id": "4615fad5-96c6-5463-92c1-997b7fda8f71",
+        "points": 1,
+        "sourceUrl": "https://blog.mozilla.org/en/firefox/when-it-comes-to-privacy-default-settings-matter/",
+        "state": "CANDIDATE",
+        "title": "When it comes to privacy, default settings matter (2019)",
+        "topic": "blog.mozilla.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:13:28.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065721",
+        "id": "ef8b57ae-f6b4-5011-b6fa-4f88a6849d96",
+        "points": 1,
+        "sourceUrl": "https://github.com/sheetmusic4j/sheetmusic4j",
+        "state": "CANDIDATE",
+        "title": "Sheetmusic4j: A JavaFX library for rendering interactive sheet music",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:12:08.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065710",
+        "id": "e4fb09dc-2af6-5528-aa8a-e864984b76c8",
+        "points": 1,
+        "sourceUrl": "http://www.synack.net/~bbraun/writing/osfail.html",
+        "state": "CANDIDATE",
+        "title": "Why Darwin Failed (2006)",
+        "topic": "synack.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:06:00.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065683",
+        "id": "1f713e7d-c2a5-5de4-a2c6-3263e28b407c",
+        "points": 2,
+        "sourceUrl": "https://medium.com/@kisnorbert87/what-if-the-cosmological-constant-is-encoded-in-the-standard-model-itself-9ff4ba870374",
+        "state": "CANDIDATE",
+        "title": "One number, two universes. Coincidence or clue?",
+        "topic": "medium.com"
+      },
+      {
+        "deepAnalysisCount": 1,
+        "discoveredAt": "2026-07-27T06:03:56.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065674",
+        "id": "089db3dc-79db-57ec-acc5-56a895cb7a84",
+        "points": 1,
+        "sourceUrl": "https://github.com/reillyjodonnell/react-driller",
+        "state": "ANALYZED",
+        "title": "React Driller",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T06:03:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065668",
+        "id": "954bab64-e164-5710-8909-dd5e285d4b05",
+        "points": 1,
+        "sourceUrl": null,
+        "state": "CANDIDATE",
+        "title": "Ask HN: Any New Computer Ideas?",
+        "topic": "computer"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:59:10.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065644",
+        "id": "f7d3024f-a53f-5602-8b06-8f9a7b157b9c",
+        "points": 1,
+        "sourceUrl": "https://statskit.ai/",
+        "state": "CANDIDATE",
+        "title": "Show HN: StatsKit – Product Analytics and A/B Testing",
+        "topic": "statskit.ai"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:57:53.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065633",
+        "id": "2ac0351c-0615-5071-94c5-6bef44d32b0b",
+        "points": 1,
+        "sourceUrl": "https://github.com/8NobleTruths/sabba",
+        "state": "CANDIDATE",
+        "title": "Show HN: Sabba, a security bug finder that proves every finding by running it",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:53:51.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065611",
+        "id": "14e7fe27-3eed-5186-a409-4b48bd5c806e",
+        "points": 2,
+        "sourceUrl": "https://also.roybahat.com/giving-money-away-can-be-harder-than-making-it-4f4e52208741",
+        "state": "CANDIDATE",
+        "title": "Giving Money Away Can Be Harder Than Making It",
+        "topic": "also.roybahat.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:49:38.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065584",
+        "id": "401e31e1-2aca-571a-be94-8c709ca7f6d4",
+        "points": 1,
+        "sourceUrl": "https://newspeaklanguage.org/Live22Paper.html?snapshot=AmpleforthViewer.vfuel&docName=Live22Paper",
+        "state": "CANDIDATE",
+        "title": "Ampleforth: A Live Literate Editor",
+        "topic": "newspeaklanguage.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:39:33.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065540",
+        "id": "8a58c1b4-8967-506c-b8e8-b6c263d0bcb8",
+        "points": 1,
+        "sourceUrl": "https://quuxplusone.github.io/blog/2026/07/26/function-explosion/",
+        "state": "CANDIDATE",
+        "title": "Interconverting Std:Function with Copyable_function",
+        "topic": "quuxplusone.github.io"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:39:14.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065538",
+        "id": "cf1dcd05-7746-5b2a-85ca-23e12670e66d",
+        "points": 2,
+        "sourceUrl": "https://medium.com/@DolphinDB_Inc/beyond-vectorization-dolphindbs-jit-compiler-gets-a-ground-up-rebuild-911ebf960fd6",
+        "state": "CANDIDATE",
+        "title": "JIT for the Code Vectorization Can't Optimize",
+        "topic": "medium.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:38:56.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065536",
+        "id": "8c0dc7b4-556a-5b27-9401-809c3840074e",
+        "points": 1,
+        "sourceUrl": "https://dl.acm.org/doi/10.1145/3787521",
+        "state": "CANDIDATE",
+        "title": "A practical partitioner for distributed simulations on sparse dynamic domains",
+        "topic": "dl.acm.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:38:17.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065528",
+        "id": "fc2ef191-7d81-5f43-8753-20a9bf588fc7",
+        "points": 1,
+        "sourceUrl": "https://twitter.com/TimSweeneyEpic/status/2081458495006634477",
+        "state": "CANDIDATE",
+        "title": "Doing general vibe math in Programming Language Theory",
+        "topic": "twitter.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:37:49.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065527",
+        "id": "5ed2a3f0-d968-5e45-a47a-33d4f1eedf95",
+        "points": 2,
+        "sourceUrl": "https://www.simplegantt.net",
+        "state": "CANDIDATE",
+        "title": "I built a project management tool because every alternative felt too complicated",
+        "topic": "simplegantt.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:37:25.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065524",
+        "id": "75103d57-212a-5e63-b902-b02d72a7838b",
+        "points": 1,
+        "sourceUrl": "https://rohboter.com/",
+        "state": "CANDIDATE",
+        "title": "Searching for Robots Is Surprisingly Hard",
+        "topic": "rohboter.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:37:17.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065522",
+        "id": "e3af30f6-e947-528c-ba42-253ea5b8ed6a",
+        "points": 1,
+        "sourceUrl": "https://op-co.de/blog/posts/mikrotik_authoritative_dnsmasq/",
+        "state": "CANDIDATE",
+        "title": "Authoritative Dnsmasq in a MikroTik Container",
+        "topic": "op-co.de"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:31:33.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065498",
+        "id": "66064f58-a565-5630-98c0-015721f66212",
+        "points": 5,
+        "sourceUrl": "https://www.wsj.com/tech/google-fined-1-02-billion-under-eus-tech-antitrust-rules-7e8ae1fb",
+        "state": "CANDIDATE",
+        "title": "EU Fines Google $1.02B for Favoring Its Own Services",
+        "topic": "wsj.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-27T05:29:06.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49065485",
+        "id": "43112364-d609-5dcb-9af8-503fa7803b05",
+        "points": 1,
+        "sourceUrl": "https://www.wsj.com/business/autos/waymo-is-racking-up-thousands-of-dollars-of-parking-fines-in-austin-d41483f5",
+        "state": "CANDIDATE",
+        "title": "Waymo Is Racking Up Thousands of Dollars of Parking Fines in Austin",
+        "topic": "wsj.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:19:56.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018395",
+        "id": "430d36f6-16ff-5e3a-afc3-fdc8eb2b17e7",
+        "points": 1,
+        "sourceUrl": "https://www.wsj.com/finance/stocks/how-wall-streets-bots-are-cashing-in-on-trumps-truth-social-posts-572f9dfd",
+        "state": "CANDIDATE",
+        "title": "Wall Street's Bots Are Cashing in on Trump's Truth Social Posts",
+        "topic": "wsj.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:18:00.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018380",
+        "id": "9f05d6f3-eb7b-593d-9451-ab5340724c41",
+        "points": 2,
+        "sourceUrl": "http://schwitzsplinters.blogspot.com/2026/07/ai-slop-and-evidence-about-evidence-why.html",
+        "state": "CANDIDATE",
+        "title": "AI Slop: Why Philosophy Journals Should Reject AI-Written Prose",
+        "topic": "schwitzsplinters.blogspot.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:16:57.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018371",
+        "id": "dd7eaea3-6e58-5e83-ba7e-73913ea7a942",
+        "points": 1,
+        "sourceUrl": "https://meeting.tencent.com/dm/4bzAAZGmA84b",
+        "state": "CANDIDATE",
+        "title": "Deep Dive into SeaTunnel Engine: How FlushSignal Drives Architecture Evolution",
+        "topic": "meeting.tencent.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:14:51.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018358",
+        "id": "72f674a5-a1e0-5742-a889-a23fd7ca8920",
+        "points": 1,
+        "sourceUrl": "https://citizens-initiative.europa.eu/initiatives/details/2026/000011_en",
+        "state": "CANDIDATE",
+        "title": "Stop Killing the Internet (European Citizens' Initiative)",
+        "topic": "citizens-initiative.europa.eu"
+      },
+      {
+        "deepAnalysisCount": 1,
+        "discoveredAt": "2026-07-23T08:14:01.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018352",
+        "id": "997702a3-6550-5384-8b47-3c7b130266be",
+        "points": 1,
+        "sourceUrl": "https://github.com/openfde/openfde/blob/main/README.en.md",
+        "state": "ANALYZED",
+        "title": "Show HN: OpenFDE – Can Running Native Android Apps and Android Studio on Linux",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:13:08.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018348",
+        "id": "221c1da8-5f72-5572-9dc8-ddb9e554b88d",
+        "points": 1,
+        "sourceUrl": "https://www.foundersmcp.com",
+        "state": "CANDIDATE",
+        "title": "Founders OS – open-source MCP server that gives AI your business context",
+        "topic": "foundersmcp.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:11:01.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018334",
+        "id": "865f7d32-dac9-52d7-93a2-8b6ca713e5d6",
+        "points": 1,
+        "sourceUrl": "https://www.mixfont.com/blog/ai-agents-dont-respect-font-licenses",
+        "state": "CANDIDATE",
+        "title": "AI Agents Don't Respect Font Licenses",
+        "topic": "mixfont.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:07:16.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018305",
+        "id": "2b183cf0-df3e-5d79-953a-386eb871cf6e",
+        "points": 2,
+        "sourceUrl": "https://support.microsoft.com/en-us/teams/free/settings/teams-free-availability-china",
+        "state": "CANDIDATE",
+        "title": "Microsoft Teams will be blocked in China from July 28th 2026",
+        "topic": "support.microsoft.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:06:32.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018302",
+        "id": "0fde7713-fc1e-5161-a084-41bdaa321955",
+        "points": 1,
+        "sourceUrl": "https://phys.org/news/2026-07-private-mission-life-gas-communication.html",
+        "state": "CANDIDATE",
+        "title": "Private mission launches to extend life of out-of-gas communication satellites",
+        "topic": "phys.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:03:16.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018280",
+        "id": "9ff58336-7ed1-55e8-9aad-55bafe867267",
+        "points": 1,
+        "sourceUrl": "https://github.com/unikum-sol/brainstem",
+        "state": "CANDIDATE",
+        "title": "BrainStem: Open‑source bio‑inspired AI with 12 neuromodulators for learning",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:00:08.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018266",
+        "id": "58f5dbc4-85eb-5557-acbe-fe65a5e50e8f",
+        "points": 1,
+        "sourceUrl": "https://www.economist.com/by-invitation/2026/07/09/why-a-broken-russia-is-bad-for-the-world",
+        "state": "CANDIDATE",
+        "title": "Why a Broken Russia Is Bad for the World",
+        "topic": "economist.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T08:00:02.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018265",
+        "id": "5c558619-dd8f-5556-981f-fff0e5995dd5",
+        "points": 1,
+        "sourceUrl": "https://www.isdglobal.org/wp-content/uploads/2025/02/The-use-of-generative-AI-by-the-German-Far-Right.pdf",
+        "state": "CANDIDATE",
+        "title": "Generative AI and the German Far Right: Narratives, Tactics, Digital Strategies [pdf]",
+        "topic": "isdglobal.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:56:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018234",
+        "id": "c311d38b-f598-5007-804f-5b358415ca3e",
+        "points": 3,
+        "sourceUrl": "https://www.anthropic.com/news/claude-for-teachers",
+        "state": "CANDIDATE",
+        "title": "Claude for Teachers",
+        "topic": "anthropic.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:52:05.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018203",
+        "id": "08a2aa65-7a98-5ceb-bf21-34b25c042777",
+        "points": 1,
+        "sourceUrl": "https://www.ft.com/content/0c773366-61a2-4d33-894e-6b3ddfcfd9b3",
+        "state": "CANDIDATE",
+        "title": "Why the US is losing Chinese AI stars",
+        "topic": "ft.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:48:47.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018175",
+        "id": "7ec20878-2bee-5aba-ab58-61802bef2379",
+        "points": 1,
+        "sourceUrl": "https://github.com/HeyMeco/MecoSerial",
+        "state": "CANDIDATE",
+        "title": "Show HN: Modern Serial Console for macOS based on libghostty written in Swift",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:47:13.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018165",
+        "id": "b2834001-0559-59c1-baec-56a4b1bde6b3",
+        "points": 1,
+        "sourceUrl": "https://github.com/bossandboss/Ai-Firewall",
+        "state": "CANDIDATE",
+        "title": "AI Firewall – Security Gateway and Reverse Proxy for LLM Traffic",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:47:03.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018164",
+        "id": "70d4375d-86b6-54f0-b7ff-aae6f17d4fb6",
+        "points": 2,
+        "sourceUrl": "https://www.jimgoad.net/bayaryan.html",
+        "state": "CANDIDATE",
+        "title": "Bay Aryan Resistance",
+        "topic": "jimgoad.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:44:44.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018145",
+        "id": "b7f4abb0-608a-52ce-be69-bd7dda176ac7",
+        "points": 2,
+        "sourceUrl": "https://lovelace.co/",
+        "state": "CANDIDATE",
+        "title": "Lovelace – project management that lives in your repo",
+        "topic": "lovelace.co"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:43:56.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018140",
+        "id": "76f8829f-db06-5b70-9c4e-ce49bfd42393",
+        "points": 2,
+        "sourceUrl": "https://www.blurit.org/",
+        "state": "CANDIDATE",
+        "title": "Show HN: Blurit – anonymous, text-only public posting board, no accounts",
+        "topic": "blurit.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:43:02.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018135",
+        "id": "02cc644a-7415-5100-bf94-c0e7369fe213",
+        "points": 1,
+        "sourceUrl": "https://planpromethee.com/en/",
+        "state": "CANDIDATE",
+        "title": "Plan Prométhée – a plan for France to build 12GW of compute",
+        "topic": "planpromethee.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:41:05.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018124",
+        "id": "2d36149f-870d-5627-9f72-833000e976bf",
+        "points": 2,
+        "sourceUrl": null,
+        "state": "CANDIDATE",
+        "title": "Ask HN: What's the most secure way to run a local model?",
+        "topic": "secure"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-23T07:40:40.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49018116",
+        "id": "fd74a781-1eb2-5f81-81b8-396c4d3268cd",
+        "points": 2,
+        "sourceUrl": "https://hoja-solutions.github.io/blog/state-of-local-models/",
+        "state": "CANDIDATE",
+        "title": "From a Raspberry Pi to a DGX Spark: the state of local models in 2026",
+        "topic": "hoja-solutions.github.io"
+      }
+    ],
+    "verdicts": [
+      {
+        "alertWorthiness": 0.71481,
+        "confidence": 0.685,
+        "contributions": [
+          {
+            "component": "capability_overlap",
+            "explanation": "Capability overlap was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+            "rawValue": 0.7,
+            "weight": 0.2,
+            "weightedValue": 0.14
+          },
+          {
+            "component": "dependency_impact",
+            "explanation": "Dependency impact was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+            "rawValue": 0.8,
+            "weight": 0.2,
+            "weightedValue": 0.16
+          },
+          {
+            "component": "evidence_quality",
+            "explanation": "Evidence quality was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+            "rawValue": 0.6,
+            "weight": 0.1,
+            "weightedValue": 0.06
+          },
+          {
+            "component": "solution_adjacency",
+            "explanation": "Solution adjacency was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+            "rawValue": 0.7,
+            "weight": 0.1,
+            "weightedValue": 0.07
+          },
+          {
+            "component": "strategic_relevance",
+            "explanation": "Strategic relevance was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+            "rawValue": 0.8,
+            "weight": 0.3,
+            "weightedValue": 0.24
+          },
+          {
+            "component": "user_pain_signal",
+            "explanation": "User pain signal was scored from the reviewed profile and cited evidence. Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+            "rawValue": 0.5,
+            "weight": 0.1,
+            "weightedValue": 0.05
+          }
+        ],
+        "createdAt": "2026-07-30T23:22:26.032-07:00",
+        "evidence": [
+          {
+            "excerpt": "Nvidia's $750B AI bet deepens fears of a circular tech bubble.",
+            "id": "fcc82b37-2a9d-534d-a6d7-5854b3bc2752",
+            "label": "Hacker News story",
+            "publishedAt": "2026-07-31T05:19:46.000-07:00",
+            "sourceKind": "HN_STORY",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49119284"
+          },
+          {
+            "excerpt": "# AI Change Observatory\n\nAI Change Observatory is a vendor-neutral intelligence workspace for product and engineering teams\nthat build, buy, or operate AI-enabled software. It helps teams decide which developments in the\nfast-moving AI ecosystem deserve investigation and which can be ignored.\n\n## Who it serves\n\n- Product leaders planning AI capabilities and provider strategy\n- Engineering teams operating production AI applications\n- Founders comparing models, platforms, and open-source alternatives\n- Technical program leads tracking cost, reliability, security, and licensing risk\n\n## Core capabilities\n\n- Monitor meaningful model releases, model API changes, deprecations, and pricing updates\n- Track AI agents, coding assistants, inference systems, and developer tooling\n- Compare hosted and open-source language models, multimodal models, and embedding models\n- Identify changes in retrieval, RAG, vector search, evaluation, and model observability\n- Track AI security, safety, policy, copyright, and licensing developments\n- Turn a relevant change into an evidence-backed investigation or benchmarking action\n\n## Technology context\n\nThe project is provider neutral. Relevant technologies in",
+            "id": "536b16c2-abf0-5dfb-95a4-ae7cf295dcff",
+            "label": "Reviewed project README",
+            "publishedAt": "2026-07-30T23:18:07.145-07:00",
+            "sourceKind": "PROJECT",
+            "sourceUrl": null
+          }
+        ],
+        "headline": "Nvidia's $750B AI bet deepens fears of a circular tech bubble.",
+        "id": "d9d96629-3d2c-58fd-a8be-4d6874acebf0",
+        "impactPeak": 0.8,
+        "impactType": "OPPORTUNITY",
+        "opportunity": 0.675,
+        "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+        "projectName": "AI Change Observatory",
+        "protectiveFactors": [
+          "The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies."
+        ],
+        "publishedAt": "2026-07-30T23:22:26.032-07:00",
+        "recommendations": [
+          "Investigate Nvidia's AI Investments: Investigate the implications of Nvidia's AI investments on the AI ecosystem and potential impacts on the project's dependencies and capabilities."
+        ],
+        "relevance": 0.72,
+        "replacementPressure": 0.435,
+        "signalId": "8c60a656-7bf5-5f1a-988f-340a8dda6f27",
+        "summary": "Nvidia's significant investment in AI could have implications for the AI ecosystem, potentially affecting the project's dependencies and capabilities. The project's provider-neutral stance and focus on evidence-backed actions help mitigate the risks associated with overhyped technologies.",
+        "threat": 0.515,
+        "uncertainty": "The specific impacts of Nvidia's investments on the AI ecosystem are not yet clear.",
+        "urgency": 0.67375
+      }
+    ]
+  }
+}

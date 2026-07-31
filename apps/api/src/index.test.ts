@@ -1,7 +1,8 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { z } from "zod";
 
 import { app } from "./index";
+import { snowflakeApi } from "./snowflake/client";
 
 const origin = "https://consera.example";
 const bindings = {
@@ -50,6 +51,11 @@ async function startSession(): Promise<{
   if (!cookie) throw new Error("SESSION_COOKIE_MISSING");
   return { cookie, csrfToken: parsed.data.csrfToken, response };
 }
+
+afterEach(() => {
+  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
+});
 
 describe("public application session", () => {
   it("starts automatically with a hardened browser cookie", async () => {
@@ -126,5 +132,44 @@ describe("public application session", () => {
 
     expect(response.status).toBe(404);
     expect(parsed.error.code).toBe("NOT_FOUND");
+  });
+
+  it("invalidates the current edge workspace after dispatching a manual run", async () => {
+    const { cookie, csrfToken } = await startSession();
+    const deleteCached = vi.fn(() => Promise.resolve(true));
+    vi.stubGlobal("caches", {
+      default: {
+        delete: deleteCached,
+        match: vi.fn(),
+        put: vi.fn(),
+      },
+    });
+    vi.spyOn(snowflakeApi, "manualIngestion").mockResolvedValue({
+      dispatchRequired: true,
+      runId: crypto.randomUUID(),
+      state: "QUEUED",
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() => Promise.resolve(new Response(null, { status: 204 }))),
+    );
+
+    const response = await app.request(
+      `${origin}/api/v1/ingestion/run`,
+      {
+        body: JSON.stringify({ idempotencyKey: crypto.randomUUID() }),
+        headers: {
+          cookie,
+          "content-type": "application/json",
+          origin,
+          "x-consera-csrf": csrfToken,
+        },
+        method: "POST",
+      },
+      bindings,
+    );
+
+    expect(response.status).toBe(202);
+    expect(deleteCached).toHaveBeenCalledOnce();
   });
 });

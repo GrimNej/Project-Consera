@@ -6,6 +6,7 @@ import {
   projectSchema,
   signalSchema,
   verdictSchema,
+  workspaceContentSchema,
   type AskRequest,
   type CreateProjectRequest,
 } from "@consera/contracts";
@@ -411,4 +412,57 @@ export const snowflakeApi = {
       "verdict",
       verdictSchema,
     ),
+  workspace: async (env: CloudflareBindings, requestId: string) => {
+    const rows = await query(
+      env,
+      `
+      SELECT
+          dashboard.DASHBOARD,
+          (
+              SELECT COALESCE(
+                  ARRAY_AGG(signal_data.SIGNAL)
+                      WITHIN GROUP (ORDER BY signal_data.DISCOVERED_AT DESC),
+                  ARRAY_CONSTRUCT()
+              )
+              FROM (
+                  SELECT SIGNAL, DISCOVERED_AT
+                  FROM CONSERA.APP_API.SIGNAL_V
+                  ORDER BY DISCOVERED_AT DESC
+                  LIMIT 100
+              ) AS signal_data
+          ) AS SIGNALS,
+          (
+              SELECT COALESCE(
+                  ARRAY_AGG(verdict_data.VERDICT)
+                      WITHIN GROUP (ORDER BY verdict_data.PUBLISHED_AT DESC),
+                  ARRAY_CONSTRUCT()
+              )
+              FROM (
+                  SELECT VERDICT, PUBLISHED_AT
+                  FROM CONSERA.APP_API.VERDICT_V
+                  ORDER BY PUBLISHED_AT DESC
+                  LIMIT 100
+              ) AS verdict_data
+          ) AS VERDICTS,
+          (
+              SELECT COALESCE(
+                  ARRAY_AGG(alert_data.ALERT)
+                      WITHIN GROUP (ORDER BY alert_data.CREATED_AT DESC),
+                  ARRAY_CONSTRUCT()
+              )
+              FROM (
+                  SELECT ALERT, CREATED_AT
+                  FROM CONSERA.APP_API.ALERT_V
+                  ORDER BY CREATED_AT DESC
+                  LIMIT 100
+              ) AS alert_data
+          ) AS ALERTS
+      FROM CONSERA.APP_API.DASHBOARD_V AS dashboard
+      LIMIT 1
+      `,
+      [],
+      requestId,
+    );
+    return workspaceContentSchema.parse(rows[0]);
+  },
 } as const;

@@ -1,19 +1,13 @@
 import {
-  alertSchema,
   askResponseSchema,
-  dashboardSchema,
   projectProfileDraftSchema,
   projectSchema,
-  signalSchema,
-  verdictSchema,
-  type Alert,
+  workspaceSchema,
   type AskResponse,
-  type Dashboard,
   type Project,
   type ProjectProfile,
   type ProjectProfileDraft,
-  type Signal,
-  type Verdict,
+  type Workspace,
 } from "@consera/contracts";
 import {
   fixtureAlerts,
@@ -111,12 +105,7 @@ async function request<T>(
   return result.data.data;
 }
 
-export type WorkspaceData = Readonly<{
-  alerts: Alert[];
-  dashboard: Dashboard;
-  signals: Signal[];
-  verdicts: Verdict[];
-}>;
+export type WorkspaceData = Workspace;
 
 export const conseraApi = {
   ask: async (projectIds: string[], question: string): Promise<AskResponse> => {
@@ -237,16 +226,15 @@ export const conseraApi = {
         alerts: fixtureAlerts,
         dashboard: fixtureDashboard,
         signals: fixtureSignals,
+        sync: {
+          mode: "LIVE",
+          stale: false,
+          synchronizedAt: new Date().toISOString(),
+        },
         verdicts: fixtureDashboard.topVerdicts,
       };
     }
-    const [dashboard, signals, verdicts, alerts] = await Promise.all([
-      request("/api/v1/dashboard", dashboardSchema),
-      request("/api/v1/signals", signalSchema.array()),
-      request("/api/v1/verdicts", verdictSchema.array()),
-      request("/api/v1/alerts", alertSchema.array()),
-    ]);
-    return { alerts, dashboard, signals, verdicts };
+    return request("/api/v1/workspace", workspaceSchema);
   },
   runIngestion: async (): Promise<z.infer<typeof ingestionRunSchema>> => {
     if (fixtureMode) {

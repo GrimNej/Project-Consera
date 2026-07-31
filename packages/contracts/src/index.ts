@@ -175,6 +175,23 @@ export const dashboardSchema = z.object({
   topVerdicts: z.array(verdictSchema).max(5),
 });
 
+export const workspaceContentSchema = z.object({
+  alerts: z.array(alertSchema).max(100),
+  dashboard: dashboardSchema,
+  signals: z.array(signalSchema).max(100),
+  verdicts: z.array(verdictSchema).max(100),
+});
+
+export const workspaceSyncSchema = z.object({
+  mode: z.enum(["LIVE", "EDGE_CACHE", "DEPLOYED_SNAPSHOT"]),
+  stale: z.boolean(),
+  synchronizedAt: isoDatetimeSchema,
+});
+
+export const workspaceSchema = workspaceContentSchema.extend({
+  sync: workspaceSyncSchema,
+});
+
 export const askRequestSchema = z.object({
   idempotencyKey: z.string().uuid(),
   projectIds: z.array(z.string().uuid()).min(1).max(10),
@@ -234,3 +251,5 @@ export type ProjectProfileDraft = z.infer<typeof projectProfileDraftSchema>;
 export type Signal = z.infer<typeof signalSchema>;
 export type SuppressionReason = z.infer<typeof suppressionReasonSchema>;
 export type Verdict = z.infer<typeof verdictSchema>;
+export type Workspace = z.infer<typeof workspaceSchema>;
+export type WorkspaceContent = z.infer<typeof workspaceContentSchema>;
