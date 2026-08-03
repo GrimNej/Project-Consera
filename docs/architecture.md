@@ -5,10 +5,16 @@ Consera is a Snowflake-native, evidence-bound, silence-first project intelligenc
 ## Runtime boundary
 
 The statically exported Next.js frontend is served from Cloudflare Worker assets. The Hono Worker
-issues a short-lived signed browser session without a login gate, then handles request validation,
-response validation, and a fixed set of Snowflake SQL API operations. Mutations still require a
-matching CSRF token and exact origin. Browser input cannot select SQL, roles, databases, warehouses,
-schemas, views, or procedures.
+checks the private review passkey from an encrypted secret, issues a short-lived signed browser
+session, then handles request validation, response validation, and a fixed set of Snowflake SQL API
+operations. Direct document paths and every API operation require the signed session. Mutations also
+require a matching CSRF token and exact origin. Browser input cannot select SQL, roles, databases,
+warehouses, schemas, views, or procedures.
+
+The access route has local and aggregate edge rate limits. It accepts an exact four-digit Zod
+contract, compares the secret in constant time, and never calls Snowflake. The Worker redirects
+plain HTTP to HTTPS and adds HSTS, a same-origin content policy, clickjacking protection, and secure
+cookie attributes. No passkey value appears in source, static assets, logs, or repository history.
 
 Two independent Snowflake service identities are used:
 

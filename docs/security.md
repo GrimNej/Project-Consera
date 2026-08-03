@@ -8,10 +8,13 @@ runtime configuration.
 
 ## Application controls
 
-- Signed, short-lived, HTTP-only sessions
-- Automatic browser-session issuance with no judge login gate
+- Private four-digit review gate checked only against an encrypted Cloudflare secret
+- Signed, eight-hour, HTTP-only sessions issued only after a successful gate check
+- Local client and aggregate edge rate limits on access attempts
+- Direct page and API authorization at the Worker, not a client-only visual lock
 - CSRF tokens on mutations
 - Exact origin enforcement
+- Explicit HTTP-to-HTTPS redirect, HSTS, CSP, frame denial, and MIME sniffing protection
 - Stateless signed sessions with no Workers KV session store
 - Public read responses cached only after full Zod validation
 - Timestamped read-only deployed snapshot when a cold edge cannot reach Snowflake
@@ -21,8 +24,9 @@ runtime configuration.
 - Bounded upstream and downstream response sizes
 - Sanitized error envelopes and query tags
 
-The signed session protects request integrity and does not claim user identity. The judging release
-is intentionally accessible to anyone who has its URL.
+The shared passkey limits the judging release to invited reviewers but does not identify individual
+people. The signed session proves successful access and protects request integrity. It is not an
+enterprise identity or account-management system.
 
 ## Snowflake controls
 

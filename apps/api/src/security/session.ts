@@ -3,14 +3,14 @@ import { z } from "zod";
 import { constantTimeEqual, hmacSha256, randomToken, sha256 } from "./crypto";
 
 export const SESSION_COOKIE = "__Host-consera_session";
-export const SESSION_MAX_AGE_SECONDS = 1800;
+export const SESSION_MAX_AGE_SECONDS = 8 * 60 * 60;
 
 const sessionSchema = z.object({
   csrfHash: z.string().min(40).max(64),
   exp: z.number().int().positive(),
   iat: z.number().int().positive(),
   nonce: z.string().min(20).max(64),
-  sub: z.literal("browser"),
+  sub: z.literal("judge"),
 });
 
 export type SessionPayload = z.infer<typeof sessionSchema>;
@@ -42,7 +42,7 @@ export async function createSession(
     exp: issuedAt + SESSION_MAX_AGE_SECONDS,
     iat: issuedAt,
     nonce: randomToken(24),
-    sub: "browser",
+    sub: "judge",
   };
   const encodedPayload = encodeText(JSON.stringify(payload));
   const signature = await hmacSha256(bindings.SESSION_SIGNING_SECRET, encodedPayload);

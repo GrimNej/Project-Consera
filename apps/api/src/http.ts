@@ -26,20 +26,24 @@ export function requireOrigin(origin: string | undefined, allowedOrigin: string)
   }
 }
 
-export async function parseBody<T>(context: Context, schema: ZodType<T>): Promise<T> {
+export async function parseBody<T>(
+  context: Context,
+  schema: ZodType<T>,
+  maxRequestBytes = MAX_REQUEST_BYTES,
+): Promise<T> {
   const contentType = context.req.header("content-type")?.toLowerCase() ?? "";
   if (!contentType.includes("application/json")) {
     throw new ApiError("CONTENT_TYPE_REQUIRED", "Send a JSON request.", 415);
   }
   const contentLength = Number(context.req.header("content-length") ?? "0");
-  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
+  if (Number.isFinite(contentLength) && contentLength > maxRequestBytes) {
     throw new ApiError("REQUEST_TOO_LARGE", "The request is too large.", 413);
   }
 
   let parsed: unknown;
   try {
     const body = await context.req.text();
-    if (new TextEncoder().encode(body).byteLength > MAX_REQUEST_BYTES) {
+    if (new TextEncoder().encode(body).byteLength > maxRequestBytes) {
       throw new ApiError("REQUEST_TOO_LARGE", "The request is too large.", 413);
     }
     parsed = JSON.parse(body);

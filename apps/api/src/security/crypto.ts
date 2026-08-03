@@ -1,4 +1,7 @@
 const encoder = new TextEncoder();
+type RuntimeSubtleCrypto = SubtleCrypto & {
+  timingSafeEqual?: (left: ArrayBufferView, right: ArrayBufferView) => boolean;
+};
 
 export function encodeBase64Url(bytes: Uint8Array): string {
   let binary = "";
@@ -44,6 +47,15 @@ export async function hmacSha256(secret: string, value: string): Promise<string>
 export function constantTimeEqual(left: string, right: string): boolean {
   const leftBytes = encoder.encode(left);
   const rightBytes = encoder.encode(right);
+  const runtimeSubtle = crypto.subtle as RuntimeSubtleCrypto;
+  if (typeof runtimeSubtle.timingSafeEqual === "function") {
+    if (leftBytes.length !== rightBytes.length) {
+      runtimeSubtle.timingSafeEqual(leftBytes, leftBytes);
+      return false;
+    }
+    return runtimeSubtle.timingSafeEqual(leftBytes, rightBytes);
+  }
+
   const length = Math.max(leftBytes.length, rightBytes.length);
   let difference = leftBytes.length ^ rightBytes.length;
   for (let index = 0; index < length; index += 1) {

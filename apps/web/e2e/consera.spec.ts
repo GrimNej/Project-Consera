@@ -11,6 +11,21 @@ async function settleVisual(page: Page): Promise<void> {
   });
 }
 
+test("private access is clear, keyboard-ready, and accessible", async ({ page }) => {
+  await page.goto("/access");
+
+  await expect(page.getByRole("heading", { name: "Enter the signal room." })).toBeVisible();
+  await expect(page.getByText("Protected workspace")).toBeVisible();
+  await expect(page.getByRole("link", { name: "ginej.neupane@grimnej.com" })).toBeVisible();
+  await page.getByLabel("Four-digit passkey").fill("1357");
+  await page.getByRole("button", { name: "Open Consera" }).click();
+  await expect(page).toHaveURL(/\/$/u);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("The market moves");
+
+  const accessibility = await new AxeBuilder({ page }).analyze();
+  expect(accessibility.violations).toEqual([]);
+});
+
 test("landing page communicates the product and passes accessibility checks", async ({ page }) => {
   await page.goto("/");
 
@@ -54,11 +69,15 @@ test("manual ingestion, project onboarding, alerts, and cited questions are inte
   await page.getByRole("button", { name: "Projects" }).click();
   await page.getByRole("button", { name: "Add project", exact: true }).click();
   await page.getByLabel("Project name").fill("Compass");
-  await page
-    .getByLabel("README or project brief")
-    .fill(
-      "# Compass\nCompass helps engineering teams evaluate model providers with repeatable benchmarks and human review.",
-    );
+  const projectBrief =
+    "# Compass\nCompass helps engineering teams evaluate model providers with repeatable benchmarks and human review.";
+  await page.getByLabel("Upload Markdown or plain-text project brief").setInputFiles({
+    buffer: Buffer.from(projectBrief),
+    mimeType: "text/markdown",
+    name: "compass.md",
+  });
+  await expect(page.getByLabel("README or project brief")).toHaveValue(projectBrief);
+  await expect(page.getByText("compass.md")).toBeVisible();
   await page
     .getByLabel("I confirm this document contains no credentials or private secrets")
     .check();

@@ -103,3 +103,17 @@ date supported by its bundled runtime.
 **Why:** Updating to a one-day-old Wrangler release would have required explicit exceptions to the
 repository's dependency minimum-age policy. Consera uses no Worker feature newer than the vetted
 date, so a compatible runtime pin is safer than weakening the supply-chain gate.
+
+## D-012: Protect judging access at the existing edge boundary
+
+**Decision:** Require one owner-distributed four-digit passkey before any product document or API
+operation. Store the passkey only as a Cloudflare secret, issue a signed eight-hour HttpOnly cookie,
+and rate limit access attempts without Workers KV.
+
+**Why:** The shared judging link can otherwise create Snowflake and GitHub workload. Enforcing the
+gate in the existing Worker blocks direct API calls and direct HTML paths without adding a database,
+durable runtime, paid service, or idle Snowflake cost.
+
+**Guardrail:** The passkey is invitation-level protection, not individual identity. HTTPS, exact
+origin, CSRF, fixed operations, deterministic cost gates, and Snowflake least privilege remain
+independent controls.

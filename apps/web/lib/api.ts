@@ -19,6 +19,7 @@ import { z } from "zod";
 
 const fixtureMode = process.env.NEXT_PUBLIC_CONSERA_FIXTURE_MODE === "true";
 const fixtureProjectNames = new Map<string, string>();
+const fixtureProjectDocuments = new Map<string, string>();
 const csrfKey = "consera-csrf";
 
 const sessionDataSchema = z.object({
@@ -92,8 +93,13 @@ async function request<T>(
         }),
       })
       .safeParse(parsed);
+    const code = error.success ? error.data.error.code : "REQUEST_FAILED";
+    if (code === "SESSION_REQUIRED" && typeof window !== "undefined") {
+      const next = window.location.pathname.startsWith("/console") ? "/console" : "/";
+      window.location.assign(`/access?next=${encodeURIComponent(next)}`);
+    }
     throw new ConseraApiError(
-      error.success ? error.data.error.code : "REQUEST_FAILED",
+      code,
       error.success ? error.data.error.message : "The request could not be completed.",
       error.success ? error.data.error.requestId : undefined,
     );
@@ -108,6 +114,18 @@ async function request<T>(
 export type WorkspaceData = Workspace;
 
 export const conseraApi = {
+  unlockAccess: async (passcode: string): Promise<z.infer<typeof sessionDataSchema>> => {
+    if (fixtureMode) {
+      await Promise.resolve();
+      return { authenticated: true };
+    }
+    const result = await request("/api/v1/auth/unlock", sessionDataSchema, {
+      body: { passcode },
+      method: "POST",
+    });
+    if (result.csrfToken) sessionStorage.setItem(csrfKey, result.csrfToken);
+    return result;
+  },
   ask: async (projectIds: string[], question: string): Promise<AskResponse> => {
     if (fixtureMode) {
       await Promise.resolve();
@@ -132,6 +150,7 @@ export const conseraApi = {
       const now = new Date().toISOString();
       const projectId = crypto.randomUUID();
       fixtureProjectNames.set(projectId, input.name);
+      fixtureProjectDocuments.set(projectId, input.readmeText);
       return projectSchema.parse({
         activeProfile: null,
         alertsEnabled: input.alertsEnabled,
@@ -157,9 +176,51 @@ export const conseraApi = {
     if (result.csrfToken) sessionStorage.setItem(csrfKey, result.csrfToken);
     return result;
   },
+  logout: async (): Promise<void> => {
+    if (fixtureMode) return;
+    await request("/api/v1/auth/logout", z.object({ authenticated: z.literal(false) }), {
+      body: {},
+      method: "POST",
+    });
+    sessionStorage.removeItem(csrfKey);
+  },
   getProfileDraft: async (projectId: string): Promise<ProjectProfileDraft> => {
     if (fixtureMode) {
       await Promise.resolve();
+      const fixtureDocument = fixtureProjectDocuments.get(projectId);
+      if (fixtureDocument) {
+        const projectName = fixtureProjectNames.get(projectId) ?? "New project";
+        return projectProfileDraftSchema.parse({
+          evidence: {
+            excerpt: fixtureDocument.slice(0, 600),
+            id: `fixture-project-evidence-${projectId}`,
+            label: "Uploaded project brief",
+            publishedAt: new Date().toISOString(),
+            sourceKind: "PROJECT",
+            sourceUrl: null,
+          },
+          profile: {
+            capabilities: [
+              "Compare hosted AI models with repeatable evaluations",
+              "Keep provider recommendations behind human review",
+            ],
+            completeness: 0.89,
+            constraints: [
+              "Protect private prompts and credentials",
+              "Respect the monthly model budget",
+            ],
+            dependencies: ["Snowflake", "Hosted language-model APIs", "GitHub Actions"],
+            differentiators: ["Evidence-backed provider recommendations"],
+            monitoredTopics: ["AI model releases", "model pricing", "provider reliability"],
+            projectId,
+            providers: ["OpenAI", "Anthropic", "Google"],
+            summary: `${projectName} helps engineering teams evaluate AI model providers before making a production change.`,
+            targetUsers: ["Engineering leads", "Product teams evaluating AI providers"],
+            version: 1,
+          },
+          projectVersion: 2,
+        });
+      }
       return projectProfileDraftSchema.parse({
         evidence: {
           excerpt:

@@ -16,11 +16,13 @@ import {
   Clock3,
   FolderKanban,
   LayoutDashboard,
+  LogOut,
   Menu,
   Plus,
   Radar,
   RefreshCw,
   ShieldCheck,
+  Upload,
   X,
 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -136,6 +138,15 @@ export function ConseraConsole() {
     }
   }
 
+  async function handleLogout() {
+    try {
+      await conseraApi.logout();
+      window.location.replace("/access");
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Consera could not close this session.");
+    }
+  }
+
   async function handleCreate(input: {
     alertsEnabled: boolean;
     name: string;
@@ -237,6 +248,10 @@ export function ConseraConsole() {
           <small>Last signal batch</small>
           <b>{formatDateTime(workspace.dashboard.latestIngestionAt)}</b>
         </div>
+        <button className="sidebar-logout" onClick={() => void handleLogout()} type="button">
+          <LogOut aria-hidden="true" size={17} />
+          End private session
+        </button>
       </aside>
 
       <div className="console-shell">
@@ -393,12 +408,45 @@ function ProjectCreateDialog({
 }>) {
   const [alertsEnabled, setAlertsEnabled] = useState(true);
   const [error, setError] = useState("");
+  const [fileName, setFileName] = useState("");
   const [name, setName] = useState("");
   const [readmeText, setReadmeText] = useState("");
   const [result, setResult] = useState<Project | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const byteCount = useMemo(() => new TextEncoder().encode(readmeText).byteLength, [readmeText]);
   const valid = name.trim().length >= 2 && readmeText.trim().length >= 20 && byteCount <= 200_000;
+
+  async function loadProjectFile(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const supportedExtension = /\.(md|txt)$/iu.test(file.name);
+    if (!supportedExtension) {
+      setError("Choose a UTF-8 Markdown or plain-text file ending in .md or .txt.");
+      event.target.value = "";
+      return;
+    }
+    if (file.size > 200_000) {
+      setError("The selected file is larger than the 200 KB project-document limit.");
+      event.target.value = "";
+      return;
+    }
+
+    try {
+      const content = await file.text();
+      if (!content.trim()) {
+        setError("The selected project document is empty.");
+        event.target.value = "";
+        return;
+      }
+      setError("");
+      setFileName(file.name);
+      setReadmeText(content);
+    } catch {
+      setError("Consera could not read that file. Save it as UTF-8 text and try again.");
+      event.target.value = "";
+    }
+  }
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -481,28 +529,45 @@ function ProjectCreateDialog({
               <i />
               <span>03 Review</span>
             </div>
-            <label>
+            <label htmlFor="project-name">
               Project name
               <input
+                id="project-name"
                 maxLength={100}
                 onChange={(event) => setName(event.target.value)}
                 placeholder="Northstar"
                 value={name}
               />
             </label>
-            <label>
-              README or project brief
+            <div className="project-document-field">
+              <label htmlFor="project-document">README or project brief</label>
               <textarea
+                id="project-document"
                 maxLength={200_000}
-                onChange={(event) => setReadmeText(event.target.value)}
+                onChange={(event) => {
+                  setFileName("");
+                  setReadmeText(event.target.value);
+                }}
                 placeholder="Paste the Markdown or plain-text project document that explains what the product does, who it serves, its capabilities, providers, dependencies, and constraints."
                 rows={11}
                 value={readmeText}
               />
-              <span className={byteCount > 200_000 ? "is-error" : ""}>
-                {(byteCount / 1_000).toFixed(1)} KB of 200 KB
-              </span>
-            </label>
+              <div className="project-document-actions">
+                <label className="project-file-upload">
+                  <Upload aria-hidden="true" size={16} />
+                  <span>{fileName || "Choose .md or .txt file"}</span>
+                  <input
+                    accept=".md,.txt,text/markdown,text/plain"
+                    aria-label="Upload Markdown or plain-text project brief"
+                    onChange={(event) => void loadProjectFile(event)}
+                    type="file"
+                  />
+                </label>
+                <span className={byteCount > 200_000 ? "is-error" : ""}>
+                  {(byteCount / 1_000).toFixed(1)} KB of 200 KB
+                </span>
+              </div>
+            </div>
             <label className="confirmation-option">
               <input
                 checked={alertsEnabled}

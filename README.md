@@ -101,9 +101,9 @@ keeps monitoring current while the manual path makes time-sensitive verification
 </p>
 
 The frontend is a statically exported Next.js application served as Cloudflare Worker assets. A
-small Hono Worker is the only runtime API. It accepts strict product operations, validates them with
-Zod, issues signed short-lived browser sessions without a login gate, and executes fixed Snowflake
-SQL API statements using a dedicated key-pair service identity.
+small Hono Worker is the only runtime API. It enforces a private review passkey at the edge, issues
+signed short-lived browser sessions, validates strict product operations with Zod, and executes
+fixed Snowflake SQL API statements using a dedicated key-pair service identity.
 
 Snowflake owns authoritative state, profile versions, evidence, work queues, model usage, verdicts,
 alert decisions, delivery state, and health. Snowpark Python performs bounded transformation and
@@ -147,8 +147,9 @@ state transitions make the product tactile without turning animation into decora
 - **Cost is protected twice.** Three isolated weekly resource monitors protect the ingestion,
   pipeline, and application warehouses. An application ledger reserves estimated AI credits before
   every call.
-- **Cloudflare state stays at zero.** Static assets bypass Worker code and the API uses no Workers
-  KV, Durable Objects, Queues, or scheduled triggers.
+- **Cloudflare persistence stays at zero.** Protected document requests and API operations pass
+  through the Worker, while immutable scripts, fonts, and styles remain direct static assets. The
+  Worker uses no KV, Durable Objects, Queues, or scheduled triggers.
 - **No payment method is required.** The implementation uses the existing Snowflake trial, free
   GitHub Actions capacity, and Cloudflare's free offering.
 
@@ -156,7 +157,8 @@ Read [the architecture](docs/architecture.md), [security model](docs/security.md
 [cost ledger](docs/cost-ledger.md), [dependency ledger](docs/dependency-ledger.md),
 [data licence](docs/data-license.md), [acceptance test guide](docs/ACCEPTANCE_TEST_GUIDE.md),
 [submission compliance checklist](docs/HACKATHON_COMPLIANCE.md),
-[demo video script](docs/DEMO_VIDEO_SCRIPT.md), and [known limitations](docs/limitations.md).
+[demo video script](docs/DEMO_VIDEO_SCRIPT.md), and [known limitations](docs/limitations.md). New
+reviewers can follow the [illustrated beginner guide](guide/README.md).
 
 ## Repository map
 
