@@ -296,3 +296,26 @@
 - **Related commit:** `8042fe1`
 - **Rollback point:** Revert `8042fe1`, remove the access secret and rate-limit bindings, then
   redeploy only if invitation-level access is deliberately retired.
+
+## 2026-08-03: Production signal and public-contract recovery
+
+- **Goal:** Recover the accepted Hacker News batch, remove false provider degradation, keep verbose
+  real verdicts inside the public API contract, and retain a safe two-month trial envelope.
+- **Files:** Snowpark ingestion, V008 through V010, the secure verdict views, live and static
+  workspace validation, monitor bootstrap and recovery SQL, release audits, the cost ledger, and
+  refreshed production evidence.
+- **Commands:** One bounded batch replay, immutable migration runner, live release audit, workspace
+  snapshot export, all TypeScript, Python, SQL, cost, reliability, build, local browser, production
+  browser, TLS, deployment, and secret-scan gates.
+- **Evidence:** 36 TypeScript tests, 58 Python tests, five local Chromium journeys, one read-only
+  production journey, zero current queue or delivery failures, V005 through V010 applied, all
+  warehouses suspended after use, four real verdicts, four real alerts, TLS 1.3, HTTP 308 upgrade,
+  two-year HSTS, and Worker version `43a77d04-a241-49a4-9a23-9a4668ab9f33`.
+- **Decision/issue:** Missing Hacker News counters are valid nulls, not numeric text. Historical
+  provider failures stop degrading health after a later successful evaluation. Full model output
+  remains immutable in Snowflake while the secure public view enforces shared string limits. The
+  pipeline monitor is two credits weekly; ingestion and application remain one credit weekly.
+- **Related commit:** `aab95a1`
+- **Rollback point:** Revert `aab95a1` only if nullable upstream counters, recovered provider
+  health, and bounded public verdicts are replaced by migrations with equivalent regression
+  coverage.

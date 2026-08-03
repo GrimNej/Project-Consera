@@ -1,6 +1,6 @@
 {
-  "capturedAt": "2026-08-03T12:43:03Z",
-  "deploymentVersion": "7626201b-57a6-4304-9f94-f51e4fb95c75",
+  "capturedAt": "2026-08-03T13:24:12Z",
+  "deploymentVersion": "43a77d04-a241-49a4-9a23-9a4668ab9f33",
   "domain": "consera.grimnej.com",
   "https": {
     "certificateAuthorized": true,
@@ -16,7 +16,7 @@
   },
   "releaseGates": {
     "localBrowserPassed": 5,
-    "pythonPassed": 57,
+    "pythonPassed": 58,
     "typescriptPassed": 36
   },
   "secretInRepository": false,
