@@ -58,6 +58,9 @@
 - [x] Cortex Code planning and review artifacts
 - [x] Isolated Snowflake `CONSERA_*` resources
 - [x] Cloudflare Worker and static asset deployment
+- [x] Private judge passkey gate with signed sessions and edge rate limits
+- [x] Trusted HTTPS, security headers, and explicit plain-HTTP redirect
+- [x] Illustrated beginner guide with a safe Markdown walkthrough
 - [x] Email recipient verification and Snowflake delivery acceptance
 - [x] Full Snowflake profile, ingestion idempotency, evaluation, and suppression replay
 - [x] Once-daily ingestion plus explicit manual trigger

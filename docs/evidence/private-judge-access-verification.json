@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-08-03T12:43:03Z",
+  "deploymentVersion": "7626201b-57a6-4304-9f94-f51e4fb95c75",
+  "domain": "consera.grimnej.com",
+  "https": {
+    "certificateAuthorized": true,
+    "certificateCommonName": "grimnej.com",
+    "httpRedirectStatus": 308,
+    "protocol": "TLSv1.3",
+    "strictTransportSecurity": "max-age=63072000; includeSubDomains; preload"
+  },
+  "productionBrowser": {
+    "accessibilityViolations": 0,
+    "manualDispatchPerformed": false,
+    "testsPassed": 1
+  },
+  "releaseGates": {
+    "localBrowserPassed": 5,
+    "pythonPassed": 57,
+    "typescriptPassed": 36
+  },
+  "secretInRepository": false,
+  "workerPersistentStateBindings": 0
+}

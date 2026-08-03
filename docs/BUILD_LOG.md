@@ -273,3 +273,26 @@
 - **Related commits:** `010a301`, `7fd1c92`
 - **Rollback point:** Revert these commits only if the replacement visual runner provides identical
   pinned font and rendering metrics while retaining reduced-motion coverage.
+
+## 2026-08-03: Private judging access and illustrated onboarding
+
+- **Goal:** Protect live judging resources with a clear four-digit invitation gate while keeping the
+  browser experience trusted, accessible, cost bounded, and simple for first-time reviewers.
+- **Files:** The Hono access middleware and session helpers, Cloudflare binding contract, static
+  access screen, console logout and Markdown upload controls, browser and API regression tests,
+  security and architecture ledgers, and `guide/` with eight verified interface screenshots.
+- **Commands:** Full Prettier, ESLint, TypeScript, Vitest, Ruff, Mypy, Pytest, SQLFluff, Cloudflare
+  binding, production build, zero-metered-state, reliability, Chromium, axe, mobile, visual, TLS,
+  deployment dry-run, production deployment, and authenticated production browser gates.
+- **Evidence:** 36 TypeScript tests, 57 Python tests, five local Chromium journeys, one read-only
+  production Chromium journey, zero axe violations, no passkey match in repository content, a
+  trusted TLS 1.3 certificate, HTTP 308 upgrade, two-year HSTS, and deployment version
+  `7626201b-57a6-4304-9f94-f51e4fb95c75`. The sanitized machine-readable record is
+  `docs/evidence/private-judge-access-verification.json`.
+- **Decision/issue:** The passkey remains only in an encrypted Worker secret. Protected documents
+  and APIs run through the Worker, while immutable assets remain direct. Attempts are rate limited
+  without KV and rejected attempts never wake Snowflake. A production-only immutable-header fault
+  and an incompatible hydration CSP were reproduced, corrected, and covered before release.
+- **Related commit:** `8042fe1`
+- **Rollback point:** Revert `8042fe1`, remove the access secret and rate-limit bindings, then
+  redeploy only if invitation-level access is deliberately retired.
