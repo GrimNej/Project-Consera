@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-07-31T06:59:01Z",
+  "capturedAt": "2026-08-03T13:19:39Z",
   "dashboardHealth": "HEALTHY",
   "findings": [],
   "metrics": {
@@ -9,7 +9,10 @@
     "terminal_delivery_failure_count": 0,
     "v005_count": 1,
     "v006_count": 1,
-    "v007_count": 1
+    "v007_count": 1,
+    "v008_count": 1,
+    "v009_count": 1,
+    "v010_count": 1
   },
   "monitorCount": 3,
   "passed": true,
@@ -21,9 +24,9 @@
   },
   "taskRunsLastTwoHours": {
     "FAILED": 0,
-    "PROCESS_ALERT_TASK": 2,
-    "PROCESS_EVALUATION_TASK": 2,
-    "PROCESS_LANDING_TASK": 2,
+    "PROCESS_ALERT_TASK": 1,
+    "PROCESS_EVALUATION_TASK": 1,
+    "PROCESS_LANDING_TASK": 1,
     "PROCESS_PROFILE_TASK": 0
   },
   "taskStates": {
@@ -35,6 +38,6 @@
   "warehouseStates": {
     "CONSERA_APP_WH": "SUSPENDED",
     "CONSERA_INGEST_WH": "SUSPENDED",
-    "CONSERA_PIPELINE_WH": "STARTED"
+    "CONSERA_PIPELINE_WH": "SUSPENDED"
   }
 }

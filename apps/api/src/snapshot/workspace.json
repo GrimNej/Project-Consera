@@ -1,8 +1,41 @@
 {
-  "capturedAt": "2026-07-31T06:58:43.793Z",
+  "capturedAt": "2026-08-03T13:20:05.148Z",
   "ready": true,
   "workspace": {
     "alerts": [
+      {
+        "createdAt": "2026-08-03T05:19:07.775-07:00",
+        "deliveryState": "SUPPRESSED",
+        "id": "2185ea9e-8e89-5efb-9c8c-f95d4d427927",
+        "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+        "projectName": "AI Change Observatory",
+        "suppressionReason": "LOW_RELEVANCE",
+        "verdictHeadline": "AI Change Observatory: Replacement Pressure Analysis",
+        "verdictId": "d37c112e-4323-5ae3-ae6a-ed73ce57aba4",
+        "verdictType": "IRRELEVANT"
+      },
+      {
+        "createdAt": "2026-08-02T23:35:54.977-07:00",
+        "deliveryState": "SUPPRESSED",
+        "id": "cb2311ed-124c-5c7a-b032-ce5789148408",
+        "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+        "projectName": "AI Change Observatory",
+        "suppressionReason": "LOW_RELEVANCE",
+        "verdictHeadline": "AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs",
+        "verdictId": "0512a5ac-f41b-5c31-87a5-e400be61e0a4",
+        "verdictType": "STRATEGIC_WATCH"
+      },
+      {
+        "createdAt": "2026-08-01T23:14:04.655-07:00",
+        "deliveryState": "SENT",
+        "id": "d644bdcc-cdb2-5108-a407-9a39e981f539",
+        "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+        "projectName": "AI Change Observatory",
+        "suppressionReason": null,
+        "verdictHeadline": "AI Change Observatory: Monitoring AI Ecosystem Changes",
+        "verdictId": "0f0bc99b-d87f-5331-ae9b-3eb46ba1ffdc",
+        "verdictType": "PROVIDER_OPPORTUNITY"
+      },
       {
         "createdAt": "2026-07-30T23:22:35.277-07:00",
         "deliveryState": "SENT",
@@ -17,6 +50,41 @@
     ],
     "dashboard": {
       "activities": [
+        {
+          "detail": "130 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "2e607aeb-4131-42cc-b5ce-904e5602e06c",
+          "occurredAt": "2026-08-03T05:15:00.063-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "The official Hacker News bridge will claim this request.",
+          "id": "58f80b86-f81b-4676-9545-e5d7910889b3",
+          "occurredAt": "2026-08-03T05:14:34.448-07:00",
+          "state": "RUNNING",
+          "title": "Signal check requested"
+        },
+        {
+          "detail": "130 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "6c31c5e1-e797-44bf-b822-34b7255cfe3e",
+          "occurredAt": "2026-08-02T23:33:32.526-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "130 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "4255a6b9-ba11-4b68-9f9f-97dd96499f75",
+          "occurredAt": "2026-08-01T23:11:20.455-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
+        {
+          "detail": "130 bounded Hacker News items entered the intelligence pipeline.",
+          "id": "31afb380-0025-4608-9f7f-ac11887c9757",
+          "occurredAt": "2026-07-31T23:07:47.355-07:00",
+          "state": "SUCCESS",
+          "title": "Signals received"
+        },
         {
           "detail": "43 bounded Hacker News items entered the intelligence pipeline.",
           "id": "f1a18abc-fab5-49bb-82ac-99b2821597b1",
@@ -121,52 +189,17 @@
           "occurredAt": "2026-07-23T01:16:07.862-07:00",
           "state": "SUCCESS",
           "title": "Signals received"
-        },
-        {
-          "detail": "17 bounded Hacker News items entered the intelligence pipeline.",
-          "id": "5e92706d-858a-4ebb-9010-0d56f7893ad7",
-          "occurredAt": "2026-07-23T01:15:33.035-07:00",
-          "state": "SUCCESS",
-          "title": "Signals received"
-        },
-        {
-          "detail": "The official Hacker News bridge will claim this request.",
-          "id": "e8608e8c-5f0b-4d02-b788-94f8c8fc064a",
-          "occurredAt": "2026-07-23T01:12:41.039-07:00",
-          "state": "RUNNING",
-          "title": "Signal check requested"
-        },
-        {
-          "detail": "A human-reviewed profile now controls consequence analysis.",
-          "id": "56d84f67-3f42-4be0-ade8-19fadec66cfb",
-          "occurredAt": "2026-07-23T01:12:38.593-07:00",
-          "state": "SUCCESS",
-          "title": "Profile activated"
-        },
-        {
-          "detail": "Consera extracted a bounded project model. Review is required before monitoring.",
-          "id": "56c1b45f-7d48-49e1-be73-1599ecbbb008",
-          "occurredAt": "2026-07-23T01:12:33.142-07:00",
-          "state": "SUCCESS",
-          "title": "Profile ready for review"
-        },
-        {
-          "detail": "README accepted and profile extraction queued.",
-          "id": "696356e5-d4c2-477f-9ac1-9760d60604e7",
-          "occurredAt": "2026-07-23T01:11:57.601-07:00",
-          "state": "RUNNING",
-          "title": "Project admitted"
         }
       ],
-      "alertsSent": 1,
-      "analyzedDeeply": 3,
+      "alertsSent": 2,
+      "analyzedDeeply": 7,
       "credits": {
         "consumed": 0.2,
         "reserve": 0.1,
         "totalEnvelope": 0.3
       },
       "health": "HEALTHY",
-      "latestIngestionAt": "2026-07-31T06:22:49.024Z",
+      "latestIngestionAt": "2026-08-03T12:14:55.530Z",
       "projects": [
         {
           "activeProfile": {
@@ -244,9 +277,337 @@
           "version": 3
         }
       ],
-      "signalsReviewed": 110,
-      "suppressed": 0,
+      "signalsReviewed": 207,
+      "suppressed": 2,
       "topVerdicts": [
+        {
+          "alertWorthiness": 0.22762,
+          "confidence": 0.63,
+          "contributions": [
+            {
+              "component": "capability_overlap",
+              "explanation": "Capability overlap was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle a",
+              "rawValue": 0,
+              "weight": 0.2,
+              "weightedValue": 0
+            },
+            {
+              "component": "dependency_impact",
+              "explanation": "Dependency impact was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle as",
+              "rawValue": 0,
+              "weight": 0.2,
+              "weightedValue": 0
+            },
+            {
+              "component": "evidence_quality",
+              "explanation": "Evidence quality was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle as ",
+              "rawValue": 0.5,
+              "weight": 0.1,
+              "weightedValue": 0.05
+            },
+            {
+              "component": "solution_adjacency",
+              "explanation": "Solution adjacency was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle a",
+              "rawValue": 0,
+              "weight": 0.1,
+              "weightedValue": 0
+            },
+            {
+              "component": "strategic_relevance",
+              "explanation": "Strategic relevance was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle ",
+              "rawValue": 0,
+              "weight": 0.3,
+              "weightedValue": 0
+            },
+            {
+              "component": "user_pain_signal",
+              "explanation": "User pain signal was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle as ",
+              "rawValue": 0,
+              "weight": 0.1,
+              "weightedValue": 0
+            }
+          ],
+          "createdAt": "2026-08-03T05:18:59.657-07:00",
+          "evidence": [
+            {
+              "excerpt": "Show HN: How to build and self-host a code review agent. Hey HN, I've had a side-project that I've slowly ticked away at over the last year called Tilde. Tilde is a harness SDK platform - I've tried to take the best things of OpenClaw, Hermes & other harnesses and decompose them and make them available as cloud API building blocks. You can use Tilde to create AI agents for your use case, fast and self-host the agent's yourself. The documentation (and attached blog post) leave a lot to be desired in terms of technical documentation but hopefully the attached git repo does a good job of showcasing the API. https://github.com/trytilde/examples",
+              "id": "879629bd-24d8-5f04-b72a-95e294af5b41",
+              "label": "Hacker News story",
+              "publishedAt": "2026-07-31T20:27:28.000-07:00",
+              "sourceKind": "HN_STORY",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49128177"
+            },
+            {
+              "excerpt": "# AI Change Observatory\n\nAI Change Observatory is a vendor-neutral intelligence workspace for product and engineering teams\nthat build, buy, or operate AI-enabled software. It helps teams decide which developments in the\nfast-moving AI ecosystem deserve investigation and which can be ignored.\n\n## Who it serves\n\n- Product leaders planning AI capabilities and provider strategy\n- Engineering teams operating production AI applications\n- Founders comparing models, platforms, and open-source alternatives\n- Technical program leads tracking cost, reliability, security, and licensing risk\n\n## Core capabilities\n\n- Monitor meaningful model releases, model API changes, deprecations, and pricing updates\n- Track AI agents, coding assistants, inference systems, and developer tooling\n- Compare hosted and open-source language models, multimodal models, and embedding models\n- Identify changes in retrieval, RAG, vector search, evaluation, and model observability\n- Track AI security, safety, policy, copyright, and licensing developments\n- Turn a relevant change into an evidence-backed investigation or benchmarking action\n\n## Technology context\n\nThe project is provider neutral. Relevant technologies in",
+              "id": "536b16c2-abf0-5dfb-95a4-ae7cf295dcff",
+              "label": "Reviewed project README",
+              "publishedAt": "2026-07-30T23:18:07.145-07:00",
+              "sourceKind": "PROJECT",
+              "sourceUrl": null
+            },
+            {
+              "excerpt": "i would love to see how to build one that uses open source models instead of anthropic or openai",
+              "id": "75aec39e-a39e-516c-84d1-825f5c314374",
+              "label": "Hacker News comment",
+              "publishedAt": "2026-08-01T03:09:04.000-07:00",
+              "sourceKind": "HN_COMMENT",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49130694"
+            },
+            {
+              "excerpt": "[flagged]",
+              "id": "148d7ea5-16f1-51ff-9b69-57e46d72cf23",
+              "label": "Hacker News comment",
+              "publishedAt": "2026-07-31T22:39:00.000-07:00",
+              "sourceKind": "HN_COMMENT",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49129340"
+            },
+            {
+              "excerpt": "There is an mcp server named Reticle to verify agent's coding work.\nYou should take a look at that too, will be helpful to make your architecture even more better.",
+              "id": "b05025c5-7f3d-5013-b850-3af4e110d67a",
+              "label": "Hacker News comment",
+              "publishedAt": "2026-07-31T21:19:45.000-07:00",
+              "sourceKind": "HN_COMMENT",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49128652"
+            }
+          ],
+          "headline": "AI Change Observatory: Replacement Pressure Analysis",
+          "id": "d37c112e-4323-5ae3-ae6a-ed73ce57aba4",
+          "impactPeak": 0.05,
+          "impactType": "IRRELEVANT",
+          "opportunity": 0.025,
+          "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+          "projectName": "AI Change Observatory",
+          "protectiveFactors": [
+            "The reviewed project, AI Change Observatory, is a vendor-neutral intelligence workspace that helps product and engineering teams identify which AI ecosystem changes deserve investigation, benchmarking, or action. The project's core capabilities include monitoring model releases, API changes, deprecations, and pricing updates, tracking AI agents, coding assistants, inference systems, and developer tooling, and comparing hosted and open-source language models, multimodal models, and embedding models. The project is provider neutral and relevant technologies include large language models, generat"
+          ],
+          "publishedAt": "2026-08-03T05:18:59.657-07:00",
+          "recommendations": [
+            "Investigate Tilde and Reticle as potential alternatives: The Hacker News story (evidence_id: 879629bd-24d8-5f04-b72a-95e294af5b41) introduces Tilde, a harness SDK platform that allows users to create and self-host AI agents. This could be a potential alternative to the reviewed project's capabilities of tracking AI agents and developer tooling. Additionally, a Hacker News comment (evidence_id: 75aec39e-a39e-516c-84d1-825f5c314374) expresses interest in using open-source models instead of proprietary ones, which aligns with the reviewed project's capability of comparing hosted and open-source a"
+          ],
+          "relevance": 0.05,
+          "replacementPressure": 0.025,
+          "signalId": "c26112ea-4cf0-53a0-8168-ca4a499b4b5c",
+          "summary": "The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle as alternatives are unknown. Therefore, it is recommended to investigate these alternatives to assess their potential impact on the reviewed project.",
+          "threat": 0.05,
+          "uncertainty": "The technical documentation of Tilde is lacking, which may impact its usability and adoption. The quality and reliability of Tilde and Reticle as alternatives to the reviewed project's capabilities are unknown. The potential impact of Tilde and Reticle on the reviewed project's market position and user base is uncertain.",
+          "urgency": 0.1375
+        },
+        {
+          "alertWorthiness": 0.534,
+          "confidence": 0.66,
+          "contributions": [
+            {
+              "component": "capability_overlap",
+              "explanation": "Capability overlap was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+              "rawValue": 0.5,
+              "weight": 0.2,
+              "weightedValue": 0.1
+            },
+            {
+              "component": "dependency_impact",
+              "explanation": "Dependency impact was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+              "rawValue": 0.5,
+              "weight": 0.2,
+              "weightedValue": 0.1
+            },
+            {
+              "component": "evidence_quality",
+              "explanation": "Evidence quality was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+              "rawValue": 0.5,
+              "weight": 0.1,
+              "weightedValue": 0.05
+            },
+            {
+              "component": "solution_adjacency",
+              "explanation": "Solution adjacency was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+              "rawValue": 0.5,
+              "weight": 0.1,
+              "weightedValue": 0.05
+            },
+            {
+              "component": "strategic_relevance",
+              "explanation": "Strategic relevance was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+              "rawValue": 0.5,
+              "weight": 0.3,
+              "weightedValue": 0.15
+            },
+            {
+              "component": "user_pain_signal",
+              "explanation": "User pain signal was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+              "rawValue": 0.5,
+              "weight": 0.1,
+              "weightedValue": 0.05
+            }
+          ],
+          "createdAt": "2026-08-02T23:35:45.862-07:00",
+          "evidence": [
+            {
+              "excerpt": "Show HN: What should the GUI for AI agents look like?. Hi HN! We’re Akilan and Miguel, the creators of MarbleOS. The inspiration for Marble comes from the GUI work at Xerox PARC, the 1984 Macintosh, and later NeXTSTEP, which became the foundation for Mac OS X.\nBefore GUIs, interacting with a computer was limited to strange terminal commands: C:\\> DIR C:\\> COPY FILE.TXT A: You had to remember the command, syntax, paths, and parameters. The GUI made those capabilities visible. Instead of remembering commands, you could point at files, drag them, click buttons, and select actions from menus.\nIt didn't necessarily make entirely new things possible; it just made existing capabilities much easier to understand and use. We feel like AI is still somewhere around this command-line stage. Even though the strict syntax has been replaced with natural language, the interaction can still be quite stiff and depend on heavily recall. Tools like Claude Cowork still look surprisingly terminal-like: /skill-name [param1] [param2]. The parameters are written in natural language, but the user still needs to know the capabilities that exist, and how to invoke it. Command-line flags and arguments have jus",
+              "id": "2132272a-e526-5708-9b24-0f1d0011e900",
+              "label": "Hacker News story",
+              "publishedAt": "2026-07-31T05:17:29.000-07:00",
+              "sourceKind": "HN_STORY",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49119274"
+            },
+            {
+              "excerpt": "# AI Change Observatory\n\nAI Change Observatory is a vendor-neutral intelligence workspace for product and engineering teams\nthat build, buy, or operate AI-enabled software. It helps teams decide which developments in the\nfast-moving AI ecosystem deserve investigation and which can be ignored.\n\n## Who it serves\n\n- Product leaders planning AI capabilities and provider strategy\n- Engineering teams operating production AI applications\n- Founders comparing models, platforms, and open-source alternatives\n- Technical program leads tracking cost, reliability, security, and licensing risk\n\n## Core capabilities\n\n- Monitor meaningful model releases, model API changes, deprecations, and pricing updates\n- Track AI agents, coding assistants, inference systems, and developer tooling\n- Compare hosted and open-source language models, multimodal models, and embedding models\n- Identify changes in retrieval, RAG, vector search, evaluation, and model observability\n- Track AI security, safety, policy, copyright, and licensing developments\n- Turn a relevant change into an evidence-backed investigation or benchmarking action\n\n## Technology context\n\nThe project is provider neutral. Relevant technologies in",
+              "id": "536b16c2-abf0-5dfb-95a4-ae7cf295dcff",
+              "label": "Reviewed project README",
+              "publishedAt": "2026-07-30T23:18:07.145-07:00",
+              "sourceKind": "PROJECT",
+              "sourceUrl": null
+            },
+            {
+              "excerpt": "Drop the \"G\". The best UI for AI Agents is a physical UI (not a graphical UI). Do something like PikaCube [0] and disrupt the mouse. [0] https://pikacube.pages.dev/",
+              "id": "e01882b9-85a1-5504-9ae3-2cdf1a81d476",
+              "label": "Hacker News comment",
+              "publishedAt": "2026-07-31T19:04:40.000-07:00",
+              "sourceKind": "HN_COMMENT",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49127315"
+            },
+            {
+              "excerpt": "I'm glad folks are experimenting with different paradigms. That said, Hacker News might not be the best audience for this informal survey. I'd wager at least 70% of the people reading this are still interacting with their computers using \"strange terminal commands\", by choice. We aren't representative of what normal people will use or prefer.",
+              "id": "fde21ca8-dfe0-5cca-a813-8e144b08c0b9",
+              "label": "Hacker News comment",
+              "publishedAt": "2026-07-31T10:11:09.000-07:00",
+              "sourceKind": "HN_COMMENT",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49121250"
+            },
+            {
+              "excerpt": "Lost me at having to click to use particular tools",
+              "id": "32784e3b-8c0b-5994-9ea0-f93fa83dd549",
+              "label": "Hacker News comment",
+              "publishedAt": "2026-07-31T08:22:57.000-07:00",
+              "sourceKind": "HN_COMMENT",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49120449"
+            },
+            {
+              "excerpt": "Best interface in my opinion is a git tracked folder, files as state, agents coming in and doing work. It's not just a chat interface because in chat mode everything flows like water under the bridge. It is files as agents, where you get the agent to write a task in a file, and then it updates the file like a blackboard as it performs work. Same task file can be seen by worker agent, multiple judge agents (for plan and implementation), documentation agents and reflexion agents (improve workflow). I would also track every user message in a chat_log.md for reflexion agents (what is wrong with the workflow) and intent review (is the agent still following user intent?).",
+              "id": "88b09e35-012b-5e10-9cf1-45dfa0843d13",
+              "label": "Hacker News comment",
+              "publishedAt": "2026-07-31T07:45:22.000-07:00",
+              "sourceKind": "HN_COMMENT",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49120198"
+            },
+            {
+              "excerpt": "I completely agree with you that the chat interface is very undercooked and there's a big untapped space for agent-first interfaces, perhaps even replacing traditional desktop metaphors. You're spot on with your premise. With that said, from the material you show in your homepage, it still seems like you're doing something very similar to OpenAI and Anthropic's first party apps?\nI think it would help your pitch if you could show some task or workflow where your interface truly makes a difference; loading files and asking questions about them is a staple of most harnesses.",
+              "id": "20fc6884-abeb-534d-9410-d41830af0df0",
+              "label": "Hacker News comment",
+              "publishedAt": "2026-07-31T07:08:01.000-07:00",
+              "sourceKind": "HN_COMMENT",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49119952"
+            }
+          ],
+          "headline": "AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs",
+          "id": "0512a5ac-f41b-5c31-87a5-e400be61e0a4",
+          "impactPeak": 0.5,
+          "impactType": "STRATEGIC_WATCH",
+          "opportunity": 0.5,
+          "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+          "projectName": "AI Change Observatory",
+          "protectiveFactors": [
+            "The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor against speculative or unverified AI developments. (536b16c2-abf0-5dfb-95a4-ae7cf295dcff)"
+          ],
+          "publishedAt": "2026-08-02T23:35:45.862-07:00",
+          "recommendations": [
+            "Investigate emerging AI agent GUIs: Investigate the emerging GUI trends for AI agents to understand their potential impact on the AI Change Observatory's user experience and capabilities. (2132272a-e526-5708-9b24-0f1d0011e900, 88b09e35-012b-5e10-9cf1-45dfa0843d13)"
+          ],
+          "relevance": 0.5,
+          "replacementPressure": 0.325,
+          "signalId": "2dda83c6-b7bd-54a9-80ef-da23d7e184e2",
+          "summary": "The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+          "threat": 0.4,
+          "uncertainty": "The maturity and adoption rate of the emerging AI agent GUIs The specific user needs and preferences that the new GUIs aim to address",
+          "urgency": 0.5
+        },
+        {
+          "alertWorthiness": 0.72737,
+          "confidence": 0.685,
+          "contributions": [
+            {
+              "component": "capability_overlap",
+              "explanation": "Capability overlap was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+              "rawValue": 0.7,
+              "weight": 0.2,
+              "weightedValue": 0.14
+            },
+            {
+              "component": "dependency_impact",
+              "explanation": "Dependency impact was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+              "rawValue": 0.8,
+              "weight": 0.2,
+              "weightedValue": 0.16
+            },
+            {
+              "component": "evidence_quality",
+              "explanation": "Evidence quality was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+              "rawValue": 0.6,
+              "weight": 0.1,
+              "weightedValue": 0.06
+            },
+            {
+              "component": "solution_adjacency",
+              "explanation": "Solution adjacency was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+              "rawValue": 0.9,
+              "weight": 0.1,
+              "weightedValue": 0.09
+            },
+            {
+              "component": "strategic_relevance",
+              "explanation": "Strategic relevance was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+              "rawValue": 0.8,
+              "weight": 0.3,
+              "weightedValue": 0.24
+            },
+            {
+              "component": "user_pain_signal",
+              "explanation": "User pain signal was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+              "rawValue": 0.7,
+              "weight": 0.1,
+              "weightedValue": 0.07
+            }
+          ],
+          "createdAt": "2026-08-01T23:13:58.124-07:00",
+          "evidence": [
+            {
+              "excerpt": "Should Airbnb Add Ads?. Advertising is inherently about monetizing user attention. There are many technology companies today that may not seem like advertising companies on the outside, yet inherently rely on ads as a fundamental part of their business. Advertising as a business model has a few great dynamics. Firstly, there is no cost to serve these ads on your platform, so there is inherently 100% margin. As your platform and its attention grow, so does your advertising business. While there are businesses that are fully advertising companies, such as Meta and Alphabet, albeit the latter has diversified somewhat into other forays. I think what is more interesting are companies such as Uber, Amazon, Instacart, and potentially Airbnb because advertising is the hidden profit engine that allows these businesses to thrive, albeit unintentionally. Yet to create a successful ad business, you need scale; Amazon has to grow the size of its retail business and introduce third-party sellers, which allows a near $ 70 billion ad business in 2025. That drives a core part of Amazon’s free cash flow, more than retail itself or AWS, yet you need to first establish a thriving marketplace in order ",
+              "id": "213eff86-3ffd-57a1-b995-d273f042ce97",
+              "label": "Hacker News story",
+              "publishedAt": "2026-07-31T06:15:52.000-07:00",
+              "sourceKind": "HN_STORY",
+              "sourceUrl": "https://news.ycombinator.com/item?id=49119606"
+            },
+            {
+              "excerpt": "# AI Change Observatory\n\nAI Change Observatory is a vendor-neutral intelligence workspace for product and engineering teams\nthat build, buy, or operate AI-enabled software. It helps teams decide which developments in the\nfast-moving AI ecosystem deserve investigation and which can be ignored.\n\n## Who it serves\n\n- Product leaders planning AI capabilities and provider strategy\n- Engineering teams operating production AI applications\n- Founders comparing models, platforms, and open-source alternatives\n- Technical program leads tracking cost, reliability, security, and licensing risk\n\n## Core capabilities\n\n- Monitor meaningful model releases, model API changes, deprecations, and pricing updates\n- Track AI agents, coding assistants, inference systems, and developer tooling\n- Compare hosted and open-source language models, multimodal models, and embedding models\n- Identify changes in retrieval, RAG, vector search, evaluation, and model observability\n- Track AI security, safety, policy, copyright, and licensing developments\n- Turn a relevant change into an evidence-backed investigation or benchmarking action\n\n## Technology context\n\nThe project is provider neutral. Relevant technologies in",
+              "id": "536b16c2-abf0-5dfb-95a4-ae7cf295dcff",
+              "label": "Reviewed project README",
+              "publishedAt": "2026-07-30T23:18:07.145-07:00",
+              "sourceKind": "PROJECT",
+              "sourceUrl": null
+            }
+          ],
+          "headline": "AI Change Observatory: Monitoring AI Ecosystem Changes",
+          "id": "0f0bc99b-d87f-5331-ae9b-3eb46ba1ffdc",
+          "impactPeak": 0.8,
+          "impactType": "PROVIDER_OPPORTUNITY",
+          "opportunity": 0.75,
+          "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+          "projectName": "AI Change Observatory",
+          "protectiveFactors": [
+            "The project's provider-neutral approach and explicit separation of source fact, assessment, and next action ensure a balanced and evidence-backed evaluation process (536b16c2-abf0-5dfb-95a4-ae7cf295dcff)."
+          ],
+          "publishedAt": "2026-08-01T23:13:58.124-07:00",
+          "recommendations": [
+            "Investigate AI Change Observatory for Enhanced AI Ecosystem Monitoring: The AI Change Observatory offers a comprehensive suite of capabilities for monitoring and evaluating AI ecosystem changes, which aligns well with the reviewed project's priorities and differentiators (536b16c2-abf0-5dfb-95a4-ae7cf295dcff)."
+          ],
+          "relevance": 0.76,
+          "replacementPressure": 0.455,
+          "signalId": "a70c6bf0-f498-581c-8467-daa9200d0555",
+          "summary": "The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+          "threat": 0.525,
+          "uncertainty": "The specific technical implementation details of the AI Change Observatory are not provided in the evidence, which could impact the assessment of its compatibility with the reviewed project.",
+          "urgency": 0.6775
+        },
         {
           "alertWorthiness": 0.71481,
           "confidence": 0.685,
@@ -340,6 +701,974 @@
     "signals": [
       {
         "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:14:44.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154729",
+        "id": "54bdc639-6414-5c8c-8607-2b79ce4de6f1",
+        "points": 1,
+        "sourceUrl": "https://github.com/blueyferg/webext-ship-kit",
+        "state": "CANDIDATE",
+        "title": "WebExt Ship Kit: Build Once, Validate for Chrome, Edge, and Firefox",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:13:06.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154716",
+        "id": "54595d2b-cbbb-5862-aa45-82ef4b29b230",
+        "points": 1,
+        "sourceUrl": "https://spectrum.ieee.org/ibm-verifiable-quantum-advantage",
+        "state": "CANDIDATE",
+        "title": "IBM Claims Quantum Advantage with New Validation Techniques",
+        "topic": "spectrum.ieee.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:12:51.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154714",
+        "id": "1da0d5d9-8af1-5c95-a017-29ac7de8a578",
+        "points": 1,
+        "sourceUrl": "https://argot.tmonier.com/",
+        "state": "CANDIDATE",
+        "title": "Show HN: Argot, a Rust AI guardrail based on your codebase AST patterns",
+        "topic": "argot.tmonier.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:11:13.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154701",
+        "id": "617d69d5-5575-5fee-8758-1ed471f42aed",
+        "points": 1,
+        "sourceUrl": "https://www.anuclei.com/blog/promises-kept-building-multisynapse",
+        "state": "CANDIDATE",
+        "title": "Promises, Kept",
+        "topic": "anuclei.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:10:04.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154689",
+        "id": "d364e000-5c5d-56af-b46f-c8e6d8f00ac6",
+        "points": 1,
+        "sourceUrl": "https://github.com/Kirill-Chistov/VibeMenu",
+        "state": "CANDIDATE",
+        "title": "VibeMenu – a local macOS menu-bar dashboard for Claude Code and Codex",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:09:27.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154685",
+        "id": "7dbb166c-31e0-5b4f-a126-27a0fd59a642",
+        "points": 2,
+        "sourceUrl": "https://github.com/zai-org/z-ai-sdk-java/commits/glm-5.3",
+        "state": "CANDIDATE",
+        "title": "GLM-5.3 Soon",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:06:49.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154659",
+        "id": "89dddc58-28f5-5356-9d6a-bade40839ddf",
+        "points": 1,
+        "sourceUrl": "https://github.com/vkarach/spriteloom",
+        "state": "CANDIDATE",
+        "title": "Spriteloom – local AI pixel-art generator plugin for Aseprite",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:06:16.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154656",
+        "id": "caab04b7-b0c7-537d-8311-be2b6bf18b17",
+        "points": 1,
+        "sourceUrl": "https://determinate.systems/blog/introducing-flakeaudit/",
+        "state": "CANDIDATE",
+        "title": "FlakeAudit, a CLI for evaluating Nix flake SBOMs against org policies",
+        "topic": "determinate.systems"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T12:05:31.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154651",
+        "id": "2fc818a3-6291-5465-a7af-5df4ceab4226",
+        "points": 1,
+        "sourceUrl": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-5r6c-gj4g-r697",
+        "state": "CANDIDATE",
+        "title": "SecurityPolicy restrictions unenforced by default sandbox back end in PraisonAI",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T11:28:54.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154332",
+        "id": "9c649bbf-f14a-5d1b-a0d0-59444458dec0",
+        "points": 88,
+        "sourceUrl": "https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/",
+        "state": "CANDIDATE",
+        "title": "Critical CVE issued for hallucinated SQLite vulnerability",
+        "topic": "research.jfrog.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T11:16:33.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154237",
+        "id": "2ebbab84-f0d0-5335-ae6a-0821db6bb723",
+        "points": 39,
+        "sourceUrl": "https://www.wired.com/story/ice-dna-collection-fbi-codis/",
+        "state": "CANDIDATE",
+        "title": "ICE Collected Nearly 1M People's DNA Last Year–Including Young Children",
+        "topic": "wired.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T11:06:15.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49154127",
+        "id": "2426ccd4-f76c-556d-998f-f9300d4323cf",
+        "points": 9,
+        "sourceUrl": "https://github.com/garagehq/nightcrawler/",
+        "state": "CANDIDATE",
+        "title": "Show HN: Nightcrawler – A local AI pentesting agent running on a smartphone",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T09:32:07.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49153374",
+        "id": "1fa88bd6-8f62-5db4-b146-445f7936c024",
+        "points": 118,
+        "sourceUrl": "https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/",
+        "state": "CANDIDATE",
+        "title": "Prevent cognitive debt by manually retyping LLM-generated code",
+        "topic": "ankursethi.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T08:34:24.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49152871",
+        "id": "6d5731ae-6f21-5ba0-8a33-18c5908db2c4",
+        "points": 24,
+        "sourceUrl": "https://arcbox.dev/blog/unifi-pppoe-half-bridge-acceleration",
+        "state": "CANDIDATE",
+        "title": "Show HN: We Fixed UniFi's Slow PPPoE Performance with PPPoE Half-Bridge",
+        "topic": "arcbox.dev"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T08:29:57.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49152842",
+        "id": "fbd6b3db-4c39-5726-92f9-e10d478f42ad",
+        "points": 85,
+        "sourceUrl": "https://github.com/janestreet/bonsai",
+        "state": "CANDIDATE",
+        "title": "Bonsai: Janestreet's UI Library",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T08:04:04.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49152640",
+        "id": "4d496920-b905-5553-852b-8d4b17d5bda4",
+        "points": 46,
+        "sourceUrl": "https://octanejs.dev",
+        "state": "CANDIDATE",
+        "title": "Octane – React's programming model, compiled",
+        "topic": "octanejs.dev"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:33:17.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151964",
+        "id": "498b4207-a09d-5a69-a010-17973f04725f",
+        "points": 1,
+        "sourceUrl": null,
+        "state": "CANDIDATE",
+        "title": "Untitled Hacker News item",
+        "topic": "untitled"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:32:04.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151957",
+        "id": "c8985847-e515-5bc6-8d3d-fe47f4bc9cb4",
+        "points": 1,
+        "sourceUrl": "https://github.com/rjt-gupta/page-cache-corruption-lpes/tree/main/dirty_pedit",
+        "state": "CANDIDATE",
+        "title": "Linux page-cache corruption via TC pedit: a new Dirty-class variant",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:30:50.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151951",
+        "id": "bc7541d6-67c2-51ba-a4b0-a7906c5030ee",
+        "points": 1,
+        "sourceUrl": "https://curved-crease-interactive.vercel.app/",
+        "state": "CANDIDATE",
+        "title": "Curved Crease Folding",
+        "topic": "curved-crease-interactive.vercel.app"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:28:01.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151933",
+        "id": "57f99927-df9c-5c60-84a8-48a60006bd6b",
+        "points": 10,
+        "sourceUrl": "https://gruhn.me/blog/2026-08-03/",
+        "state": "CANDIDATE",
+        "title": "Don't Be a Meat Proxy",
+        "topic": "gruhn.me"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:27:54.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151931",
+        "id": "7c7d29ac-1b8e-5375-9c6c-01c3f869ae77",
+        "points": 1,
+        "sourceUrl": "https://github.com/harmansingh4163-ai/R-457",
+        "state": "CANDIDATE",
+        "title": "R-457 – a 27M-parameter reasoning model running offline across two ESP32-S3",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:22:52.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151906",
+        "id": "59e89e06-4699-5149-80df-0ef49599d132",
+        "points": 1,
+        "sourceUrl": "https://lwn.net/ml/all/CAHk-=whoz5Uy-kmrdzjrpCJCVWW3fni31c-zsHcH7TkOhRhfOA@mail.gmail.com/",
+        "state": "CANDIDATE",
+        "title": "Linux 7.2-rc6: The biggest rc6 in years",
+        "topic": "lwn.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:22:11.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151900",
+        "id": "4be98816-d8a1-57ae-b086-64ea295a38ef",
+        "points": 2,
+        "sourceUrl": "https://dispatch-media.com/meet-britains-hikikomori/",
+        "state": "CANDIDATE",
+        "title": "Britain's Hikikomori",
+        "topic": "dispatch-media.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:17:53.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151871",
+        "id": "0c4fac86-1fa9-5562-988d-17637d172d3d",
+        "points": 3,
+        "sourceUrl": "https://www.emergingtrajectories.com/lh/situational-awareness-bigger-picture/",
+        "state": "CANDIDATE",
+        "title": "Situational Awareness and the Impending Stock Market Volatility",
+        "topic": "emergingtrajectories.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T06:16:38.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49151853",
+        "id": "21267bfb-c37d-57cf-9f84-0ae12dbed533",
+        "points": 1,
+        "sourceUrl": "https://www.researchgate.net/publication/399711077_Thinking-Fast_Slow_and_Artificial_How_AI_is_Reshaping_Human_Reasoning_and_the_Rise_of_Cognitive_Surrender",
+        "state": "CANDIDATE",
+        "title": "How AI Is Reshaping Human Reasoning and the Rise of Cognitive Surrender",
+        "topic": "researchgate.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T03:06:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49150773",
+        "id": "77f1cdfc-16cd-5090-be1f-0bb23fcb710e",
+        "points": 28,
+        "sourceUrl": "https://arxiv.org/abs/2607.28271",
+        "state": "CANDIDATE",
+        "title": "AI migrated legacy COBOL programs to Java, bugs included",
+        "topic": "arxiv.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T02:16:09.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49150470",
+        "id": "5d606a40-d441-54d9-be66-93a2ab7db870",
+        "points": 391,
+        "sourceUrl": "https://qwen.ai/blog?id=qwen3.8",
+        "state": "CANDIDATE",
+        "title": "Qwen3.8-Max: A New Bar for Coding and Cowork",
+        "topic": "qwen.ai"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T00:46:38.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49149966",
+        "id": "0d7cfae2-b23d-5066-aa1c-a9f09e51990e",
+        "points": 165,
+        "sourceUrl": "https://sf.isopolis.city/",
+        "state": "CANDIDATE",
+        "title": "Show HN: Isopolis – Isometric pixel map of SF",
+        "topic": "sf.isopolis.city"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T00:38:10.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49149898",
+        "id": "14ff745b-f1d9-5f8a-852d-8045b7fefc89",
+        "points": 58,
+        "sourceUrl": "https://github.com/johnsonjh/cpm386",
+        "state": "CANDIDATE",
+        "title": "CP/M-386 – CP/M for 386 protected mode, derived from CP/M‑68K",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-03T00:23:21.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49149805",
+        "id": "8e81dcc5-56c1-5bdb-b8ea-8aabd4ef2029",
+        "points": 90,
+        "sourceUrl": "https://ssh.place",
+        "state": "CANDIDATE",
+        "title": "Show HN: ssh ssh.place",
+        "topic": "ssh.place"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T23:05:41.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49149326",
+        "id": "665a568f-a62f-567d-9d9f-6246450f7bee",
+        "points": 126,
+        "sourceUrl": "https://github.com/pg83/shitty",
+        "state": "CANDIDATE",
+        "title": "Show HN: Shitty – fast terminal. Memory-unsafe and faster than yours",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T20:33:01.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49148048",
+        "id": "f4a5a1e8-9099-5424-bfd5-4c62938ee1a7",
+        "points": 86,
+        "sourceUrl": "https://github.com/ArcaEge/creakwork12",
+        "state": "CANDIDATE",
+        "title": "Show HN: Make your Framework 12 sound like a creaky door",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T17:05:54.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49146267",
+        "id": "de8cb4f8-f8c4-5a95-b083-88abebe43e35",
+        "points": 118,
+        "sourceUrl": "https://github.com/graham33/nixos-dgx-spark",
+        "state": "CANDIDATE",
+        "title": "Show HN: NixOS-DGX-Spark – Nix and NixOS on the DGX Spark",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T16:26:40.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49145937",
+        "id": "1f6896b4-b293-55c3-b223-73a065f54323",
+        "points": 207,
+        "sourceUrl": "https://github.com/wie-project/kakehashi",
+        "state": "CANDIDATE",
+        "title": "Show HN: Kakehashi – Experimental userspace to run macOS binaries on Linux ARM",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T09:06:33.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49142569",
+        "id": "09d3bf52-2c5b-5342-a484-0959b6aae021",
+        "points": 173,
+        "sourceUrl": "https://getbor.dev/blog/2026-08-02-bor-v080-release/",
+        "state": "CANDIDATE",
+        "title": "Show HN: Bor – Open-source policy management for Linux desktops",
+        "topic": "getbor.dev"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T06:08:47.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141593",
+        "id": "439be1fc-c043-5dfa-97e8-d6e8b9e97b3b",
+        "points": 1,
+        "sourceUrl": "https://www.theatlantic.com/technology/2026/07/jacob-tsimerman-math-fields-medal-openai/688120/",
+        "state": "CANDIDATE",
+        "title": "Something Weird Is Happening in Math",
+        "topic": "theatlantic.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T06:06:39.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141580",
+        "id": "fa624327-d3b6-59de-914f-1895fce98c9f",
+        "points": 1,
+        "sourceUrl": "https://medium.com/@vektormemory/provenance-what-it-actually-takes-to-prove-creator-data-dignity-306417f53f14",
+        "state": "CANDIDATE",
+        "title": "Provenance: What It Takes to Prove Creator Data Dignity",
+        "topic": "medium.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T06:02:01.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141562",
+        "id": "57e5047a-f970-50fd-8d6c-91550a44fadf",
+        "points": 1,
+        "sourceUrl": "https://sebsite.pw/w/20260802-sizeof.html",
+        "state": "CANDIDATE",
+        "title": "Sizeof is surprisingly difficult to parse in C",
+        "topic": "sebsite.pw"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T06:01:39.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141559",
+        "id": "fb3b2d03-4f4e-5724-b8b8-6249d6e1b00f",
+        "points": 1,
+        "sourceUrl": "https://www.youtube.com/watch?v=xiuC-616BPQ",
+        "state": "CANDIDATE",
+        "title": "The Complete History of Michael Jackson's Sonic 3 [video]",
+        "topic": "youtube.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T05:58:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141544",
+        "id": "2d2ed6a3-87e5-5a27-ac8a-d297aa7dfc79",
+        "points": 1,
+        "sourceUrl": "https://www.foxbusiness.com/markets/yall-street-launches-texas-stock-exchange-goes-live-dallas",
+        "state": "CANDIDATE",
+        "title": "Y'all Street Launches: Texas Stock Exchange Goes Live in Dallas",
+        "topic": "foxbusiness.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T05:53:50.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141521",
+        "id": "1e3ebf3e-a312-50be-a0f1-3675cb5423f7",
+        "points": 1,
+        "sourceUrl": "https://bankstatementconverter.com/blog/posts/2026-08-02-why-are-all-amounts-negative/",
+        "state": "CANDIDATE",
+        "title": "Why are all the amounts values negative?",
+        "topic": "bankstatementconverter.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T05:50:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141504",
+        "id": "7e145060-b922-5c9a-a991-13d6c4aaf213",
+        "points": 1,
+        "sourceUrl": "https://cardstock.dev",
+        "state": "CANDIDATE",
+        "title": "Cardstock – dynamic OG images from one URL (no render server)",
+        "topic": "cardstock.dev"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T05:40:32.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141461",
+        "id": "f5dc3345-f5c3-5f83-845a-3746bf0ab870",
+        "points": 1,
+        "sourceUrl": "https://github.com/Midstall/claude-for-hardware",
+        "state": "CANDIDATE",
+        "title": "Claude-for-Hardware",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T04:21:14.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49141073",
+        "id": "ff6e3551-375d-5aac-bb29-5f3ff84a2a61",
+        "points": 67,
+        "sourceUrl": "https://www.wafer.ai/blog/kimi-k3-mi355x",
+        "state": "CANDIDATE",
+        "title": "Running Kimi K3 on MI355X at Better Performance per Dollar Than B300",
+        "topic": "wafer.ai"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T04:05:56.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140998",
+        "id": "03fa3299-67ce-5d42-a7ec-4858011d25fc",
+        "points": 581,
+        "sourceUrl": "https://twitter.com/karpathy/status/2083749667410727319",
+        "state": "CANDIDATE",
+        "title": "Karpathy’s Pelican",
+        "topic": "twitter.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T03:28:57.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140789",
+        "id": "6065cc2f-946b-5512-8e32-3d3593d8a6ed",
+        "points": 6,
+        "sourceUrl": "https://github.com/ringlochid/banksia",
+        "state": "CANDIDATE",
+        "title": "Show HN: I get 25 deep researched ideas with one single prompt",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T03:12:52.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140702",
+        "id": "60cfeb7a-bc2f-5b62-880c-9f188707f81e",
+        "points": 37,
+        "sourceUrl": "http://oldvcr.blogspot.com/2026/08/mklinux-and-pimped-out-apple-workgroup.html",
+        "state": "CANDIDATE",
+        "title": "MkLinux and the pimped-out Apple Workgroup Server 9150",
+        "topic": "oldvcr.blogspot.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T03:10:00.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140696",
+        "id": "c758ba42-4263-5e68-9931-6ba27d229d80",
+        "points": 92,
+        "sourceUrl": "https://old.reddit.com/r/linux/comments/1vcpk8i/linux_desktop_market_share_has_hit_over_10_in/",
+        "state": "CANDIDATE",
+        "title": "Linux desktop market share has hit over 10% in North America",
+        "topic": "old.reddit.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T02:59:21.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140638",
+        "id": "c38f42ed-d849-5358-b01f-9e3a7ac371ac",
+        "points": 2,
+        "sourceUrl": "https://firstemployee.ai/",
+        "state": "CANDIDATE",
+        "title": "Show HN: FirstEmployee.ai – Start a Business",
+        "topic": "firstemployee.ai"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T02:07:09.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140396",
+        "id": "94bf8e2e-9273-54b2-84c9-91e89b92d40c",
+        "points": 78,
+        "sourceUrl": "https://github.com/tom-ilan/cycloidal_gearbox",
+        "state": "CANDIDATE",
+        "title": "Show HN: I'm a 15 Year Old Wannabe Engineer, This Is a Cycloidal Gearbox I Built",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T01:56:44.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140340",
+        "id": "763b44a4-6f63-599f-839c-cd43e5997d48",
+        "points": 13,
+        "sourceUrl": "https://costperprompt.com/",
+        "state": "CANDIDATE",
+        "title": "Show HN: CostPerPrompt – Live AI API pricing and real-workload cost calculators",
+        "topic": "costperprompt.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T01:35:51.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140218",
+        "id": "8c70345d-9ae7-567c-87b1-ba5882b47d36",
+        "points": 355,
+        "sourceUrl": "https://victoriametrics.com/blog/go-1-27/index.html",
+        "state": "CANDIDATE",
+        "title": "Go 1.27 Interactive Tour",
+        "topic": "victoriametrics.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-02T01:35:11.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49140213",
+        "id": "e678d89d-357c-560f-bcb9-f6aebc2ce2fe",
+        "points": 41,
+        "sourceUrl": "https://plug-world.com/posts/2026/asrock-bc250-the-budget-steam-machine/",
+        "state": "CANDIDATE",
+        "title": "ASRock BC-250: Building the Budget Steam Machine",
+        "topic": "plug-world.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T22:55:52.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49139383",
+        "id": "a8513836-cf9c-5fa7-96da-667bad62e93a",
+        "points": 63,
+        "sourceUrl": "https://www.kyoto-u.ac.jp/en/research-news/2026-07-28",
+        "state": "CANDIDATE",
+        "title": "Unraveling the mysteries of habit formation",
+        "topic": "kyoto-u.ac.jp"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T22:25:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49139102",
+        "id": "2f181011-f9f0-59c9-8d21-73e0af2c87ba",
+        "points": 339,
+        "sourceUrl": "https://mitsloan.mit.edu/ideas-made-to-matter/ai-financial-advice-surprisingly-good-especially-if-you-ask-right-questions",
+        "state": "CANDIDATE",
+        "title": "AI financial advice is surprisingly good, especially if you ask right questions",
+        "topic": "mitsloan.mit.edu"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T21:31:40.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49138692",
+        "id": "ca04af74-2389-55ba-98aa-ed6428ebe1a4",
+        "points": 6,
+        "sourceUrl": "https://github.com/HarKro753/claude-copy",
+        "state": "CANDIDATE",
+        "title": "Show HN: Copy any website pixel perfect",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T20:45:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49138302",
+        "id": "f8f6f29c-d8b2-5693-a26c-6c71bd775ac4",
+        "points": 429,
+        "sourceUrl": "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+        "state": "CANDIDATE",
+        "title": "Seedance 2.5",
+        "topic": "seed.bytedance.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T20:33:27.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49138188",
+        "id": "21cc8480-6663-50ce-a968-f172416d198d",
+        "points": 539,
+        "sourceUrl": "https://diataxis.fr/",
+        "state": "CANDIDATE",
+        "title": "Diátaxis",
+        "topic": "diataxis.fr"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T18:07:07.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49136821",
+        "id": "febeed1d-ae70-5f4e-8566-a319fe82440b",
+        "points": 485,
+        "sourceUrl": "https://openrss.org/blog/how-google-helped-destroy-adoption-of-rss-feeds",
+        "state": "CANDIDATE",
+        "title": "How Google helped destroy adoption of RSS feeds (2023)",
+        "topic": "openrss.org"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T07:37:44.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49132058",
+        "id": "98fb60f4-aba3-5c01-a556-914f6a5bb360",
+        "points": 459,
+        "sourceUrl": "https://openai.com/index/ten-advances-in-mathematics/",
+        "state": "CANDIDATE",
+        "title": "Ten advances in mathematics and theoretical computer science",
+        "topic": "openai.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T06:07:14.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131539",
+        "id": "5f0f686d-58ca-57e1-ab01-0091ef98de9c",
+        "points": 1,
+        "sourceUrl": "https://www.youtube.com/watch?v=2mrwr21XkBc",
+        "state": "CANDIDATE",
+        "title": "What Happened to NeXT Computer? Why Steve Jobs' Failed Workstation Became macOS",
+        "topic": "youtube.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T06:05:06.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131528",
+        "id": "91abd61c-6e75-51ab-86a9-fe9283e39dd1",
+        "points": 1,
+        "sourceUrl": "https://zhenyi.gibber.blog/the-old-man-and-the-app",
+        "state": "CANDIDATE",
+        "title": "The Old Man and the App",
+        "topic": "zhenyi.gibber.blog"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T06:05:04.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131527",
+        "id": "a94c90fa-bc80-577e-ac2c-18c7689a7952",
+        "points": 1,
+        "sourceUrl": "https://www.youtube.com/watch?v=E82ly38YEEQ",
+        "state": "CANDIDATE",
+        "title": "Dependency Cultures [video]",
+        "topic": "youtube.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T05:59:37.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131489",
+        "id": "03814190-5035-5211-9627-f8ad529f7e8c",
+        "points": 1,
+        "sourceUrl": "https://coinvaluecalc.com/",
+        "state": "CANDIDATE",
+        "title": "Show HN: TikTok Coin Calculator – viewer costs vs. creator earnings",
+        "topic": "coinvaluecalc.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T05:56:22.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131464",
+        "id": "5b50c592-ea24-5b68-b07d-31680ad3fcc1",
+        "points": 1,
+        "sourceUrl": "https://huggingface.co/Audio8/Audio8-TTS-Preview-0.6B-ONNX-INT4",
+        "state": "CANDIDATE",
+        "title": "Audio8 TTS Preview 0.6B",
+        "topic": "huggingface.co"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T05:51:36.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131438",
+        "id": "ab1ae2de-4b3c-5abe-b012-27761ad97d10",
+        "points": 1,
+        "sourceUrl": "https://simonwillison.net/2026/Jul/31/stateless-mcp/",
+        "state": "CANDIDATE",
+        "title": "Stateless MCP has recaptured my interest",
+        "topic": "simonwillison.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T05:48:16.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131426",
+        "id": "f52ec657-1791-5157-8110-2cd3997208db",
+        "points": 1,
+        "sourceUrl": null,
+        "state": "CANDIDATE",
+        "title": "Show HN: One no-subscriptions online search for all your agent needs",
+        "topic": "no-subscriptions"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T05:46:31.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131417",
+        "id": "da1c8142-f945-5364-a06a-ac674615b78e",
+        "points": 1,
+        "sourceUrl": "https://medium.com/@alanscottencinas/cross-validation-vs-leaderboard-when-cv-is-too-timid-209215695fe1",
+        "state": "CANDIDATE",
+        "title": "Cross Validation vs. Leaderboard: When CV Is Too Timid",
+        "topic": "medium.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T04:28:13.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49131034",
+        "id": "559c66d0-9f9e-5fdc-92b7-974d02ff003a",
+        "points": 15,
+        "sourceUrl": "https://innig.net/teaching/liberal-arts-manifesto",
+        "state": "CANDIDATE",
+        "title": "What Liberal Arts Education Is for (2024)",
+        "topic": "innig.net"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T03:25:12.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49130756",
+        "id": "6bdbbb4b-fde1-56ab-98a4-d380fe2f25bc",
+        "points": 160,
+        "sourceUrl": "https://consumerrights.wiki/w/BMW_Spider-Man_in-car_advertising",
+        "state": "CANDIDATE",
+        "title": "BMW Spider-Man in-car advertising",
+        "topic": "consumerrights.wiki"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T03:16:09.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49130726",
+        "id": "88568fd4-119a-504a-8195-c825f2568260",
+        "points": 47,
+        "sourceUrl": "https://sundry.jerryorr.com/2026/07/31/development-pipeline-is-a-production-system",
+        "state": "CANDIDATE",
+        "title": "The development pipeline is a production system",
+        "topic": "sundry.jerryorr.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T02:45:37.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49130607",
+        "id": "efbe0562-d3af-54bf-b185-bc905ee37859",
+        "points": 3,
+        "sourceUrl": "https://www.nativescope.dev",
+        "state": "CANDIDATE",
+        "title": "Show HN: Open source React Native debugging studio",
+        "topic": "nativescope.dev"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T02:45:09.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49130604",
+        "id": "89616d98-eb89-5a3f-a5ef-265b4a434575",
+        "points": 56,
+        "sourceUrl": "https://microsoft.github.io/flint-chart/",
+        "state": "CANDIDATE",
+        "title": "Flint: A Visualization Language for the AI Era",
+        "topic": "microsoft.github.io"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T01:35:53.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49130295",
+        "id": "c6fac3b2-3a75-5724-b2a1-fd28860b112a",
+        "points": 27,
+        "sourceUrl": "https://piegames.de/dumps/a-week-in-matrix/",
+        "state": "CANDIDATE",
+        "title": "A Week in Matrix",
+        "topic": "piegames.de"
+      },
+      {
+        "deepAnalysisCount": 1,
+        "discoveredAt": "2026-08-01T00:37:06.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49130047",
+        "id": "ce8d6d7b-f0d1-5bd2-9878-2f5329db7432",
+        "points": 5,
+        "sourceUrl": "https://smokevpn.com",
+        "state": "ANALYZED",
+        "title": "Show HN: SmokeVPN – All-in-One WireGuard VPN Hub – Switch Exits in Realtime",
+        "topic": "smokevpn.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-08-01T00:25:00.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49129990",
+        "id": "777f723a-ccc5-5486-9358-dedeb5be366b",
+        "points": 113,
+        "sourceUrl": "https://www.raptitude.com/2026/07/how-to-exist/",
+        "state": "CANDIDATE",
+        "title": "How to Exist",
+        "topic": "raptitude.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T21:39:52.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49128826",
+        "id": "06148e23-4748-5a6f-a232-7de082231870",
+        "points": 100,
+        "sourceUrl": "https://code.intellios.ai/cwbrowser/",
+        "state": "CANDIDATE",
+        "title": "Show HN: I worked on a new browser for 2 years, today it passed Acid 3",
+        "topic": "code.intellios.ai"
+      },
+      {
+        "deepAnalysisCount": 1,
+        "discoveredAt": "2026-07-31T20:27:28.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49128177",
+        "id": "c26112ea-4cf0-53a0-8168-ca4a499b4b5c",
+        "points": 25,
+        "sourceUrl": "https://www.trytilde.ai/blog/how-to-build-code-review-agent",
+        "state": "ANALYZED",
+        "title": "Show HN: How to build and self-host a code review agent",
+        "topic": "trytilde.ai"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T19:03:45.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49127306",
+        "id": "46464c43-b949-5831-8e40-5e07a911a513",
+        "points": 598,
+        "sourceUrl": "https://tailscale.com/blog/hugging-face-intrusion",
+        "state": "CANDIDATE",
+        "title": "Tailscale didn't stop the Hugging Face intrusion",
+        "topic": "tailscale.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T18:04:58.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49126604",
+        "id": "05419456-7cc8-5f54-9372-5433f811dfca",
+        "points": 524,
+        "sourceUrl": "https://github.com/yc-software/qm",
+        "state": "CANDIDATE",
+        "title": "qm – Multiplayer agent harness for work",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T16:17:04.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49125065",
+        "id": "2255f37e-2676-57fa-9b36-490464b28a87",
+        "points": 27,
+        "sourceUrl": "https://localai.io/blog/why-we-write-our-own-engines/",
+        "state": "CANDIDATE",
+        "title": "Why we write our own C and C++ inference engines",
+        "topic": "localai.io"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T15:17:28.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49124218",
+        "id": "207ad755-4ece-5503-9340-1b2be493141f",
+        "points": 1587,
+        "sourceUrl": "https://john.fun/elevators",
+        "state": "CANDIDATE",
+        "title": "Show HN: Elevators",
+        "topic": "john.fun"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T14:41:13.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49123789",
+        "id": "a86f3cc4-4e85-5fb4-96d6-01b5e4f2ae26",
+        "points": 77,
+        "sourceUrl": "https://github.com/richlegrand/bitbang-cli",
+        "state": "CANDIDATE",
+        "title": "Show HN: BitBang – Reach machines behind NAT from a browser, no account",
+        "topic": "github.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T13:08:30.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49122655",
+        "id": "8d6b75ab-f258-5481-9e6d-4e8f91f99f51",
+        "points": 91,
+        "sourceUrl": "https://mattbeton.com/blog/bitnet-6502.html",
+        "state": "CANDIDATE",
+        "title": "Autoregressive Language Model on the 6502 Processor",
+        "topic": "mattbeton.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T11:51:46.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49121980",
+        "id": "f305914f-c207-5788-b257-8348a2d72e7e",
+        "points": 433,
+        "sourceUrl": "https://hughhowey.com/the-end-of-an-era/",
+        "state": "CANDIDATE",
+        "title": "The End of an Era",
+        "topic": "hughhowey.com"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T07:59:11.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49120299",
+        "id": "128fac50-0bc2-5727-916f-a0ededb52464",
+        "points": 582,
+        "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+        "state": "CANDIDATE",
+        "title": "DeepSeek V4 Flash 0731 Intelligence, Performance and Price Analysis",
+        "topic": "artificialanalysis.ai"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T07:29:22.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49120097",
+        "id": "900a1dde-6dda-5ae1-8fd5-9cd8da0ca06f",
+        "points": 558,
+        "sourceUrl": "https://blog.google/security/chrome-stronger-with-every-update/",
+        "state": "CANDIDATE",
+        "title": "Google fixed more Chrome bugs in June than over the past two years, thanks to AI",
+        "topic": "blog.google"
+      },
+      {
+        "deepAnalysisCount": 0,
+        "discoveredAt": "2026-07-31T06:37:42.000-07:00",
+        "discussionUrl": "https://news.ycombinator.com/item?id=49119751",
+        "id": "01c48b2e-487d-50dd-9d0f-480e6788f049",
+        "points": 127,
+        "sourceUrl": "https://handwritten.blog/",
+        "state": "CANDIDATE",
+        "title": "Show HN: A Handwritten Blogging Platform",
+        "topic": "handwritten.blog"
+      },
+      {
+        "deepAnalysisCount": 0,
         "discoveredAt": "2026-07-31T06:22:31.000-07:00",
         "discussionUrl": "https://news.ycombinator.com/item?id=49119652",
         "id": "0d64f8d9-5846-5648-9ed7-0d196e7806bb",
@@ -372,13 +1701,13 @@
         "topic": "theatlantic.com"
       },
       {
-        "deepAnalysisCount": 0,
+        "deepAnalysisCount": 1,
         "discoveredAt": "2026-07-31T06:15:52.000-07:00",
         "discussionUrl": "https://news.ycombinator.com/item?id=49119606",
         "id": "a70c6bf0-f498-581c-8467-daa9200d0555",
         "points": 1,
         "sourceUrl": null,
-        "state": "CANDIDATE",
+        "state": "ANALYZED",
         "title": "Should Airbnb Add Ads?",
         "topic": "airbnb"
       },
@@ -469,977 +1798,337 @@
         "state": "CANDIDATE",
         "title": "LinkedIn adds a button to report AI-generated 'slop'",
         "topic": "techcrunch.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T06:05:25.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119537",
-        "id": "8cbb7d45-6e6b-54dd-a199-df0c4e31f221",
-        "points": 1,
-        "sourceUrl": "https://www.reuters.com/world/africa/us-government-map-africa-mislabels-every-country-global-conference-2026-07-30/",
-        "state": "CANDIDATE",
-        "title": "US Government map of Africa mislabels every country at global conference",
-        "topic": "reuters.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T06:04:33.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119532",
-        "id": "100669b5-d605-591d-b57c-0bbfdfcca877",
-        "points": 1,
-        "sourceUrl": "https://www.textclad.com/2026/07/30/remote/",
-        "state": "CANDIDATE",
-        "title": "Remote",
-        "topic": "textclad.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T06:02:04.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119518",
-        "id": "e44b00ee-cc83-5c4b-8667-600d416489b4",
-        "points": 1,
-        "sourceUrl": "https://pub.towardsai.net/saps-big-push-for-tabular-ai-what-it-means-for-enterprises-7dc3af2a1d8c?sk=73d9e33939f8f38b3d7ea49f87bb2e6a",
-        "state": "CANDIDATE",
-        "title": "SAP's Big Push for Tabular AI. What It Means for Enterprises",
-        "topic": "pub.towardsai.net"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T06:00:34.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119508",
-        "id": "6318b794-fa4e-5aa8-8b87-19b2fb4a8810",
-        "points": 1,
-        "sourceUrl": "https://arxiv.org/abs/2607.25973",
-        "state": "CANDIDATE",
-        "title": "k-Coloring is Faster than Computing the Chromatic Number",
-        "topic": "arxiv.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:57:43.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119491",
-        "id": "97bc9369-7048-5932-8524-d0ee211daac3",
-        "points": 2,
-        "sourceUrl": "https://github.com/Hinikaa/tileroot",
-        "state": "CANDIDATE",
-        "title": "Show HN: Tileroot – save/restore tiling WM layouts (sway, Hyprland, i3)",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:53:04.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119465",
-        "id": "d8b3d103-81d0-525b-8624-1f7acefd7c37",
-        "points": 1,
-        "sourceUrl": "https://grist.org/extreme-heat/these-psychedelic-images-reveal-what-your-weather-app-isnt-telling-you/",
-        "state": "CANDIDATE",
-        "title": "Psychedelic images reveal what your weather app isn't telling you",
-        "topic": "grist.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:52:29.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119460",
-        "id": "efac284e-5fa4-551f-ac0c-3dc99b974ba0",
-        "points": 2,
-        "sourceUrl": "https://lore.kernel.org/lkml/CAKSQd8WxM75DeZvovYXkt2c60ftHeEW_gpf0qTxaLF8i8kjm=w@mail.gmail.com/",
-        "state": "CANDIDATE",
-        "title": "x86 AMX/ACE with >8 tiles",
-        "topic": "lore.kernel.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:52:25.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119458",
-        "id": "fb6c16ee-3b12-564f-9d6a-68799f156074",
-        "points": 1,
-        "sourceUrl": "https://quizpaste.com/",
-        "state": "CANDIDATE",
-        "title": "Show HN: QuizPaste – paste any text or doc, get an instant quiz",
-        "topic": "quizpaste.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:45:13.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119425",
-        "id": "27b95e6f-a1d9-5603-b539-d4227b641e52",
-        "points": 2,
-        "sourceUrl": "https://github.com/mokshablr/gander",
-        "state": "CANDIDATE",
-        "title": "Show HN: Gander, an Android file viewer that asks for no permissions at all",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:43:47.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119420",
-        "id": "5c31aff7-8048-5c54-a507-68c7279dee62",
-        "points": 1,
-        "sourceUrl": "https://www.youtube.com/watch?v=O3BJtUssbhQ",
-        "state": "CANDIDATE",
-        "title": "Book Time: Automatic Page Turner from Japan [video]",
-        "topic": "youtube.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:42:08.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119404",
-        "id": "fa7b5641-7465-5b1e-8287-37f17b722e94",
-        "points": 3,
-        "sourceUrl": "https://www.cbc.ca/news/science/eflect-orbital-approval-FCC-9.7287535",
-        "state": "CANDIDATE",
-        "title": "U.S. FCC approves giant space mirror to deliver 'sunlight on demand'",
-        "topic": "cbc.ca"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:40:28.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119396",
-        "id": "b63abd46-c223-566d-948a-7a3115f068d4",
-        "points": 1,
-        "sourceUrl": "https://www.nytimes.com/wirecutter/reviews/give-up-on-ceramic-nonstick-pans/",
-        "state": "CANDIDATE",
-        "title": "It's Time to Give Up on the Nonstick Pan as We Know It",
-        "topic": "nytimes.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:36:28.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119380",
-        "id": "06f68395-5c4c-5a92-9657-67c10cdd2a9f",
-        "points": 3,
-        "sourceUrl": "https://www.youtube.com/watch?v=RJdgh9eEZvw",
-        "state": "CANDIDATE",
-        "title": "Martin Shkreli Breaks Down the Collapse of Situational Awareness [video]",
-        "topic": "youtube.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:36:28.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119382",
-        "id": "1599b91f-f663-5bc6-a1ec-77946e3bbd4c",
-        "points": 1,
-        "sourceUrl": "https://projectcostestimator.com",
-        "state": "CANDIDATE",
-        "title": "I built a website cost calculator with 9 engines",
-        "topic": "projectcostestimator.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:29:47.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119344",
-        "id": "7a080de0-4087-58b1-8750-cc99e3a4d2ee",
-        "points": 4,
-        "sourceUrl": "https://pressgazette.co.uk/publishers/digital-journalism/first-tremors-of-ai-earthquake-showing-in-digital-revenue-hit/",
-        "state": "CANDIDATE",
-        "title": "'First tremors' of AI earthquake showing in digital revenue hit",
-        "topic": "pressgazette.co.uk"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:26:13.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119322",
-        "id": "48a5d02b-68a2-52e6-ab20-f7b79943e523",
-        "points": 4,
-        "sourceUrl": "https://human2llm.pages.dev/",
-        "state": "CANDIDATE",
-        "title": "Human Honeypot",
-        "topic": "human2llm.pages.dev"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:25:24.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119315",
-        "id": "a694d9ca-9c91-52ed-91fc-bd88874fe567",
-        "points": 2,
-        "sourceUrl": "https://pagarevijayy.substack.com/p/critical-rendering-path-the-foundation",
-        "state": "CANDIDATE",
-        "title": "Critical Rendering Path: The Foundation of Web Performance [Part 1]",
-        "topic": "pagarevijayy.substack.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-31T05:22:18.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119293",
-        "id": "16f4770d-2d3a-5eef-8f30-6a62d4dda981",
-        "points": 4,
-        "sourceUrl": "https://www.cnbc.com/2026/07/30/leopold-aschenbrenners-hedge-fund-is-facing-steep-ai-losses.html",
-        "state": "CANDIDATE",
-        "title": "Aschenbrenner's hedge fund forced to unwind all public stock positions",
-        "topic": "cnbc.com"
-      },
-      {
-        "deepAnalysisCount": 1,
-        "discoveredAt": "2026-07-31T05:19:46.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49119284",
-        "id": "8c60a656-7bf5-5f1a-988f-340a8dda6f27",
-        "points": 4,
-        "sourceUrl": "https://www.latimes.com/business/story/2026-07-29/nvidias-750-billion-ai-bet-deepens-fears-of-circular-tech-bubble",
-        "state": "ANALYZED",
-        "title": "Nvidia's $750B AI bet deepens fears of a circular tech bubble",
-        "topic": "latimes.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T07:10:56.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49066066",
-        "id": "c1064e3f-5e3c-5f95-bee6-0098bcd953a8",
-        "points": 2,
-        "sourceUrl": null,
-        "state": "CANDIDATE",
-        "title": "Show HN: How to Resolve Software Deployment Issues with SeaTicket in 4 Steps",
-        "topic": "deployment"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T07:07:55.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49066049",
-        "id": "9d008d58-6b16-5255-bd6d-5762429cb6a9",
-        "points": 1,
-        "sourceUrl": "https://www.economist.com/china/2026/07/16/china-wants-to-end-ai-romances",
-        "state": "CANDIDATE",
-        "title": "China wants to end AI romances",
-        "topic": "economist.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T07:07:26.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49066044",
-        "id": "d618526e-7b59-5d14-b4fa-abe7d9dc0cd1",
-        "points": 1,
-        "sourceUrl": "https://codeberg.org/joexo/write",
-        "state": "CANDIDATE",
-        "title": "Show HN: 'Write' – A Markdown Editor in the Browser",
-        "topic": "codeberg.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T07:03:32.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49066018",
-        "id": "acf7d96b-a207-55b3-93f2-87133a6fdff5",
-        "points": 1,
-        "sourceUrl": "https://chromewebstore.google.com/detail/repost-api-tester/eipmeckflplenlbnlhbpmjojahephhkp",
-        "state": "CANDIDATE",
-        "title": "API Testing Chrome Extension",
-        "topic": "chromewebstore.google.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T07:01:01.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49066005",
-        "id": "9194a2b4-fe96-564d-9e50-cf4f942cd1e1",
-        "points": 1,
-        "sourceUrl": "https://www.lesswrong.com/posts/Mxx5GapJtqyQtpy96/openai-s-myopia-keeps-causing-alignment-problems",
-        "state": "CANDIDATE",
-        "title": "OpenAI's myopia keeps causing alignment problems",
-        "topic": "lesswrong.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T07:00:22.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49066000",
-        "id": "9fa5bb77-574f-549d-97e7-f027f0cb94ab",
-        "points": 1,
-        "sourceUrl": "https://agenthost.space/",
-        "state": "CANDIDATE",
-        "title": "AgentHost – Persistent, governed AI agents in your own cloud",
-        "topic": "agenthost.space"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:59:31.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065994",
-        "id": "8c9c1bee-2309-59c7-9dd7-6ca6ea09e15b",
-        "points": 1,
-        "sourceUrl": "https://fzakaria.com/2026/07/26/seriously-what-is-the-large-code-model-even-for",
-        "state": "CANDIDATE",
-        "title": "Seriously, what is the large code-model even for?",
-        "topic": "fzakaria.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:55:28.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065980",
-        "id": "0d950ae3-cb5e-5b33-aa91-aa860c729234",
-        "points": 1,
-        "sourceUrl": "https://finance.yahoo.com/healthcare/articles/sodaslim-releases-updated-2026-highlights-122400710.html",
-        "state": "CANDIDATE",
-        "title": "Sodaslim| Natural Weight Management Support",
-        "topic": "finance.yahoo.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:54:56.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065977",
-        "id": "0f30205e-bebc-554e-9064-15fe26575894",
-        "points": 2,
-        "sourceUrl": "https://www.youtube.com/watch?v=vS6HEes8daw",
-        "state": "CANDIDATE",
-        "title": "The Problem with Capitalism – Smarter Every Day [video]",
-        "topic": "youtube.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:52:01.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065956",
-        "id": "149d2000-1176-5cfa-a915-1912b3926c26",
-        "points": 1,
-        "sourceUrl": "https://github.com/woosal1337/blog/tree/main/videos/ep01-the-cure-for-ai-slop",
-        "state": "CANDIDATE",
-        "title": "ASD-STE100 Simplified Technical English for LLMs",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:50:03.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065937",
-        "id": "33523eb9-4207-52e4-8c9a-3d56e407ec2b",
-        "points": 1,
-        "sourceUrl": "https://officeimo.com/",
-        "state": "CANDIDATE",
-        "title": "Word, Excel, PowerPoint, Markdown, PowerPoint, Visio, OneNote, Email as C#/MIT",
-        "topic": "officeimo.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:48:37.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065929",
-        "id": "99f14810-191b-5bc2-828e-5fa18ffb622c",
-        "points": 1,
-        "sourceUrl": "https://tangled.org/pds.dad/lexidraw",
-        "state": "CANDIDATE",
-        "title": "Lexidraw: Excalidraw fork with collaborative editing powered by iroh",
-        "topic": "tangled.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:45:08.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065903",
-        "id": "7174d8ed-af72-5d4e-b968-4386503d8d53",
-        "points": 1,
-        "sourceUrl": "https://github.com/YoniRaviv/Relay",
-        "state": "CANDIDATE",
-        "title": "Show HN: Relay – turn Claude Code into a visual Kanban build loop",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:38:54.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065874",
-        "id": "a7e0af70-1d52-50ae-80ef-dbbcf3d60c30",
-        "points": 1,
-        "sourceUrl": "https://www.n16f.net/blog/concurrency-interactivity-mutability-choose-two/",
-        "state": "CANDIDATE",
-        "title": "Concurrency, interactivity, mutability, choose two",
-        "topic": "n16f.net"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:37:21.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065869",
-        "id": "b93edc01-bffb-5cb1-9202-7f3e6e65c8e3",
-        "points": 1,
-        "sourceUrl": "https://www.reuters.com/business/world-at-work/germanys-sick-note-crackdown-may-be-treating-symptoms-not-disease-2026-07-27/",
-        "state": "CANDIDATE",
-        "title": "Germany's sick-note crackdown may be treating the symptoms, not the disease",
-        "topic": "reuters.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:34:18.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065854",
-        "id": "d2f79ced-3180-5320-ac97-aaf8993622c3",
-        "points": 1,
-        "sourceUrl": "https://wordeq.app/",
-        "state": "CANDIDATE",
-        "title": "Show HN: WordEq",
-        "topic": "wordeq.app"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:33:07.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065847",
-        "id": "5591e85f-461e-55f7-8680-69b4a4921bdb",
-        "points": 3,
-        "sourceUrl": "https://medium.com/@DolphinDB_Inc/high-performance-factor-evaluation-with-dolphindb-23bb6954503f",
-        "state": "CANDIDATE",
-        "title": "High-Performance Factor Evaluation",
-        "topic": "medium.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:30:23.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065834",
-        "id": "0589fc72-3f24-5ed1-9912-d87cccaf2025",
-        "points": 1,
-        "sourceUrl": null,
-        "state": "CANDIDATE",
-        "title": "Show HN: Case study: A coding agent refactors a 750k LOC app, no code review",
-        "topic": "refactors"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:30:15.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065830",
-        "id": "89e72a7d-0a2d-5ea3-9e5c-a204dc00d8aa",
-        "points": 1,
-        "sourceUrl": "https://www.youtube.com/watch?v=L0iIW6wpSGQ",
-        "state": "CANDIDATE",
-        "title": "Apple Sues OpenAI: The 41-Page Lawsuit Exposing Their Secret War: Lawsuit",
-        "topic": "youtube.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:29:49.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065825",
-        "id": "d6911b5f-467d-5415-b02f-2a72261ddee8",
-        "points": 1,
-        "sourceUrl": "https://asciinema.org/s/HS1tpO6cjFsaSzS7",
-        "state": "CANDIDATE",
-        "title": "Show HN: Codex Plays NetHack",
-        "topic": "asciinema.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:27:38.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065810",
-        "id": "cdd19a4e-de3b-5981-a981-878cba49689d",
-        "points": 1,
-        "sourceUrl": null,
-        "state": "CANDIDATE",
-        "title": "Ask HN: Are we having a substantial increase of \"Show HN\" since LLM aided coding",
-        "topic": "substantial"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:26:52.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065804",
-        "id": "241df712-59fb-562f-8d37-6d02fccd6fca",
-        "points": 1,
-        "sourceUrl": "https://opensparrow.org/en/",
-        "state": "CANDIDATE",
-        "title": "OpenSparrow v3.0 is out. The GDPR anonymization module",
-        "topic": "opensparrow.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:26:40.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065802",
-        "id": "a8711f18-144c-5374-aadf-56359fbf2f5f",
-        "points": 1,
-        "sourceUrl": "https://github.com/kyzrxe-max/agent-guard",
-        "state": "CANDIDATE",
-        "title": "AgentControl",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:23:46.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065785",
-        "id": "52c4d3eb-4335-5e42-ad02-6bc9d5894a57",
-        "points": 1,
-        "sourceUrl": "https://alsterrunde.com/hamburgs-stadtpark-a-park-built-to-be-used/",
-        "state": "CANDIDATE",
-        "title": "Hamburg's Stadtpark: A Park Built to Be Used",
-        "topic": "alsterrunde.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:22:56.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065779",
-        "id": "31b7c432-04a0-570e-98f9-d9c8c9affa5b",
-        "points": 2,
-        "sourceUrl": "https://github.com/wassgha/rescript",
-        "state": "CANDIDATE",
-        "title": "Show HN: Descript wanted $24/mo, I built an open-source alternative in a weekend",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:18:10.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065752",
-        "id": "cad60d51-13cb-5f7f-939b-4d2001555119",
-        "points": 8,
-        "sourceUrl": "https://huggingface.co/moonshotai/Kimi-K3",
-        "state": "CANDIDATE",
-        "title": "Kimi-K3 Releases on HuggingFace 6/27",
-        "topic": "huggingface.co"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:16:09.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065739",
-        "id": "e4838a6d-553c-5416-89ad-87af3ef9ad41",
-        "points": 1,
-        "sourceUrl": "https://maxfield.lol/blog/proprietary-software/",
-        "state": "CANDIDATE",
-        "title": "If your code leaked tomorrow, would it matter?",
-        "topic": "maxfield.lol"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:15:54.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065738",
-        "id": "d2a0947b-2645-5b72-9136-fcc3bb120075",
-        "points": 1,
-        "sourceUrl": "https://github.com/CyrusNuevoDia/skill-language-server",
-        "state": "CANDIDATE",
-        "title": "Show HN: Skill-language-server – A language server for agent skills",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:14:06.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065725",
-        "id": "4615fad5-96c6-5463-92c1-997b7fda8f71",
-        "points": 1,
-        "sourceUrl": "https://blog.mozilla.org/en/firefox/when-it-comes-to-privacy-default-settings-matter/",
-        "state": "CANDIDATE",
-        "title": "When it comes to privacy, default settings matter (2019)",
-        "topic": "blog.mozilla.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:13:28.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065721",
-        "id": "ef8b57ae-f6b4-5011-b6fa-4f88a6849d96",
-        "points": 1,
-        "sourceUrl": "https://github.com/sheetmusic4j/sheetmusic4j",
-        "state": "CANDIDATE",
-        "title": "Sheetmusic4j: A JavaFX library for rendering interactive sheet music",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:12:08.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065710",
-        "id": "e4fb09dc-2af6-5528-aa8a-e864984b76c8",
-        "points": 1,
-        "sourceUrl": "http://www.synack.net/~bbraun/writing/osfail.html",
-        "state": "CANDIDATE",
-        "title": "Why Darwin Failed (2006)",
-        "topic": "synack.net"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:06:00.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065683",
-        "id": "1f713e7d-c2a5-5de4-a2c6-3263e28b407c",
-        "points": 2,
-        "sourceUrl": "https://medium.com/@kisnorbert87/what-if-the-cosmological-constant-is-encoded-in-the-standard-model-itself-9ff4ba870374",
-        "state": "CANDIDATE",
-        "title": "One number, two universes. Coincidence or clue?",
-        "topic": "medium.com"
-      },
-      {
-        "deepAnalysisCount": 1,
-        "discoveredAt": "2026-07-27T06:03:56.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065674",
-        "id": "089db3dc-79db-57ec-acc5-56a895cb7a84",
-        "points": 1,
-        "sourceUrl": "https://github.com/reillyjodonnell/react-driller",
-        "state": "ANALYZED",
-        "title": "React Driller",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T06:03:12.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065668",
-        "id": "954bab64-e164-5710-8909-dd5e285d4b05",
-        "points": 1,
-        "sourceUrl": null,
-        "state": "CANDIDATE",
-        "title": "Ask HN: Any New Computer Ideas?",
-        "topic": "computer"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:59:10.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065644",
-        "id": "f7d3024f-a53f-5602-8b06-8f9a7b157b9c",
-        "points": 1,
-        "sourceUrl": "https://statskit.ai/",
-        "state": "CANDIDATE",
-        "title": "Show HN: StatsKit – Product Analytics and A/B Testing",
-        "topic": "statskit.ai"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:57:53.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065633",
-        "id": "2ac0351c-0615-5071-94c5-6bef44d32b0b",
-        "points": 1,
-        "sourceUrl": "https://github.com/8NobleTruths/sabba",
-        "state": "CANDIDATE",
-        "title": "Show HN: Sabba, a security bug finder that proves every finding by running it",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:53:51.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065611",
-        "id": "14e7fe27-3eed-5186-a409-4b48bd5c806e",
-        "points": 2,
-        "sourceUrl": "https://also.roybahat.com/giving-money-away-can-be-harder-than-making-it-4f4e52208741",
-        "state": "CANDIDATE",
-        "title": "Giving Money Away Can Be Harder Than Making It",
-        "topic": "also.roybahat.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:49:38.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065584",
-        "id": "401e31e1-2aca-571a-be94-8c709ca7f6d4",
-        "points": 1,
-        "sourceUrl": "https://newspeaklanguage.org/Live22Paper.html?snapshot=AmpleforthViewer.vfuel&docName=Live22Paper",
-        "state": "CANDIDATE",
-        "title": "Ampleforth: A Live Literate Editor",
-        "topic": "newspeaklanguage.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:39:33.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065540",
-        "id": "8a58c1b4-8967-506c-b8e8-b6c263d0bcb8",
-        "points": 1,
-        "sourceUrl": "https://quuxplusone.github.io/blog/2026/07/26/function-explosion/",
-        "state": "CANDIDATE",
-        "title": "Interconverting Std:Function with Copyable_function",
-        "topic": "quuxplusone.github.io"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:39:14.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065538",
-        "id": "cf1dcd05-7746-5b2a-85ca-23e12670e66d",
-        "points": 2,
-        "sourceUrl": "https://medium.com/@DolphinDB_Inc/beyond-vectorization-dolphindbs-jit-compiler-gets-a-ground-up-rebuild-911ebf960fd6",
-        "state": "CANDIDATE",
-        "title": "JIT for the Code Vectorization Can't Optimize",
-        "topic": "medium.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:38:56.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065536",
-        "id": "8c0dc7b4-556a-5b27-9401-809c3840074e",
-        "points": 1,
-        "sourceUrl": "https://dl.acm.org/doi/10.1145/3787521",
-        "state": "CANDIDATE",
-        "title": "A practical partitioner for distributed simulations on sparse dynamic domains",
-        "topic": "dl.acm.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:38:17.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065528",
-        "id": "fc2ef191-7d81-5f43-8753-20a9bf588fc7",
-        "points": 1,
-        "sourceUrl": "https://twitter.com/TimSweeneyEpic/status/2081458495006634477",
-        "state": "CANDIDATE",
-        "title": "Doing general vibe math in Programming Language Theory",
-        "topic": "twitter.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:37:49.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065527",
-        "id": "5ed2a3f0-d968-5e45-a47a-33d4f1eedf95",
-        "points": 2,
-        "sourceUrl": "https://www.simplegantt.net",
-        "state": "CANDIDATE",
-        "title": "I built a project management tool because every alternative felt too complicated",
-        "topic": "simplegantt.net"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:37:25.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065524",
-        "id": "75103d57-212a-5e63-b902-b02d72a7838b",
-        "points": 1,
-        "sourceUrl": "https://rohboter.com/",
-        "state": "CANDIDATE",
-        "title": "Searching for Robots Is Surprisingly Hard",
-        "topic": "rohboter.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:37:17.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065522",
-        "id": "e3af30f6-e947-528c-ba42-253ea5b8ed6a",
-        "points": 1,
-        "sourceUrl": "https://op-co.de/blog/posts/mikrotik_authoritative_dnsmasq/",
-        "state": "CANDIDATE",
-        "title": "Authoritative Dnsmasq in a MikroTik Container",
-        "topic": "op-co.de"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:31:33.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065498",
-        "id": "66064f58-a565-5630-98c0-015721f66212",
-        "points": 5,
-        "sourceUrl": "https://www.wsj.com/tech/google-fined-1-02-billion-under-eus-tech-antitrust-rules-7e8ae1fb",
-        "state": "CANDIDATE",
-        "title": "EU Fines Google $1.02B for Favoring Its Own Services",
-        "topic": "wsj.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-27T05:29:06.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49065485",
-        "id": "43112364-d609-5dcb-9af8-503fa7803b05",
-        "points": 1,
-        "sourceUrl": "https://www.wsj.com/business/autos/waymo-is-racking-up-thousands-of-dollars-of-parking-fines-in-austin-d41483f5",
-        "state": "CANDIDATE",
-        "title": "Waymo Is Racking Up Thousands of Dollars of Parking Fines in Austin",
-        "topic": "wsj.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:19:56.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018395",
-        "id": "430d36f6-16ff-5e3a-afc3-fdc8eb2b17e7",
-        "points": 1,
-        "sourceUrl": "https://www.wsj.com/finance/stocks/how-wall-streets-bots-are-cashing-in-on-trumps-truth-social-posts-572f9dfd",
-        "state": "CANDIDATE",
-        "title": "Wall Street's Bots Are Cashing in on Trump's Truth Social Posts",
-        "topic": "wsj.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:18:00.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018380",
-        "id": "9f05d6f3-eb7b-593d-9451-ab5340724c41",
-        "points": 2,
-        "sourceUrl": "http://schwitzsplinters.blogspot.com/2026/07/ai-slop-and-evidence-about-evidence-why.html",
-        "state": "CANDIDATE",
-        "title": "AI Slop: Why Philosophy Journals Should Reject AI-Written Prose",
-        "topic": "schwitzsplinters.blogspot.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:16:57.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018371",
-        "id": "dd7eaea3-6e58-5e83-ba7e-73913ea7a942",
-        "points": 1,
-        "sourceUrl": "https://meeting.tencent.com/dm/4bzAAZGmA84b",
-        "state": "CANDIDATE",
-        "title": "Deep Dive into SeaTunnel Engine: How FlushSignal Drives Architecture Evolution",
-        "topic": "meeting.tencent.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:14:51.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018358",
-        "id": "72f674a5-a1e0-5742-a889-a23fd7ca8920",
-        "points": 1,
-        "sourceUrl": "https://citizens-initiative.europa.eu/initiatives/details/2026/000011_en",
-        "state": "CANDIDATE",
-        "title": "Stop Killing the Internet (European Citizens' Initiative)",
-        "topic": "citizens-initiative.europa.eu"
-      },
-      {
-        "deepAnalysisCount": 1,
-        "discoveredAt": "2026-07-23T08:14:01.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018352",
-        "id": "997702a3-6550-5384-8b47-3c7b130266be",
-        "points": 1,
-        "sourceUrl": "https://github.com/openfde/openfde/blob/main/README.en.md",
-        "state": "ANALYZED",
-        "title": "Show HN: OpenFDE – Can Running Native Android Apps and Android Studio on Linux",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:13:08.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018348",
-        "id": "221c1da8-5f72-5572-9dc8-ddb9e554b88d",
-        "points": 1,
-        "sourceUrl": "https://www.foundersmcp.com",
-        "state": "CANDIDATE",
-        "title": "Founders OS – open-source MCP server that gives AI your business context",
-        "topic": "foundersmcp.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:11:01.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018334",
-        "id": "865f7d32-dac9-52d7-93a2-8b6ca713e5d6",
-        "points": 1,
-        "sourceUrl": "https://www.mixfont.com/blog/ai-agents-dont-respect-font-licenses",
-        "state": "CANDIDATE",
-        "title": "AI Agents Don't Respect Font Licenses",
-        "topic": "mixfont.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:07:16.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018305",
-        "id": "2b183cf0-df3e-5d79-953a-386eb871cf6e",
-        "points": 2,
-        "sourceUrl": "https://support.microsoft.com/en-us/teams/free/settings/teams-free-availability-china",
-        "state": "CANDIDATE",
-        "title": "Microsoft Teams will be blocked in China from July 28th 2026",
-        "topic": "support.microsoft.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:06:32.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018302",
-        "id": "0fde7713-fc1e-5161-a084-41bdaa321955",
-        "points": 1,
-        "sourceUrl": "https://phys.org/news/2026-07-private-mission-life-gas-communication.html",
-        "state": "CANDIDATE",
-        "title": "Private mission launches to extend life of out-of-gas communication satellites",
-        "topic": "phys.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:03:16.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018280",
-        "id": "9ff58336-7ed1-55e8-9aad-55bafe867267",
-        "points": 1,
-        "sourceUrl": "https://github.com/unikum-sol/brainstem",
-        "state": "CANDIDATE",
-        "title": "BrainStem: Open‑source bio‑inspired AI with 12 neuromodulators for learning",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:00:08.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018266",
-        "id": "58f5dbc4-85eb-5557-acbe-fe65a5e50e8f",
-        "points": 1,
-        "sourceUrl": "https://www.economist.com/by-invitation/2026/07/09/why-a-broken-russia-is-bad-for-the-world",
-        "state": "CANDIDATE",
-        "title": "Why a Broken Russia Is Bad for the World",
-        "topic": "economist.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T08:00:02.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018265",
-        "id": "5c558619-dd8f-5556-981f-fff0e5995dd5",
-        "points": 1,
-        "sourceUrl": "https://www.isdglobal.org/wp-content/uploads/2025/02/The-use-of-generative-AI-by-the-German-Far-Right.pdf",
-        "state": "CANDIDATE",
-        "title": "Generative AI and the German Far Right: Narratives, Tactics, Digital Strategies [pdf]",
-        "topic": "isdglobal.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:56:12.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018234",
-        "id": "c311d38b-f598-5007-804f-5b358415ca3e",
-        "points": 3,
-        "sourceUrl": "https://www.anthropic.com/news/claude-for-teachers",
-        "state": "CANDIDATE",
-        "title": "Claude for Teachers",
-        "topic": "anthropic.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:52:05.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018203",
-        "id": "08a2aa65-7a98-5ceb-bf21-34b25c042777",
-        "points": 1,
-        "sourceUrl": "https://www.ft.com/content/0c773366-61a2-4d33-894e-6b3ddfcfd9b3",
-        "state": "CANDIDATE",
-        "title": "Why the US is losing Chinese AI stars",
-        "topic": "ft.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:48:47.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018175",
-        "id": "7ec20878-2bee-5aba-ab58-61802bef2379",
-        "points": 1,
-        "sourceUrl": "https://github.com/HeyMeco/MecoSerial",
-        "state": "CANDIDATE",
-        "title": "Show HN: Modern Serial Console for macOS based on libghostty written in Swift",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:47:13.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018165",
-        "id": "b2834001-0559-59c1-baec-56a4b1bde6b3",
-        "points": 1,
-        "sourceUrl": "https://github.com/bossandboss/Ai-Firewall",
-        "state": "CANDIDATE",
-        "title": "AI Firewall – Security Gateway and Reverse Proxy for LLM Traffic",
-        "topic": "github.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:47:03.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018164",
-        "id": "70d4375d-86b6-54f0-b7ff-aae6f17d4fb6",
-        "points": 2,
-        "sourceUrl": "https://www.jimgoad.net/bayaryan.html",
-        "state": "CANDIDATE",
-        "title": "Bay Aryan Resistance",
-        "topic": "jimgoad.net"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:44:44.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018145",
-        "id": "b7f4abb0-608a-52ce-be69-bd7dda176ac7",
-        "points": 2,
-        "sourceUrl": "https://lovelace.co/",
-        "state": "CANDIDATE",
-        "title": "Lovelace – project management that lives in your repo",
-        "topic": "lovelace.co"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:43:56.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018140",
-        "id": "76f8829f-db06-5b70-9c4e-ce49bfd42393",
-        "points": 2,
-        "sourceUrl": "https://www.blurit.org/",
-        "state": "CANDIDATE",
-        "title": "Show HN: Blurit – anonymous, text-only public posting board, no accounts",
-        "topic": "blurit.org"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:43:02.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018135",
-        "id": "02cc644a-7415-5100-bf94-c0e7369fe213",
-        "points": 1,
-        "sourceUrl": "https://planpromethee.com/en/",
-        "state": "CANDIDATE",
-        "title": "Plan Prométhée – a plan for France to build 12GW of compute",
-        "topic": "planpromethee.com"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:41:05.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018124",
-        "id": "2d36149f-870d-5627-9f72-833000e976bf",
-        "points": 2,
-        "sourceUrl": null,
-        "state": "CANDIDATE",
-        "title": "Ask HN: What's the most secure way to run a local model?",
-        "topic": "secure"
-      },
-      {
-        "deepAnalysisCount": 0,
-        "discoveredAt": "2026-07-23T07:40:40.000-07:00",
-        "discussionUrl": "https://news.ycombinator.com/item?id=49018116",
-        "id": "fd74a781-1eb2-5f81-81b8-396c4d3268cd",
-        "points": 2,
-        "sourceUrl": "https://hoja-solutions.github.io/blog/state-of-local-models/",
-        "state": "CANDIDATE",
-        "title": "From a Raspberry Pi to a DGX Spark: the state of local models in 2026",
-        "topic": "hoja-solutions.github.io"
       }
     ],
     "verdicts": [
+      {
+        "alertWorthiness": 0.22762,
+        "confidence": 0.63,
+        "contributions": [
+          {
+            "component": "capability_overlap",
+            "explanation": "Capability overlap was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle a",
+            "rawValue": 0,
+            "weight": 0.2,
+            "weightedValue": 0
+          },
+          {
+            "component": "dependency_impact",
+            "explanation": "Dependency impact was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle as",
+            "rawValue": 0,
+            "weight": 0.2,
+            "weightedValue": 0
+          },
+          {
+            "component": "evidence_quality",
+            "explanation": "Evidence quality was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle as ",
+            "rawValue": 0.5,
+            "weight": 0.1,
+            "weightedValue": 0.05
+          },
+          {
+            "component": "solution_adjacency",
+            "explanation": "Solution adjacency was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle a",
+            "rawValue": 0,
+            "weight": 0.1,
+            "weightedValue": 0
+          },
+          {
+            "component": "strategic_relevance",
+            "explanation": "Strategic relevance was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle ",
+            "rawValue": 0,
+            "weight": 0.3,
+            "weightedValue": 0
+          },
+          {
+            "component": "user_pain_signal",
+            "explanation": "User pain signal was scored from the reviewed profile and cited evidence. The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle as ",
+            "rawValue": 0,
+            "weight": 0.1,
+            "weightedValue": 0
+          }
+        ],
+        "createdAt": "2026-08-03T05:18:59.657-07:00",
+        "evidence": [
+          {
+            "excerpt": "Show HN: How to build and self-host a code review agent. Hey HN, I've had a side-project that I've slowly ticked away at over the last year called Tilde. Tilde is a harness SDK platform - I've tried to take the best things of OpenClaw, Hermes & other harnesses and decompose them and make them available as cloud API building blocks. You can use Tilde to create AI agents for your use case, fast and self-host the agent's yourself. The documentation (and attached blog post) leave a lot to be desired in terms of technical documentation but hopefully the attached git repo does a good job of showcasing the API. https://github.com/trytilde/examples",
+            "id": "879629bd-24d8-5f04-b72a-95e294af5b41",
+            "label": "Hacker News story",
+            "publishedAt": "2026-07-31T20:27:28.000-07:00",
+            "sourceKind": "HN_STORY",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49128177"
+          },
+          {
+            "excerpt": "# AI Change Observatory\n\nAI Change Observatory is a vendor-neutral intelligence workspace for product and engineering teams\nthat build, buy, or operate AI-enabled software. It helps teams decide which developments in the\nfast-moving AI ecosystem deserve investigation and which can be ignored.\n\n## Who it serves\n\n- Product leaders planning AI capabilities and provider strategy\n- Engineering teams operating production AI applications\n- Founders comparing models, platforms, and open-source alternatives\n- Technical program leads tracking cost, reliability, security, and licensing risk\n\n## Core capabilities\n\n- Monitor meaningful model releases, model API changes, deprecations, and pricing updates\n- Track AI agents, coding assistants, inference systems, and developer tooling\n- Compare hosted and open-source language models, multimodal models, and embedding models\n- Identify changes in retrieval, RAG, vector search, evaluation, and model observability\n- Track AI security, safety, policy, copyright, and licensing developments\n- Turn a relevant change into an evidence-backed investigation or benchmarking action\n\n## Technology context\n\nThe project is provider neutral. Relevant technologies in",
+            "id": "536b16c2-abf0-5dfb-95a4-ae7cf295dcff",
+            "label": "Reviewed project README",
+            "publishedAt": "2026-07-30T23:18:07.145-07:00",
+            "sourceKind": "PROJECT",
+            "sourceUrl": null
+          },
+          {
+            "excerpt": "i would love to see how to build one that uses open source models instead of anthropic or openai",
+            "id": "75aec39e-a39e-516c-84d1-825f5c314374",
+            "label": "Hacker News comment",
+            "publishedAt": "2026-08-01T03:09:04.000-07:00",
+            "sourceKind": "HN_COMMENT",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49130694"
+          },
+          {
+            "excerpt": "[flagged]",
+            "id": "148d7ea5-16f1-51ff-9b69-57e46d72cf23",
+            "label": "Hacker News comment",
+            "publishedAt": "2026-07-31T22:39:00.000-07:00",
+            "sourceKind": "HN_COMMENT",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49129340"
+          },
+          {
+            "excerpt": "There is an mcp server named Reticle to verify agent's coding work.\nYou should take a look at that too, will be helpful to make your architecture even more better.",
+            "id": "b05025c5-7f3d-5013-b850-3af4e110d67a",
+            "label": "Hacker News comment",
+            "publishedAt": "2026-07-31T21:19:45.000-07:00",
+            "sourceKind": "HN_COMMENT",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49128652"
+          }
+        ],
+        "headline": "AI Change Observatory: Replacement Pressure Analysis",
+        "id": "d37c112e-4323-5ae3-ae6a-ed73ce57aba4",
+        "impactPeak": 0.05,
+        "impactType": "IRRELEVANT",
+        "opportunity": 0.025,
+        "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+        "projectName": "AI Change Observatory",
+        "protectiveFactors": [
+          "The reviewed project, AI Change Observatory, is a vendor-neutral intelligence workspace that helps product and engineering teams identify which AI ecosystem changes deserve investigation, benchmarking, or action. The project's core capabilities include monitoring model releases, API changes, deprecations, and pricing updates, tracking AI agents, coding assistants, inference systems, and developer tooling, and comparing hosted and open-source language models, multimodal models, and embedding models. The project is provider neutral and relevant technologies include large language models, generat"
+        ],
+        "publishedAt": "2026-08-03T05:18:59.657-07:00",
+        "recommendations": [
+          "Investigate Tilde and Reticle as potential alternatives: The Hacker News story (evidence_id: 879629bd-24d8-5f04-b72a-95e294af5b41) introduces Tilde, a harness SDK platform that allows users to create and self-host AI agents. This could be a potential alternative to the reviewed project's capabilities of tracking AI agents and developer tooling. Additionally, a Hacker News comment (evidence_id: 75aec39e-a39e-516c-84d1-825f5c314374) expresses interest in using open-source models instead of proprietary ones, which aligns with the reviewed project's capability of comparing hosted and open-source a"
+        ],
+        "relevance": 0.05,
+        "replacementPressure": 0.025,
+        "signalId": "c26112ea-4cf0-53a0-8168-ca4a499b4b5c",
+        "summary": "The reviewed project, AI Change Observatory, faces potential replacement pressure from alternatives such as Tilde and Reticle. Tilde is a harness SDK platform that allows users to create and self-host AI agents, while Reticle is an mcp server to verify agent's coding work. These alternatives could impact the reviewed project's capabilities of tracking AI agents, coding assistants, and developer tooling. However, the technical documentation of Tilde is lacking, and the quality and reliability of both Tilde and Reticle as alternatives are unknown. Therefore, it is recommended to investigate these alternatives to assess their potential impact on the reviewed project.",
+        "threat": 0.05,
+        "uncertainty": "The technical documentation of Tilde is lacking, which may impact its usability and adoption. The quality and reliability of Tilde and Reticle as alternatives to the reviewed project's capabilities are unknown. The potential impact of Tilde and Reticle on the reviewed project's market position and user base is uncertain.",
+        "urgency": 0.1375
+      },
+      {
+        "alertWorthiness": 0.534,
+        "confidence": 0.66,
+        "contributions": [
+          {
+            "component": "capability_overlap",
+            "explanation": "Capability overlap was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+            "rawValue": 0.5,
+            "weight": 0.2,
+            "weightedValue": 0.1
+          },
+          {
+            "component": "dependency_impact",
+            "explanation": "Dependency impact was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+            "rawValue": 0.5,
+            "weight": 0.2,
+            "weightedValue": 0.1
+          },
+          {
+            "component": "evidence_quality",
+            "explanation": "Evidence quality was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+            "rawValue": 0.5,
+            "weight": 0.1,
+            "weightedValue": 0.05
+          },
+          {
+            "component": "solution_adjacency",
+            "explanation": "Solution adjacency was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+            "rawValue": 0.5,
+            "weight": 0.1,
+            "weightedValue": 0.05
+          },
+          {
+            "component": "strategic_relevance",
+            "explanation": "Strategic relevance was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+            "rawValue": 0.5,
+            "weight": 0.3,
+            "weightedValue": 0.15
+          },
+          {
+            "component": "user_pain_signal",
+            "explanation": "User pain signal was scored from the reviewed profile and cited evidence. The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+            "rawValue": 0.5,
+            "weight": 0.1,
+            "weightedValue": 0.05
+          }
+        ],
+        "createdAt": "2026-08-02T23:35:45.862-07:00",
+        "evidence": [
+          {
+            "excerpt": "Show HN: What should the GUI for AI agents look like?. Hi HN! We’re Akilan and Miguel, the creators of MarbleOS. The inspiration for Marble comes from the GUI work at Xerox PARC, the 1984 Macintosh, and later NeXTSTEP, which became the foundation for Mac OS X.\nBefore GUIs, interacting with a computer was limited to strange terminal commands: C:\\> DIR C:\\> COPY FILE.TXT A: You had to remember the command, syntax, paths, and parameters. The GUI made those capabilities visible. Instead of remembering commands, you could point at files, drag them, click buttons, and select actions from menus.\nIt didn't necessarily make entirely new things possible; it just made existing capabilities much easier to understand and use. We feel like AI is still somewhere around this command-line stage. Even though the strict syntax has been replaced with natural language, the interaction can still be quite stiff and depend on heavily recall. Tools like Claude Cowork still look surprisingly terminal-like: /skill-name [param1] [param2]. The parameters are written in natural language, but the user still needs to know the capabilities that exist, and how to invoke it. Command-line flags and arguments have jus",
+            "id": "2132272a-e526-5708-9b24-0f1d0011e900",
+            "label": "Hacker News story",
+            "publishedAt": "2026-07-31T05:17:29.000-07:00",
+            "sourceKind": "HN_STORY",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49119274"
+          },
+          {
+            "excerpt": "# AI Change Observatory\n\nAI Change Observatory is a vendor-neutral intelligence workspace for product and engineering teams\nthat build, buy, or operate AI-enabled software. It helps teams decide which developments in the\nfast-moving AI ecosystem deserve investigation and which can be ignored.\n\n## Who it serves\n\n- Product leaders planning AI capabilities and provider strategy\n- Engineering teams operating production AI applications\n- Founders comparing models, platforms, and open-source alternatives\n- Technical program leads tracking cost, reliability, security, and licensing risk\n\n## Core capabilities\n\n- Monitor meaningful model releases, model API changes, deprecations, and pricing updates\n- Track AI agents, coding assistants, inference systems, and developer tooling\n- Compare hosted and open-source language models, multimodal models, and embedding models\n- Identify changes in retrieval, RAG, vector search, evaluation, and model observability\n- Track AI security, safety, policy, copyright, and licensing developments\n- Turn a relevant change into an evidence-backed investigation or benchmarking action\n\n## Technology context\n\nThe project is provider neutral. Relevant technologies in",
+            "id": "536b16c2-abf0-5dfb-95a4-ae7cf295dcff",
+            "label": "Reviewed project README",
+            "publishedAt": "2026-07-30T23:18:07.145-07:00",
+            "sourceKind": "PROJECT",
+            "sourceUrl": null
+          },
+          {
+            "excerpt": "Drop the \"G\". The best UI for AI Agents is a physical UI (not a graphical UI). Do something like PikaCube [0] and disrupt the mouse. [0] https://pikacube.pages.dev/",
+            "id": "e01882b9-85a1-5504-9ae3-2cdf1a81d476",
+            "label": "Hacker News comment",
+            "publishedAt": "2026-07-31T19:04:40.000-07:00",
+            "sourceKind": "HN_COMMENT",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49127315"
+          },
+          {
+            "excerpt": "I'm glad folks are experimenting with different paradigms. That said, Hacker News might not be the best audience for this informal survey. I'd wager at least 70% of the people reading this are still interacting with their computers using \"strange terminal commands\", by choice. We aren't representative of what normal people will use or prefer.",
+            "id": "fde21ca8-dfe0-5cca-a813-8e144b08c0b9",
+            "label": "Hacker News comment",
+            "publishedAt": "2026-07-31T10:11:09.000-07:00",
+            "sourceKind": "HN_COMMENT",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49121250"
+          },
+          {
+            "excerpt": "Lost me at having to click to use particular tools",
+            "id": "32784e3b-8c0b-5994-9ea0-f93fa83dd549",
+            "label": "Hacker News comment",
+            "publishedAt": "2026-07-31T08:22:57.000-07:00",
+            "sourceKind": "HN_COMMENT",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49120449"
+          },
+          {
+            "excerpt": "Best interface in my opinion is a git tracked folder, files as state, agents coming in and doing work. It's not just a chat interface because in chat mode everything flows like water under the bridge. It is files as agents, where you get the agent to write a task in a file, and then it updates the file like a blackboard as it performs work. Same task file can be seen by worker agent, multiple judge agents (for plan and implementation), documentation agents and reflexion agents (improve workflow). I would also track every user message in a chat_log.md for reflexion agents (what is wrong with the workflow) and intent review (is the agent still following user intent?).",
+            "id": "88b09e35-012b-5e10-9cf1-45dfa0843d13",
+            "label": "Hacker News comment",
+            "publishedAt": "2026-07-31T07:45:22.000-07:00",
+            "sourceKind": "HN_COMMENT",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49120198"
+          },
+          {
+            "excerpt": "I completely agree with you that the chat interface is very undercooked and there's a big untapped space for agent-first interfaces, perhaps even replacing traditional desktop metaphors. You're spot on with your premise. With that said, from the material you show in your homepage, it still seems like you're doing something very similar to OpenAI and Anthropic's first party apps?\nI think it would help your pitch if you could show some task or workflow where your interface truly makes a difference; loading files and asking questions about them is a staple of most harnesses.",
+            "id": "20fc6884-abeb-534d-9410-d41830af0df0",
+            "label": "Hacker News comment",
+            "publishedAt": "2026-07-31T07:08:01.000-07:00",
+            "sourceKind": "HN_COMMENT",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49119952"
+          }
+        ],
+        "headline": "AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs",
+        "id": "0512a5ac-f41b-5c31-87a5-e400be61e0a4",
+        "impactPeak": 0.5,
+        "impactType": "STRATEGIC_WATCH",
+        "opportunity": 0.5,
+        "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+        "projectName": "AI Change Observatory",
+        "protectiveFactors": [
+          "The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor against speculative or unverified AI developments. (536b16c2-abf0-5dfb-95a4-ae7cf295dcff)"
+        ],
+        "publishedAt": "2026-08-02T23:35:45.862-07:00",
+        "recommendations": [
+          "Investigate emerging AI agent GUIs: Investigate the emerging GUI trends for AI agents to understand their potential impact on the AI Change Observatory's user experience and capabilities. (2132272a-e526-5708-9b24-0f1d0011e900, 88b09e35-012b-5e10-9cf1-45dfa0843d13)"
+        ],
+        "relevance": 0.5,
+        "replacementPressure": 0.325,
+        "signalId": "2dda83c6-b7bd-54a9-80ef-da23d7e184e2",
+        "summary": "The AI Change Observatory faces moderate replacement pressure from emerging AI agent GUIs that aim to improve user experience and capabilities. The project's provider-neutral approach and focus on evidence-backed actions provide a protective factor. Further investigation into the emerging GUI trends is recommended to assess their potential impact.",
+        "threat": 0.4,
+        "uncertainty": "The maturity and adoption rate of the emerging AI agent GUIs The specific user needs and preferences that the new GUIs aim to address",
+        "urgency": 0.5
+      },
+      {
+        "alertWorthiness": 0.72737,
+        "confidence": 0.685,
+        "contributions": [
+          {
+            "component": "capability_overlap",
+            "explanation": "Capability overlap was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+            "rawValue": 0.7,
+            "weight": 0.2,
+            "weightedValue": 0.14
+          },
+          {
+            "component": "dependency_impact",
+            "explanation": "Dependency impact was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+            "rawValue": 0.8,
+            "weight": 0.2,
+            "weightedValue": 0.16
+          },
+          {
+            "component": "evidence_quality",
+            "explanation": "Evidence quality was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+            "rawValue": 0.6,
+            "weight": 0.1,
+            "weightedValue": 0.06
+          },
+          {
+            "component": "solution_adjacency",
+            "explanation": "Solution adjacency was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+            "rawValue": 0.9,
+            "weight": 0.1,
+            "weightedValue": 0.09
+          },
+          {
+            "component": "strategic_relevance",
+            "explanation": "Strategic relevance was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+            "rawValue": 0.8,
+            "weight": 0.3,
+            "weightedValue": 0.24
+          },
+          {
+            "component": "user_pain_signal",
+            "explanation": "User pain signal was scored from the reviewed profile and cited evidence. The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+            "rawValue": 0.7,
+            "weight": 0.1,
+            "weightedValue": 0.07
+          }
+        ],
+        "createdAt": "2026-08-01T23:13:58.124-07:00",
+        "evidence": [
+          {
+            "excerpt": "Should Airbnb Add Ads?. Advertising is inherently about monetizing user attention. There are many technology companies today that may not seem like advertising companies on the outside, yet inherently rely on ads as a fundamental part of their business. Advertising as a business model has a few great dynamics. Firstly, there is no cost to serve these ads on your platform, so there is inherently 100% margin. As your platform and its attention grow, so does your advertising business. While there are businesses that are fully advertising companies, such as Meta and Alphabet, albeit the latter has diversified somewhat into other forays. I think what is more interesting are companies such as Uber, Amazon, Instacart, and potentially Airbnb because advertising is the hidden profit engine that allows these businesses to thrive, albeit unintentionally. Yet to create a successful ad business, you need scale; Amazon has to grow the size of its retail business and introduce third-party sellers, which allows a near $ 70 billion ad business in 2025. That drives a core part of Amazon’s free cash flow, more than retail itself or AWS, yet you need to first establish a thriving marketplace in order ",
+            "id": "213eff86-3ffd-57a1-b995-d273f042ce97",
+            "label": "Hacker News story",
+            "publishedAt": "2026-07-31T06:15:52.000-07:00",
+            "sourceKind": "HN_STORY",
+            "sourceUrl": "https://news.ycombinator.com/item?id=49119606"
+          },
+          {
+            "excerpt": "# AI Change Observatory\n\nAI Change Observatory is a vendor-neutral intelligence workspace for product and engineering teams\nthat build, buy, or operate AI-enabled software. It helps teams decide which developments in the\nfast-moving AI ecosystem deserve investigation and which can be ignored.\n\n## Who it serves\n\n- Product leaders planning AI capabilities and provider strategy\n- Engineering teams operating production AI applications\n- Founders comparing models, platforms, and open-source alternatives\n- Technical program leads tracking cost, reliability, security, and licensing risk\n\n## Core capabilities\n\n- Monitor meaningful model releases, model API changes, deprecations, and pricing updates\n- Track AI agents, coding assistants, inference systems, and developer tooling\n- Compare hosted and open-source language models, multimodal models, and embedding models\n- Identify changes in retrieval, RAG, vector search, evaluation, and model observability\n- Track AI security, safety, policy, copyright, and licensing developments\n- Turn a relevant change into an evidence-backed investigation or benchmarking action\n\n## Technology context\n\nThe project is provider neutral. Relevant technologies in",
+            "id": "536b16c2-abf0-5dfb-95a4-ae7cf295dcff",
+            "label": "Reviewed project README",
+            "publishedAt": "2026-07-30T23:18:07.145-07:00",
+            "sourceKind": "PROJECT",
+            "sourceUrl": null
+          }
+        ],
+        "headline": "AI Change Observatory: Monitoring AI Ecosystem Changes",
+        "id": "0f0bc99b-d87f-5331-ae9b-3eb46ba1ffdc",
+        "impactPeak": 0.8,
+        "impactType": "PROVIDER_OPPORTUNITY",
+        "opportunity": 0.75,
+        "projectId": "8b888d19-f983-573a-a452-3f3572a97667",
+        "projectName": "AI Change Observatory",
+        "protectiveFactors": [
+          "The project's provider-neutral approach and explicit separation of source fact, assessment, and next action ensure a balanced and evidence-backed evaluation process (536b16c2-abf0-5dfb-95a4-ae7cf295dcff)."
+        ],
+        "publishedAt": "2026-08-01T23:13:58.124-07:00",
+        "recommendations": [
+          "Investigate AI Change Observatory for Enhanced AI Ecosystem Monitoring: The AI Change Observatory offers a comprehensive suite of capabilities for monitoring and evaluating AI ecosystem changes, which aligns well with the reviewed project's priorities and differentiators (536b16c2-abf0-5dfb-95a4-ae7cf295dcff)."
+        ],
+        "relevance": 0.76,
+        "replacementPressure": 0.455,
+        "signalId": "a70c6bf0-f498-581c-8467-daa9200d0555",
+        "summary": "The AI Change Observatory presents a strong alignment with the reviewed project's goals and capabilities, offering a vendor-neutral approach to monitoring AI ecosystem changes. However, the lack of specific technical details introduces some uncertainty.",
+        "threat": 0.525,
+        "uncertainty": "The specific technical implementation details of the AI Change Observatory are not provided in the evidence, which could impact the assessment of its compatibility with the reviewed project.",
+        "urgency": 0.6775
+      },
       {
         "alertWorthiness": 0.71481,
         "confidence": 0.685,

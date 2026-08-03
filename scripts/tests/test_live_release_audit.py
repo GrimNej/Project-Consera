@@ -21,11 +21,11 @@ def valid_state() -> dict[str, object]:
         )
     ]
     monitors = [
-        {"credit_quota": 1, "frequency": "WEEKLY", "name": name}
-        for name in (
-            "CONSERA_APP_MONITOR",
-            "CONSERA_INGEST_MONITOR",
-            "CONSERA_PIPELINE_MONITOR",
+        {"credit_quota": quota, "frequency": "WEEKLY", "name": name}
+        for name, quota in (
+            ("CONSERA_APP_MONITOR", 1),
+            ("CONSERA_INGEST_MONITOR", 1),
+            ("CONSERA_PIPELINE_MONITOR", 2),
         )
     ]
     tasks = [
@@ -73,6 +73,9 @@ def valid_state() -> dict[str, object]:
             "v005_count": 1,
             "v006_count": 1,
             "v007_count": 1,
+            "v008_count": 1,
+            "v009_count": 1,
+            "v010_count": 1,
         },
         "monitors": monitors,
         "streams": streams,

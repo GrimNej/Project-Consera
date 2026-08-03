@@ -116,6 +116,11 @@ def _observed_at(item: HnSourceItem) -> datetime:
     return datetime.fromtimestamp(item.time, tz=UTC)
 
 
+def optional_number_param(value: int | None) -> str:
+    """Serialize an optional number without relying on Snowpark's None binding."""
+    return "" if value is None else str(value)
+
+
 def _insert_signal_version(
     session: Session,
     *,
@@ -154,8 +159,8 @@ def _insert_signal_version(
             ?,
             ?,
             ?,
-            ?,
-            ?,
+            TRY_TO_NUMBER(?),
+            TRY_TO_NUMBER(?),
             PARSE_JSON(?),
             ?,
             ?,
@@ -173,8 +178,8 @@ def _insert_signal_version(
             title,
             item.url,
             story_text,
-            item.score,
-            item.descendants,
+            optional_number_param(item.score),
+            optional_number_param(item.descendants),
             json.dumps(item.kids[:100]),
             normalized_text,
             sha256_text(normalized_text),
@@ -194,8 +199,8 @@ def _insert_signal_version(
                 ? AS CANONICAL_URL,
                 ? AS AUTHOR,
                 ? AS OBSERVED_AT,
-                ? AS CURRENT_SCORE,
-                ? AS CURRENT_COMMENT_COUNT,
+                TRY_TO_NUMBER(?) AS CURRENT_SCORE,
+                TRY_TO_NUMBER(?) AS CURRENT_COMMENT_COUNT,
                 PARSE_JSON(?) AS TOPIC_LABELS,
                 ? AS PRIMARY_DOMAIN,
                 ? AS IS_DELETED,
@@ -271,8 +276,8 @@ def _insert_signal_version(
             item.url,
             item.by,
             observed_at,
-            item.score,
-            item.descendants,
+            optional_number_param(item.score),
+            optional_number_param(item.descendants),
             json.dumps(labels),
             domain,
             item.deleted,

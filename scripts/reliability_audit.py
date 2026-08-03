@@ -82,6 +82,7 @@ def reliability_findings(*, require_snapshot: bool = True) -> list[str]:
                 "CONSERA_PIPELINE_MONITOR",
                 "CONSERA_APP_MONITOR",
                 "CREDIT_QUOTA = 1",
+                "CREDIT_QUOTA = 2",
                 "FREQUENCY = WEEKLY",
                 "WAREHOUSE_SIZE = 'XSMALL'",
                 "AUTO_SUSPEND = 60",
@@ -96,8 +97,19 @@ def reliability_findings(*, require_snapshot: bool = True) -> list[str]:
         bootstrap,
     ):
         findings.append("WAREHOUSES_SHARE_RESOURCE_MONITOR")
-    if re.search(r"CREDIT_QUOTA\s*=\s*(?:[2-9]|\d{2,})", bootstrap):
-        findings.append("WAREHOUSE_WEEKLY_QUOTA_EXCEEDS_MINIMUM")
+    monitor_quotas = dict(
+        re.findall(
+            r"ALTER RESOURCE MONITOR (CONSERA_(?:INGEST|PIPELINE|APP)_MONITOR)\s+"
+            r"SET\s+CREDIT_QUOTA = (\d+)",
+            bootstrap,
+        )
+    )
+    if monitor_quotas != {
+        "CONSERA_APP_MONITOR": "1",
+        "CONSERA_INGEST_MONITOR": "1",
+        "CONSERA_PIPELINE_MONITOR": "2",
+    }:
+        findings.append("WAREHOUSE_WEEKLY_QUOTA_OUTSIDE_RELEASE_ENVELOPE")
 
     findings.extend(
         _missing(

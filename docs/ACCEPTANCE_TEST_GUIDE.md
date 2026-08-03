@@ -64,11 +64,13 @@ uv run python -m scripts.live_release_audit `
 ```
 
 The command must report `Consera live release audit passed`. Its sanitized evidence verifies three
-isolated one-credit weekly monitors, X-Small warehouses, 60-second auto-suspend, append-only
-streams, the non-retriggering task graph, V005 migration state, exactly one active project, queue
-health, recent task multiplicity, and delivery health.
+isolated weekly monitors with a two-credit pipeline ceiling and one-credit ingestion and application
+ceilings, X-Small warehouses, 60-second auto-suspend, append-only streams, the non-retriggering task
+graph, V005 through V010 migration state, exactly one active project, queue health, recent task
+multiplicity, and delivery health.
 
-Open [consera.grimnej.com](https://consera.grimnej.com), then select `Open Consera`.
+Open [consera.grimnej.com](https://consera.grimnej.com), enter the invited four-digit passkey, then
+select `Open Consera`.
 
 Pass conditions:
 
@@ -77,7 +79,7 @@ Pass conditions:
 - Overview shows project, signal, verdict, alert, and AI-budget state.
 - The synchronization label states whether the response is live, edge-cached, or a timestamped
   last-known view.
-- No access-code prompt appears.
+- A wrong passkey remains on the private-access screen and never contacts Snowflake.
 
 If the landing page works but the workspace reports that Snowflake could not complete the request,
 stop the rehearsal. Check the Consera resource monitor before retrying. Repeated refreshes will not

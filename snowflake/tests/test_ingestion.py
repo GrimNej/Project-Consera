@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-from ingestion import CANDIDATE_MIN_RELEVANCE, lexical_relevance, topic_labels
+from ingestion import (
+    CANDIDATE_MIN_RELEVANCE,
+    lexical_relevance,
+    optional_number_param,
+    topic_labels,
+)
 
 
 def test_exact_provider_match_enters_candidate_band() -> None:
@@ -41,3 +46,9 @@ def test_topic_labels_include_domain_and_stable_terms() -> None:
     )
     assert labels[0] == "example.com"
     assert labels[1:] == ["intelligence", "developers", "arrives"]
+
+
+def test_optional_signal_metrics_do_not_bind_python_none() -> None:
+    assert optional_number_param(None) == ""
+    assert optional_number_param(0) == "0"
+    assert optional_number_param(42) == "42"

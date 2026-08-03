@@ -3,7 +3,7 @@
 | Component                  | Cost boundary                                                                 |
 | -------------------------- | ----------------------------------------------------------------------------- |
 | Ingestion warehouse        | X-Small, 60-second auto-suspend, 1 credit per week                            |
-| Pipeline warehouse         | X-Small, 60-second auto-suspend, 1 credit per week                            |
+| Pipeline warehouse         | X-Small, 60-second auto-suspend, 2 credits per week                           |
 | Application warehouse      | X-Small, 60-second auto-suspend, 1 credit per week                            |
 | Query acceleration         | Explicitly disabled on every Consera warehouse                                |
 | Snowflake Cortex AI        | Reservation before every call, hard maximum of 0.3 credits per day            |
@@ -16,11 +16,13 @@
 Each warehouse has its own weekly monitor. This prevents ingestion, pipeline, or public browsing
 from suspending the other two paths. Every monitor warns at 60 percent, suspends at 85 percent, and
 suspends immediately at 100 percent. Snowflake rejected a fractional quota in the live trial
-account, so 1 credit per week is the smallest verified boundary for each warehouse.
+account. Ingestion and application retain the one-credit minimum. The pipeline has a two-credit
+ceiling so seven daily normalization runs and an invited reviewer's profile extraction can complete
+without removing the 85 percent suspension breaker.
 
-Across nine weeks, the warehouse planning envelope is 27 credits. The independent AI circuit breaker
+Across nine weeks, the warehouse planning envelope is 36 credits. The independent AI circuit breaker
 can reserve at most 18 estimated credits across 60 days. The combined protected planning envelope is
-45 credits, before normal early auto-suspend and cache savings. Snowflake resource monitors are not
+54 credits, before normal early auto-suspend and cache savings. Snowflake resource monitors are not
 precise metering instruments, so bounded task timeouts and non-overlap remain necessary to limit any
 in-flight work near a threshold. This design leaves more than 250 credits of the reported remaining
 trial balance outside the planning envelope.

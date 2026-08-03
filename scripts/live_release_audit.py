@@ -20,6 +20,11 @@ EXPECTED_MONITORS = {
     "CONSERA_INGEST_WH": "CONSERA_INGEST_MONITOR",
     "CONSERA_PIPELINE_WH": "CONSERA_PIPELINE_MONITOR",
 }
+EXPECTED_MONITOR_QUOTAS = {
+    "CONSERA_APP_MONITOR": 1.0,
+    "CONSERA_INGEST_MONITOR": 1.0,
+    "CONSERA_PIPELINE_MONITOR": 2.0,
+}
 EXPECTED_TASKS = {
     "PROCESS_ALERT_TASK",
     "PROCESS_EVALUATION_TASK",
@@ -79,7 +84,7 @@ def validate_release_state(state: Mapping[str, Any]) -> list[str]:
         findings.append("RESOURCE_MONITOR_SET_INVALID")
     for monitor_name in expected_monitor_names:
         monitor = monitors.get(monitor_name, {})
-        if float(monitor.get("credit_quota") or 0) != 1:
+        if float(monitor.get("credit_quota") or 0) != EXPECTED_MONITOR_QUOTAS[monitor_name]:
             findings.append(f"{monitor_name}_QUOTA_INVALID")
         if _string(monitor.get("frequency")).upper() != "WEEKLY":
             findings.append(f"{monitor_name}_FREQUENCY_INVALID")
@@ -138,6 +143,12 @@ def validate_release_state(state: Mapping[str, Any]) -> list[str]:
         findings.append("V006_MIGRATION_NOT_RECORDED")
     if int(metrics.get("v007_count") or 0) != 1:
         findings.append("V007_MIGRATION_NOT_RECORDED")
+    if int(metrics.get("v008_count") or 0) != 1:
+        findings.append("V008_MIGRATION_NOT_RECORDED")
+    if int(metrics.get("v009_count") or 0) != 1:
+        findings.append("V009_MIGRATION_NOT_RECORDED")
+    if int(metrics.get("v010_count") or 0) != 1:
+        findings.append("V010_MIGRATION_NOT_RECORDED")
     if int(metrics.get("queue_failure_count") or 0) != 0:
         findings.append("QUEUE_FAILURES_PRESENT")
     if int(metrics.get("terminal_delivery_failure_count") or 0) != 0:
@@ -204,6 +215,24 @@ def collect_release_state(connection: SnowflakeConnection) -> dict[str, Any]:
                 ) AS V007_COUNT,
                 (
                     SELECT COUNT(*)
+                    FROM CONSERA.OPS.SCHEMA_MIGRATIONS
+                    WHERE VERSION = 'V008'
+                        AND STATE = 'APPLIED'
+                ) AS V008_COUNT,
+                (
+                    SELECT COUNT(*)
+                    FROM CONSERA.OPS.SCHEMA_MIGRATIONS
+                    WHERE VERSION = 'V009'
+                        AND STATE = 'APPLIED'
+                ) AS V009_COUNT,
+                (
+                    SELECT COUNT(*)
+                    FROM CONSERA.OPS.SCHEMA_MIGRATIONS
+                    WHERE VERSION = 'V010'
+                        AND STATE = 'APPLIED'
+                ) AS V010_COUNT,
+                (
+                    SELECT COUNT(*)
                     FROM CONSERA.OPS.BATCH_WORK_QUEUE
                     WHERE STATE IN ('FAILED_RETRYABLE', 'FAILED_TERMINAL')
                 )
@@ -221,7 +250,15 @@ def collect_release_state(connection: SnowflakeConnection) -> dict[str, Any]:
                     INNER JOIN CONSERA.CORE.PROJECTS AS project
                         ON evaluation_job.PROJECT_ID = project.PROJECT_ID
                     WHERE evaluation_job.STATE = 'FAILED_TERMINAL'
+                        AND evaluation_job.LAST_ERROR_CODE <> 'JOB_INPUT_STALE'
                         AND project.ARCHIVED_AT IS NULL
+                        AND NOT EXISTS (
+                            SELECT 1
+                            FROM CONSERA.OPS.EVALUATION_JOBS AS recovered_job
+                            WHERE recovered_job.PROJECT_ID = evaluation_job.PROJECT_ID
+                                AND recovered_job.STATE = 'SUCCEEDED'
+                                AND recovered_job.UPDATED_AT > evaluation_job.UPDATED_AT
+                        )
                 ) AS QUEUE_FAILURE_COUNT,
                 (
                     SELECT COUNT(*)

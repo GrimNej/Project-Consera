@@ -37,7 +37,10 @@ function stored(capturedAt: string): Response {
 describe("state-free workspace cache", () => {
   it("keeps the real deployed snapshot inside the public workspace contract", () => {
     expect(deployedSnapshot.ready).toBe(true);
-    expect(workspaceContentSchema.safeParse(deployedSnapshot.workspace).success).toBe(true);
+    const parsed = workspaceContentSchema.safeParse(deployedSnapshot.workspace);
+    expect(parsed.success, parsed.success ? undefined : JSON.stringify(parsed.error.issues)).toBe(
+      true,
+    );
   });
 
   it("serves a fresh edge snapshot without waking Snowflake", async () => {
